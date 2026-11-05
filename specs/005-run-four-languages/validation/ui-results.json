@@ -1,0 +1,23 @@
+{
+  "mode": "controlled API fixture; no student program executed",
+  "checks": [
+    "unavailable readiness allows retry",
+    "snapshot contains exact source",
+    "snapshot contains language",
+    "snapshot contains stdin",
+    "stdout rendered",
+    "exit code and duration shown",
+    "desktop remains 55/45",
+    "desktop fits viewport",
+    "mobile Run button accessible",
+    "mobile no horizontal overflow",
+    "mobile pane within viewport",
+    "stdout remains literal text",
+    "source change marks result stale",
+    "language change keeps stale warning",
+    "Stop cancels pending request",
+    "Run reenabled after abort",
+    "no page runtime errors"
+  ],
+  "errors": []
+}

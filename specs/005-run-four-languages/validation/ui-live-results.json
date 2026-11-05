@@ -1,0 +1,14 @@
+{
+  "mode": "actual browser, actual HTTP runner, actual Docker; temporary auth DB; Ollama warmup/health omitted",
+  "checks": [
+    "live runner readiness displayed",
+    "real Python stdin prints sum in Run pane",
+    "actual exit code displayed",
+    "changed code marks actual earlier result stale",
+    "next click executes changed source",
+    "editor Undo remains available",
+    "no page runtime errors"
+  ],
+  "errors": [],
+  "state": "passed"
+}

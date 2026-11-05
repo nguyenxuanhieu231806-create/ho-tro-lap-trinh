@@ -1,0 +1,9 @@
+{
+  "mode": "actual HTTP/auth/SQLite/Chroma/XLSX; embedding and answer outputs controlled by Python harness",
+  "checks": [
+    "real administrator login shows management link",
+    "real auth protects and opens management interface",
+    "actual Excel template endpoint downloads workbook"
+  ],
+  "errors": []
+}

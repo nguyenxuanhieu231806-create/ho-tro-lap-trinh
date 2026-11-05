@@ -1,0 +1,6 @@
+﻿{
+    "wsl_feature":  "Enabled",
+    "virtual_machine_platform":  "Enabled",
+    "restart_needed":  false,
+    "error":  null
+}

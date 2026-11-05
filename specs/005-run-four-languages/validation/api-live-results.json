@@ -1,0 +1,147 @@
+{
+  "mode": "real HTTP, temporary SQLite, actual Docker compiler/runtime",
+  "checks": [
+    "HTTP server starts with temporary account database",
+    "runner readiness requires login",
+    "run requires login",
+    "seeded account login succeeds in isolated SQLite",
+    "actual Docker image is ready through HTTP",
+    "python hello executes through HTTP",
+    "python stdin executes through HTTP",
+    "c hello executes through HTTP",
+    "c stdin executes through HTTP",
+    "cpp hello executes through HTTP",
+    "cpp stdin executes through HTTP",
+    "java hello executes through HTTP",
+    "java stdin executes through HTTP",
+    "invalid language/blank/oversized inputs rejected",
+    "pending HTTP request starts a real container",
+    "container is running before disconnect",
+    "parallel request receives busy response",
+    "disconnect signals the actual Docker worker",
+    "run slot released after cancelled worker finishes",
+    "cancelled named container removed",
+    "next real run succeeds after cancellation",
+    "actual browser login and Run button use real runner",
+    "all containers created by this test were removed",
+    "temporary HTTP server stopped cleanly"
+  ],
+  "results": [
+    {
+      "language": "python",
+      "case": "hello",
+      "http": 200,
+      "result": {
+        "language": "python",
+        "status": "completed",
+        "stdout": "Xin chào\n",
+        "stderr": "",
+        "exit_code": 0,
+        "duration_ms": 829,
+        "message": "Chương trình đã kết thúc. Hãy đối chiếu kết quả với yêu cầu bài toán."
+      }
+    },
+    {
+      "language": "python",
+      "case": "stdin",
+      "http": 200,
+      "result": {
+        "language": "python",
+        "status": "completed",
+        "stdout": "12\n",
+        "stderr": "",
+        "exit_code": 0,
+        "duration_ms": 843,
+        "message": "Chương trình đã kết thúc. Hãy đối chiếu kết quả với yêu cầu bài toán."
+      }
+    },
+    {
+      "language": "c",
+      "case": "hello",
+      "http": 200,
+      "result": {
+        "language": "c",
+        "status": "completed",
+        "stdout": "Xin chào\n",
+        "stderr": "",
+        "exit_code": 0,
+        "duration_ms": 782,
+        "message": "Chương trình đã kết thúc. Hãy đối chiếu kết quả với yêu cầu bài toán."
+      }
+    },
+    {
+      "language": "c",
+      "case": "stdin",
+      "http": 200,
+      "result": {
+        "language": "c",
+        "status": "completed",
+        "stdout": "12\n",
+        "stderr": "",
+        "exit_code": 0,
+        "duration_ms": 797,
+        "message": "Chương trình đã kết thúc. Hãy đối chiếu kết quả với yêu cầu bài toán."
+      }
+    },
+    {
+      "language": "cpp",
+      "case": "hello",
+      "http": 200,
+      "result": {
+        "language": "cpp",
+        "status": "completed",
+        "stdout": "Xin chào\n",
+        "stderr": "",
+        "exit_code": 0,
+        "duration_ms": 1109,
+        "message": "Chương trình đã kết thúc. Hãy đối chiếu kết quả với yêu cầu bài toán."
+      }
+    },
+    {
+      "language": "cpp",
+      "case": "stdin",
+      "http": 200,
+      "result": {
+        "language": "cpp",
+        "status": "completed",
+        "stdout": "12\n",
+        "stderr": "",
+        "exit_code": 0,
+        "duration_ms": 1047,
+        "message": "Chương trình đã kết thúc. Hãy đối chiếu kết quả với yêu cầu bài toán."
+      }
+    },
+    {
+      "language": "java",
+      "case": "hello",
+      "http": 200,
+      "result": {
+        "language": "java",
+        "status": "completed",
+        "stdout": "Xin chào\n",
+        "stderr": "",
+        "exit_code": 0,
+        "duration_ms": 1375,
+        "message": "Chương trình đã kết thúc. Hãy đối chiếu kết quả với yêu cầu bài toán."
+      }
+    },
+    {
+      "language": "java",
+      "case": "stdin",
+      "http": 200,
+      "result": {
+        "language": "java",
+        "status": "completed",
+        "stdout": "12\n",
+        "stderr": "",
+        "exit_code": 0,
+        "duration_ms": 1453,
+        "message": "Chương trình đã kết thúc. Hãy đối chiếu kết quả với yêu cầu bài toán."
+      }
+    }
+  ],
+  "state": "passed",
+  "passed": 24,
+  "containers_observed": 12,
+  "image": "sha256:46e04cc8ff476bb9eb067914b9a2035a0d63f0961eca8d2c3111f44ce6dbd377"
+}

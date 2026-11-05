@@ -1,0 +1,25 @@
+{
+  "mode": "actual HTTP/XLSX/auth/temp SQLite; remote-client and HTTPS scheme are controlled ASGI fixtures, not real TLS",
+  "passed": 19,
+  "checks": [
+    "anonymous cannot download import template",
+    "student login remains available",
+    "student cannot import or download admin template",
+    "explicit administrator logs in",
+    "actual XLSX template returned",
+    "HTTP LAN transport cannot upload account credentials",
+    "localhost HTTP import preview succeeds",
+    "preview response redacts supplied password",
+    "sensitive responses disable browser caching",
+    "HTTP LAN transport cannot confirm credentials",
+    "trusted HTTPS scheme permits administrator confirmation",
+    "first confirm returns credentials only to authenticated admin",
+    "repeated confirm is idempotent without credential replay",
+    "stored report has no plaintext password",
+    "imported student can login after reinitialization",
+    "imported account has student role",
+    "Origin validation remains enabled",
+    "credential staging removed after commit",
+    "temporary HTTP server stops cleanly"
+  ]
+}

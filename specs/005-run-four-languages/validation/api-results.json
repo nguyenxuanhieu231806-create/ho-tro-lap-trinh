@@ -1,0 +1,11 @@
+{
+  "checks": [
+    "run and readiness require authenticated session",
+    "runner readiness contract",
+    "four languages forward exact code and stdin",
+    "invalid language, blank source and oversized inputs rejected",
+    "execution and infrastructure states remain distinct",
+    "single run slot independent from AI chat",
+    "disconnect cancels worker and holds slot through cleanup"
+  ]
+}

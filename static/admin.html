@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="vi">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="referrer" content="same-origin"><title>Quản trị tài liệu và sinh viên · Khoa CNTT</title><link rel="stylesheet" href="/rag.css"></head>
+<body class="admin-page">
+<header class="admin-header"><img src="/LogoFITHPUni.png" alt="Logo Khoa CNTT"><strong>Quản trị tài liệu và sinh viên</strong><a href="/">Về Web IDE</a></header>
+<main class="admin-main">
+<section class="admin-card"><h1>Kho tài liệu và cấp tài khoản</h1><p id="admin-auth-status" class="admin-status" role="status">Đang kiểm tra quyền quản trị…</p><p class="admin-note">Chỉ người quản trị được nạp dữ liệu. Tài liệu hỏi đáp và danh sách tài khoản đi theo hai luồng riêng.</p></section>
+<div id="admin-work" hidden>
+<section class="admin-card" aria-labelledby="admin-document-heading"><h2 id="admin-document-heading">1. Nạp tài liệu Word hoặc văn bản</h2><p class="admin-note">Chọn DOCX hoặc TXT UTF-8. Xem thứ tự đoạn, bảng, ảnh và cảnh báo trước khi công bố. Với ảnh sơ đồ, mô tả phải được đối chiếu với ảnh gốc; OCR hay chú thích không tự chứng minh ý nghĩa ảnh.</p>
+<form id="admin-document-form"><div class="admin-controls"><label for="admin-document-target">Cách nạp</label><select id="admin-document-target"><option value="">Tài liệu mới</option></select></div><div class="admin-controls"><input id="admin-document-file" type="file" accept=".docx,.txt" required aria-label="Tài liệu Word hoặc văn bản"><button type="submit" class="primary">Đọc và xem trước</button></div></form>
+<div class="admin-controls"><label for="admin-document-list">Tài liệu đã nạp</label><select id="admin-document-list"><option value="">Chọn bản nạp để xem lại</option></select><button id="admin-refresh-documents" type="button">Làm mới</button></div>
+<p id="admin-document-status" class="admin-status" role="status">Chưa chọn tài liệu.</p>
+<div id="admin-document-preview" hidden><h3 id="admin-preview-title"></h3><div id="admin-document-warnings"></div><details><summary>Nội dung đã trích xuất theo thứ tự</summary><div id="admin-document-blocks" class="admin-table-wrap"></div></details><div id="admin-document-images"></div>
+<div class="admin-controls"><button id="admin-publish" class="primary" type="button">Xác nhận nạp vào kho hỏi đáp</button><button id="admin-cancel-job" type="button" hidden>Dừng nạp</button></div><p class="admin-note">Chỉ bản nạp hoàn tất kiểm tra mới xuất hiện trong kho của sinh viên. Nạp lại không tự ghi đè chỉ vì tên tệp giống nhau.</p></div>
+<div class="admin-controls"><button id="admin-reindex" type="button">Dựng lại chỉ mục tìm kiếm</button></div><p class="admin-note">Dùng khi cấu hình model embedding thay đổi. Hệ thống kiểm tra chỉ mục mới trước khi chuyển sử dụng, không thay đổi tài liệu gốc.</p>
+</section>
+<section class="admin-card" aria-labelledby="admin-student-heading"><h2 id="admin-student-heading">2. Nhập tài khoản sinh viên từ Excel</h2><p class="admin-note">Mỗi lượt tối đa 100 sinh viên. Mẫu gồm Email, MSSV, Họ và tên, Lớp, Năm học; có thể thêm Mật khẩu. MSSV phải giữ dạng văn bản nếu có số 0 đầu. Có mật khẩu thì dùng để cấp tài khoản mới, để trống thì tạo riêng lúc xác nhận. Tài khoản đã có không bị ghi đè.</p>
+<a class="admin-button" href="/api/admin/students/template">Tải mẫu Excel</a>
+<form id="admin-student-form"><div class="admin-controls"><input id="admin-student-file" type="file" accept=".xlsx" required aria-label="Danh sách sinh viên Excel"><button type="submit" class="primary">Kiểm tra và xem trước</button></div></form>
+<p id="admin-student-status" class="admin-status" role="status">Chưa nhập danh sách. Xem trước chưa cấp tài khoản.</p>
+<div id="admin-import-preview" hidden><p id="admin-import-counts"></p><div class="admin-table-wrap"><table><thead><tr><th>Dòng</th><th>Email</th><th>MSSV</th><th>Họ và tên</th><th>Lớp / Năm</th><th>Kết quả / Lý do</th></tr></thead><tbody id="admin-import-rows"></tbody></table></div><div class="admin-controls"><button id="admin-import-confirm" class="primary" type="button">Xác nhận cấp tài khoản hợp lệ</button></div></div>
+<div id="admin-credentials" class="admin-secret" hidden><h3>Thông tin đăng nhập mới được cấp</h3><p>Chỉ bàn giao riêng cho từng sinh viên. Tải và cất giữ ở nơi phù hợp; hệ thống không lưu mật khẩu rõ để xem lại. Không chia sẻ cả danh sách cho sinh viên. Thông tin này được ẩn khi rời tab hoặc sau 5 phút.</p><pre id="admin-credential-text"></pre><div class="admin-controls"><button id="admin-download-credentials" type="button">Tải thông tin để bàn giao riêng</button><button id="admin-clear-credentials" type="button">Ẩn và xóa khỏi trang</button></div></div>
+</section>
+</div>
+</main><script src="/admin.js" defer></script></body></html>

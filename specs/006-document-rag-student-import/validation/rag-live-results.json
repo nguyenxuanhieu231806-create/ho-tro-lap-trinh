@@ -1,0 +1,91 @@
+{
+  "mode": "synthetic corpus; actual local Chroma and Ollama; no real corpus/accounts changed",
+  "checks": [
+    "actual embedding and Chroma publish",
+    "supported answer contains actual facts",
+    "citation quotes and locators resolve without invented pages",
+    "status precedes approved content",
+    "outside",
+    "keyword insufficient"
+  ],
+  "traces": [
+    {
+      "schema": "EvidenceChoice",
+      "content": "{\n  \"status\": \"supported\",\n  \"selections\": [\n    {\n      \"source_id\": \"2608cf7f6ad5d1b78e713622cd9168007da39df0bbce77a56c650e01e6170a47\",\n      \"quote\": \"Phòng thực hành Sao Biển mở cửa lúc 08:15 và đóng cửa lúc 17:30 từ thứ Hai đến thứ Sáu.\"\n    }\n  ]\n}",
+      "seconds": 90.22
+    },
+    {
+      "schema": "EvidenceReview",
+      "content": "{\"status\": \"supported\", \"accepted_ids\": [\"2608cf7f6ad5d1b78e713622cd9168007da39df0bbce77a56c650e01e6170a47\"]}",
+      "seconds": 43.28
+    },
+    {
+      "schema": "EvidenceChoice",
+      "content": "{\n  \"status\": \"none\",\n  \"selections\": []\n}",
+      "seconds": 30.3
+    },
+    {
+      "schema": "EvidenceChoice",
+      "content": "{\n  \"status\": \"none\",\n  \"selections\": []\n}",
+      "seconds": 26.64
+    },
+    {
+      "schema": "EvidenceChoice",
+      "content": "{\n  \"status\": \"none\",\n  \"selections\": []\n}",
+      "seconds": 26.16
+    }
+  ],
+  "results": [
+    {
+      "case": "supported stream",
+      "reply": "Theo các đoạn được ghi trong tài liệu:\n\nPhòng thực hành Sao Biển mở cửa lúc 08:15 và đóng cửa lúc 17:30 từ thứ Hai đến thứ Sáu. [1]",
+      "citations": [
+        {
+          "id": "2608cf7f6ad5d1b78e713622cd9168007da39df0bbce77a56c650e01e6170a47",
+          "file_name": "Quy-dinh-Sao-Bien.docx",
+          "locator": "Đoạn 2",
+          "quote": "Phòng thực hành Sao Biển mở cửa lúc 08:15 và đóng cửa lúc 17:30 từ thứ Hai đến thứ Sáu.",
+          "document_id": "2e4b796f26e34b23bd7ced6f38a95575",
+          "revision_id": "294618e9553b4031b3563dc25d7c2abd"
+        }
+      ],
+      "status": "supported",
+      "message_id": "a73b67deedf341fea7f7cd995e3250ab"
+    },
+    {
+      "case": "outside",
+      "seconds": 35.28,
+      "reply": "Câu hỏi này vượt quá phạm vi dữ liệu đã được nạp vào hệ thống.",
+      "citations": [],
+      "status": "none"
+    },
+    {
+      "case": "keyword insufficient",
+      "seconds": 31.16,
+      "reply": "Câu hỏi này vượt quá phạm vi dữ liệu đã được nạp vào hệ thống.",
+      "citations": [],
+      "status": "none"
+    },
+    {
+      "case": "partial",
+      "seconds": 30.56,
+      "reply": "Câu hỏi này vượt quá phạm vi dữ liệu đã được nạp vào hệ thống.",
+      "citations": [],
+      "status": "none"
+    }
+  ],
+  "profile": {
+    "model": "embeddinggemma:latest",
+    "digest": "85462619ee721b466c5927d109d4cb765861907d5417b9109caebc4e614679f1",
+    "dimension": 768
+  },
+  "published": {
+    "id": "294618e9553b4031b3563dc25d7c2abd",
+    "revision_id": "294618e9553b4031b3563dc25d7c2abd",
+    "status": "published",
+    "chunk_count": 4,
+    "generation": 1
+  },
+  "state": "failed",
+  "error": "[WinError 32] The process cannot access the file because it is being used by another process: 'C:\\\\Users\\\\USER\\\\AppData\\\\Local\\\\Temp\\\\fit-rag-live-i7lw4_7t\\\\chroma\\\\e88b0ce2-53fd-4732-b558-65528b5a4e3b\\\\data_level0.bin'"
+}

@@ -1,0 +1,33 @@
+{
+  "checks": [
+    "login centered and visible",
+    "background loaded",
+    "four language beacons",
+    "all four beacons select matching language",
+    "language information",
+    "intro language becomes editor language",
+    "desktop ratio 55/45",
+    "desktop fits viewport",
+    "waiting dots while pending",
+    "end-of-line error tooltip",
+    "waiting cleared after response",
+    "AI avatar faculty logo",
+    "line focus decoration",
+    "inline diff rendered",
+    "apply exact full fix",
+    "undo restores original",
+    "focus pauses scene",
+    "reduced motion honored",
+    "mobile chat tab",
+    "mobile editor preserved",
+    "mobile change-password accessible",
+    "mobile viewport",
+    "diff disposed on clear",
+    "stale patch cannot be applied",
+    "rejected preview offers no insertion control",
+    "dive transition completes",
+    "language selected before Monaco loads",
+    "no runtime page errors"
+  ],
+  "errors": []
+}

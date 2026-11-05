@@ -1,0 +1,19 @@
+FROM python:3.11-slim-bookworm
+LABEL fit-tutor.runner-protocol="1"
+
+# Optional compiler image, separate from the lightweight FastAPI web image.
+RUN apt-get update \
+    && apt-get install --no-install-recommends -y gcc g++ default-jdk-headless \
+    && rm -rf /var/lib/apt/lists/*
+
+COPY code_verifier.py /opt/grader/code_verifier.py
+RUN chmod 0555 /opt/grader/code_verifier.py
+
+# The trusted controller drops compiler/student children to UID/GID 65534.
+# verify_code() drops all capabilities then grants SETUID/SETGID (drop student
+# credentials), CHOWN (lock compiler artifacts) and KILL (clean student children),
+# disables networking and mounts only bounded tmpfs (never host directories).
+USER 0:0
+WORKDIR /work
+ENV PYTHONDONTWRITEBYTECODE=1 PYTHONUNBUFFERED=1 PYTHONUTF8=1
+ENTRYPOINT ["python3", "-I", "-B", "/opt/grader/code_verifier.py", "--sandbox"]

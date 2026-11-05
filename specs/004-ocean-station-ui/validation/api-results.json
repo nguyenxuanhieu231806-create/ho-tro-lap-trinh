@@ -1,0 +1,18 @@
+{
+  "checks": [
+    "FastAPI serves updated HTML, background and original logo",
+    "Unauthenticated tutor request rejected",
+    "All four provisioned test accounts authenticate and retain profiles",
+    "Password change works on isolated test data",
+    "Authenticated chat and completion contracts work with controlled AI",
+    "Static readiness includes original logo and HTML",
+    "Backend and model configuration digests stable during verification"
+  ],
+  "backend_sha256": {
+    "api.py": "d51cfda86aac4950116653d21de37c19bb6f14659761ef760ae2c9b921335abc",
+    "ai_core.py": "0ecbc037d655e3a49a8d5d127cb68b8e5e5c2ca6bfecc3eb08b9b2c3633dbc64",
+    "Modelfile": "e1b8b28d117632c50fac5935be859f20a12de7c61fe03624e80b931529d0ed29"
+  },
+  "database": "temporary isolated test database",
+  "ai": "controlled fixture"
+}

@@ -1,0 +1,7 @@
+﻿{
+    "wsl_feature":  "True",
+    "virtual_machine_platform":  "True",
+    "restart_needed":  true,
+    "install_exit_code":  0,
+    "error":  null
+}

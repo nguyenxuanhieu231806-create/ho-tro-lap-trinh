@@ -1,0 +1,27 @@
+{
+  "mode": "controlled API fixtures; no real account/document import",
+  "checks": [
+    "existing code pane visible",
+    "admin link shown only for administrator",
+    "document mode hides only code chat",
+    "RAG active disables code mode",
+    "RAG active disables inline suggestions",
+    "question bound to conversation",
+    "answer is safe literal text",
+    "source locator uses no fabricated page",
+    "server history restored",
+    "Stop resets RAG state",
+    "code chat restored",
+    "mobile document mode remains selected",
+    "mobile RAG fits viewport",
+    "explicit version update sends document ID",
+    "document preview is safe text",
+    "publish shows confirmed job completion",
+    "reindex uses explicit management action",
+    "Excel preview renders errors but not passwords",
+    "private credentials shown only after confirm",
+    "private credentials clear from DOM",
+    "no JavaScript runtime errors"
+  ],
+  "errors": []
+}
