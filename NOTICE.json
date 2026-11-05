@@ -1,0 +1,67 @@
+{
+  "purpose": "Local browser syntax checking only; never executes submitted code.",
+  "upstream": "https://github.com/microsoft/vscode-tree-sitter-wasm",
+  "assets": [
+    {
+      "file": "tree-sitter.js",
+      "package": "@vscode/tree-sitter-wasm",
+      "version": "0.3.1",
+      "sha256": "874f4a37c4beddef04d8eb9a8dbd28a65b63111f2d2123a38fd3f5333ee046dd"
+    },
+    {
+      "file": "tree-sitter.wasm",
+      "package": "@vscode/tree-sitter-wasm",
+      "version": "0.3.1",
+      "sha256": "3a31af706ffdf4a7116b064cdd4988df6791823298615009fc5b6bccbd42909b"
+    },
+    {
+      "file": "tree-sitter-cpp.wasm",
+      "package": "@vscode/tree-sitter-wasm",
+      "version": "0.3.1",
+      "sha256": "77a65bd42f43c2dcd69af40c12a6c32d6ed81d360c025e9feb28911f8339fd69"
+    },
+    {
+      "file": "tree-sitter-java.wasm",
+      "package": "@vscode/tree-sitter-wasm",
+      "version": "0.3.1",
+      "sha256": "4fdeac4ca6ca089f06c6f7e562abcac1733cd465728cc7031ebb73c2019122c4"
+    },
+    {
+      "file": "tree-sitter-python.wasm",
+      "package": "@vscode/tree-sitter-wasm",
+      "version": "0.3.1",
+      "sha256": "16108b50df4ee9a30168794252ab55e7c93bfc5765d7fa0aa3e335752c515f47"
+    },
+    {
+      "file": "LICENSE-vscode.txt",
+      "package": "@vscode/tree-sitter-wasm",
+      "version": "0.3.1",
+      "sha256": "c2cfccb812fe482101a8f04597dfc5a9991a6b2748266c47ac91b6a5aae15383"
+    },
+    {
+      "file": "tree-sitter-c.wasm",
+      "package": "tree-sitter-c",
+      "version": "0.24.1",
+      "sha256": "c852c2a85ebf2beb636aa3b0ef7f7e70458684d74f6741b20dcb296885bed9f9"
+    },
+    {
+      "file": "LICENSE-c.txt",
+      "package": "tree-sitter-c",
+      "version": "0.24.1",
+      "sha256": "2e0110e07abef7c2548b26ec9d6969775617ca539a0dc8dbeeb14d6452c711d1"
+    }
+  ],
+  "licenses": {
+    "LICENSE-core.txt": "https://raw.githubusercontent.com/tree-sitter/tree-sitter/v0.25.10/LICENSE",
+    "LICENSE-cpp.txt": "https://raw.githubusercontent.com/tree-sitter/tree-sitter-cpp/master/LICENSE",
+    "LICENSE-java.txt": "https://raw.githubusercontent.com/tree-sitter/tree-sitter-java/master/LICENSE",
+    "LICENSE-python.txt": "https://raw.githubusercontent.com/tree-sitter/tree-sitter-python/master/LICENSE"
+  },
+  "localAdaptations": [
+    {
+      "file": "tree-sitter.js",
+      "description": "Add WorkerGlobalScope script URL fallback to the upstream UMD wrapper.",
+      "sha256": "1dbab53f870e27afd6bc9821365a0287e241735fd6f031fc2f0d3fd9b2c1f135"
+    }
+  ]
+}

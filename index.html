@@ -1,0 +1,1445 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Web hỗ trợ lập trình cho sinh viên Khoa Công nghệ Thông tin | FIT-HPUni</title>
+  
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@11.11.1/styles/github.min.css" />
+<link rel="icon" href="/LogoFITHPUni.png"><link rel="preload" as="image" href="/ocean-station-bg.png">
+<style>
+
+:root {
+  color-scheme: light;
+  --navy: #062b3c;
+  --teal: #007f83;
+  --coral: #e38b70;
+  --line: #d9e7eb;
+  --ink: #152a36;
+  --muted: #547080;
+  --accent: #007f83;
+}
+* { box-sizing: border-box; }
+[hidden] { display: none !important; }
+html, body { margin: 0; width: 100%; height: 100%; height: 100dvh; overflow: hidden; }
+body { font: 14px/1.5 "Segoe UI", system-ui, sans-serif; color: var(--ink); background: #042c3c; isolation: isolate; }
+button, input, select, textarea { font: inherit; }
+button, select { border: 1px solid #b5d3d9; border-radius: 8px; background: #f5fafb; color: var(--navy); padding: 7px 11px; }
+button { cursor: pointer; transition: background .15s, border-color .15s; }
+button:hover { border-color: #3da5a9; background: #e9f6f5; }
+button:disabled { opacity: .5; cursor: default; }
+button:focus-visible, input:focus-visible, select:focus-visible, textarea:focus-visible, a:focus-visible, summary:focus-visible { outline: 3px solid #eaa58e; outline-offset: 3px; }
+a { color: #006f79; }
+h1, h2, h3, p { overflow-wrap: anywhere; }
+h1, h2, h3 { line-height: 1.3; }
+.sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0,0,0,0); }
+.ocean-scene { position: fixed; inset: 0; z-index: -1; pointer-events: none; overflow: hidden; background: linear-gradient(180deg,#003a5022,#001b3555), url("/ocean-station-bg.png") center/cover no-repeat, #06364a; transition: transform .8s ease, opacity .8s; }
+.ocean-scene::before { content: ""; position: absolute; inset: -20%; background: conic-gradient(from 150deg at 30% 0%,transparent,#b3ffff10 8deg,transparent 16deg,#b3ffff13 23deg,transparent 30deg); animation: light-drift 22s ease-in-out infinite alternate; }
+.ocean-scene i, .intro-bubble { position: absolute; bottom: -80px; left: var(--x,var(--left)); width: var(--size,var(--diameter)); height: var(--size,var(--diameter)); border: 1px solid #a7f6f669; border-radius: 50%; background: radial-gradient(circle at 30% 25%,#c3ffff30,transparent 60%); animation: rise var(--duration,var(--speed)) linear infinite; animation-delay: var(--delay,var(--offset)); }
+@keyframes rise { 0% { transform: translate3d(0,0,0); opacity: 0; } 15% { opacity: .55; } 85% { opacity: .35; } 100% { transform: translate3d(32px,-115vh,0); opacity: 0; } }
+@keyframes light-drift { from { transform: translateX(-2%) rotate(-3deg); opacity: .5; } to { transform: translateX(2%) rotate(3deg); opacity: 1; } }
+.entry-screen { height: 100%; display: grid; place-items: center; position: relative; padding: 20px; overflow: auto; }
+.login-card { position: relative; z-index: 2; background: #fff; color: var(--ink); border: 1px solid #c3e1e4; border-radius: 20px; width: min(440px,100%); padding: 28px 30px; box-shadow: 0 22px 64px #001b3c55; }
+.entry-logo { display: block; width: 86px; height: 86px; margin: 0 auto 16px; object-fit: contain; border-radius: 50%; background: #fff; }
+.login-card h1 { text-align: center; font-size: 19px; margin: 0 0 22px; letter-spacing: -.35px; }
+.entry-kicker { font-size: 11px; text-transform: uppercase; font-weight: 700; letter-spacing: 2px; text-align: center; color: var(--teal); }
+.login-card .entry-kicker { margin-bottom: 9px; }
+.login-card label { display: block; font-weight: 600; font-size: 13px; margin: 15px 0 7px; }
+.login-card input { width: 100%; height: 46px; border: 1px solid #b7cfd8; border-radius: 8px; background: #fff; color: #132734; padding: 10px 12px; }
+.login-card button { width: 100%; margin-top: 15px; padding: 11px; font-weight: 650; }
+.login-card button[type=submit], .primary-button { background: var(--teal); border-color: var(--teal); color: #fff; }
+.login-card button[type=submit]:hover, .primary-button:hover { background: #00696d; color: #fff; }
+.login-card .auth-link { border: 0; background: transparent; color: #006d78; margin-top: 4px; padding: 8px; }
+.login-card small { display: block; color: var(--muted); font-size: 12px; }
+.login-error { color: #b22539; font-size: 13px; min-height: 0; margin: 10px 0 0; }
+.login-error:empty { display: none; }
+dialog.login-card { margin: auto; max-height: calc(100dvh - 32px); overflow: auto; }
+dialog::backdrop { background: #001d32b5; }
+.intro-screen { isolation: isolate; color: #fff; }
+.intro-card { position: relative; z-index: 2; width: min(740px,100%); padding: 28px 36px; border: 1px solid #87dde47a; border-radius: 24px; background: linear-gradient(145deg,#073f50ee,#05283eea); box-shadow: 0 24px 70px #001d3d55; text-align: center; }
+.intro-card .entry-logo { width: 98px; height: 98px; margin-bottom: 12px; }
+.intro-card .entry-kicker { color: #9fe5e5; }
+.intro-card h1 { color: #fff; font-size: clamp(22px,2.5vw,32px); letter-spacing: -.65px; margin: 12px auto; max-width: 650px; }
+.intro-card p { color: #c4e4e9; margin: 10px 0; }
+.intro-card strong { color: #fff; }
+.language-beacons { display: grid; grid-template-columns: repeat(4,minmax(0,1fr)); gap: 16px; max-width: 550px; margin: 24px auto 16px; }
+.language-beacon { position: relative; display: grid; place-items: center; aspect-ratio: 1.15; border-radius: 50% 50% 14px 14px; border: 1px solid #59c6d2; background: radial-gradient(ellipse at 50% 100%,#0ea5a576,transparent 65%),linear-gradient(140deg,#b9fcff20,#003447); color: #fff; font-size: 22px; font-weight: 700; box-shadow: 0 6px 0 -3px #10b8ba8c, inset 0 0 20px #5ce4e921; }
+.language-beacon:hover { color: #fff; background-color: #0c5260; border-color: #b4f5f3; }
+.language-beacon[aria-pressed=true] { border: 2px solid #ffb69a; box-shadow: 0 6px 0 -3px #e49a78,0 0 18px #f5a48336; }
+.language-info { padding: 10px 16px; border: 1px solid #67c5ca70; border-radius: 10px; min-height: 67px; max-width: 550px; margin: auto; }
+.language-info strong { font-size: 15px; }
+.language-info p { margin: 3px 0 0; font-size: 13px; }
+.intro-actions { display: flex; justify-content: center; gap: 12px; margin-top: 22px; }
+.intro-actions button { min-width: 160px; padding: 11px 18px; font-weight: 650; }
+.intro-footnote { font-size: 11px; margin-bottom: 0 !important; opacity: .85; }
+.ecosystem { position: absolute; inset: 0; pointer-events: none; overflow: hidden; }
+.fish-lane { position: absolute; top: var(--depth); left: -160px; width: var(--width); animation: swim var(--speed) linear infinite; animation-delay: var(--offset); opacity: .65; }
+.fish-lane.reverse { left: auto; right: -160px; animation-name: swim-back; }
+.fish-lane svg { width: 100%; }
+.fish-lane.reverse svg { transform: scaleX(-1); }
+.fish-tail { transform-box: fill-box; transform-origin: right center; animation: tail .9s ease-in-out infinite alternate; }
+@keyframes swim { to { transform: translateX(calc(100vw + 320px)); } }
+@keyframes swim-back { to { transform: translateX(calc(-100vw - 320px)); } }
+@keyframes tail { to { transform: scaleX(.7) skewY(5deg); } }
+.sea-floor { display: none; }
+#ide-screen { height: 100%; }
+header { height: 56px; padding: 6px 14px; display: flex; align-items: center; gap: 16px; color: #fff; background: #042f42ed; border-bottom: 1px solid #5db6be54; }
+.brand { display: flex; align-items: center; gap: 10px; min-width: 0; flex: 1; }
+.brand-logo { width: 38px; height: 38px; border-radius: 50%; background: #fff; object-fit: contain; flex: none; }
+.brand h1 { margin: 0; font-size: 14px; font-weight: 650; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.header-session { display: flex; align-items: center; gap: 7px; min-width: 0; }
+header button, header select { background: #175066; border-color: #37687b; color: #fff; font-size: 11px; padding: 6px 8px; }
+header button:hover { color: #fff; background: #25667a; }
+#focus-mode[aria-pressed=true] { background: #ad573c; border-color: #f2b095; }
+.student-badges { display: flex; align-items: center; gap: 5px; min-width: 0; }
+.student-badge { display: flex; flex-direction: column; font-size: 10px; line-height: 1.3; border-left: 1px solid #80bfc24d; padding: 2px 8px; max-width: 180px; }
+.student-badge strong { font-size: 11px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.student-badge small { opacity: .8; font-size: 10px; }
+.workspace { height: calc(100% - 56px); display: grid; grid-template-columns: minmax(0,55fr) minmax(0,45fr); gap: 12px; padding: 12px; }
+.editor-panel, .chat-panel { display: flex; flex-direction: column; min-height: 0; min-width: 0; background: #fff; color: #000; border: 1px solid #c0dde2; border-radius: 13px; overflow: hidden; box-shadow: 0 6px 20px #001c3833; }
+.toolbar { display: flex; align-items: center; gap: 8px; flex: none; padding: 8px 12px; min-height: 45px; background: #fff; border-bottom: 1px solid var(--line); }
+.toolbar strong { color: var(--navy); font-size: 13px; }
+.spacer { flex: 1; }
+.toolbar button { font-size: 11px; padding: 5px 9px; }
+.toggle { display: flex; align-items: center; gap: 5px; font-size: 11px; white-space: nowrap; color: #3b5f6d; }
+.toggle input { accent-color: var(--teal); }
+.workspace-note { font-size: 10px; color: var(--muted); padding: 5px 12px; background: #f7fafb; border-bottom: 1px solid var(--line); flex: none; }
+#context-status { padding-top: 0; border-bottom: 1px solid var(--line); line-height: 1.35; }
+#provider-status { border-bottom: 0; }
+#editor { flex: 1; min-height: 0; overflow: hidden; }
+.toolbar #code-run { background: var(--teal); color: #fff; border-color: var(--teal); font-weight: 650; }
+.run-panel { flex: none; max-height: 48%; overflow: auto; border-top: 1px solid var(--line); background: #fff; color: #000; }
+.run-panel > summary { cursor: pointer; padding: 7px 11px; font-size: 11px; font-weight: 650; color: #075669; background: #f4f9fa; }
+.run-content { padding: 9px 11px; display: grid; gap: 7px; }
+.run-content label { font-size: 11px; font-weight: 600; }
+#run-input { width: 100%; min-height: 52px; max-height: 110px; resize: vertical; padding: 7px 9px; border: 1px solid #b6cfd8; border-radius: 7px; background: #fff; color: #000; font: 12px/1.4 Consolas, monospace; }
+.run-note, #run-meta { margin: 0; font-size: 10px; color: var(--muted); overflow-wrap: anywhere; }
+.run-controls { display: flex; align-items: center; gap: 8px; }
+#run-status { margin: 0; flex: 1; font-size: 12px; font-weight: 600; color: #355f70; overflow-wrap: anywhere; }
+#run-status[data-kind=completed] { color: #17613b; }
+#run-status[data-kind=compile_error], #run-status[data-kind=runtime_error], #run-status[data-kind=unavailable] { color: #ad293b; }
+#run-status[data-kind=timeout], #run-status[data-kind=output_limit], #run-stale { color: #8b5b08; }
+#code-stop { font-size: 11px; color: #ad293b; padding: 4px 8px; }
+#run-stale { margin: 0; font-size: 11px; }
+.run-output-label { margin: 0; font-size: 10px; font-weight: 650; color: #426170; }
+.run-output { margin: 0; max-height: 140px; min-height: 35px; overflow: auto; white-space: pre-wrap; overflow-wrap: anywhere; padding: 8px; border: 1px solid #dbe7eb; border-radius: 6px; background: #f8fafb; color: #000; font: 12px/1.45 Consolas, monospace; }
+#run-errors { color: #a52c3a; background: #fff8f8; }
+.hint { flex: none; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 3px 8px; padding: 6px 10px; border-top: 1px solid var(--line); color: var(--muted); font-size: 10px; }
+kbd { font: 10px monospace; border: 1px solid #bed2da; border-radius: 3px; padding: 1px 3px; background: #f5f8fa; }
+#chat-log { flex: 1; min-height: 0; overflow: auto; overscroll-behavior: contain; padding: 16px; display: flex; flex-direction: column; gap: 16px; }
+.bubble { min-width: 0; padding: 12px; border: 1px solid #dbe7eb; border-radius: 11px; background: #fff; color: #000; overflow-wrap: anywhere; }
+.bubble.user { align-self: flex-end; width: fit-content; max-width: 96%; border-color: #c9e8e4; background: #f0faf8; }
+.sender { display: flex; gap: 7px; align-items: center; color: #46626f; font-size: 10px; font-weight: 650; margin-bottom: 8px; }
+.ai-avatar { width: 27px; height: 27px; border-radius: 50%; object-fit: contain; background: #fff; flex: none; }
+.markdown { min-width: 0; line-height: 1.65; font-size: 13px; color: #000; }
+.markdown p:first-child { margin-top: 0; }
+.markdown p:last-child { margin-bottom: 0; }
+.markdown pre, .assessment-result pre { max-width: 100%; overflow: auto; padding: 12px; background: #f6f9fa; border: 1px solid #dbe7eb; border-radius: 8px; white-space: pre; }
+.markdown pre code { font-size: 12px; }
+.markdown :not(pre)>code { padding: 1px 4px; border-radius: 3px; background: #edf5f7; }
+.markdown table { display: block; max-width: 100%; overflow: auto; border-collapse: collapse; }
+.markdown th, .markdown td { border: 1px solid var(--line); padding: 6px; }
+.markdown .hljs { background: transparent; }
+.insert-btn { display: block; margin: 10px 0 0 auto; font-size: 12px; background: var(--teal); color: #fff; border-color: var(--teal); }
+.insert-btn:hover { background: #00676c; color: #fff; }
+.chat-compose { flex: none; padding: 10px 12px; border-top: 1px solid var(--line); background: #fff; }
+.quick-prompts { display: flex; flex-wrap: wrap; gap: 5px; margin-bottom: 7px; }
+.quick-prompts button { font-size: 10px; padding: 4px 7px; border-radius: 16px; }
+.compose-tools { display: flex; flex-wrap: wrap; align-items: center; gap: 5px; margin-bottom: 7px; }
+.compose-tools select, .compose-tools button { font-size: 10px; padding: 4px 6px; }
+.compose-tools select { max-width: 125px; }
+#question { width: 100%; height: clamp(64px,12vh,110px); min-height: 55px; resize: none; overflow: auto; border: 1px solid #b6cfd8; border-radius: 9px; padding: 9px 11px; background: #fff; color: #000; font-size: 12px; display: block; }
+#question::placeholder { color: #607d8a; }
+.actions { display: flex; align-items: center; justify-content: space-between; gap: 8px; margin-top: 7px; }
+.actions>div { flex: none; }
+#status { font-size: 10px; color: #547080; line-height: 1.3; }
+#send { background: var(--teal); color: #fff; border-color: var(--teal); font-weight: 650; padding: 7px 14px; }
+#stop { color: #b33140; }
+.welcome { text-align: center; margin: auto; max-width: 330px; padding: 20px; color: #466575; }
+.welcome img { width: 64px; height: 64px; object-fit: contain; }
+.welcome h2 { font-size: 22px; color: var(--navy); letter-spacing: -.4px; }
+.welcome p { font-size: 13px; }
+.fallback { padding: 24px; color: #466575; }
+.issue-card { margin-top: 10px; padding: 10px; background: #f8fafb; border: 1px solid #dbe7eb; border-radius: 8px; }
+.issue-card button { text-align: left; white-space: normal; font-size: 12px; color: #a13335; }
+.issue-card p { font-size: 12px; margin: 7px 0 0; }
+.analysis-verdict, .diff-help { color: #547080; font-size: 11px; }
+.line-error-badge { color: #cf253c !important; font-size: 12px !important; font-weight: 700; margin-left: 7px; cursor: help; }
+.line-focus-highlight { background: #ffd4b66b; border-left: 3px solid #e38b70; }
+.has-errors { color: #b4313e; }
+.code-comparison, .full-code-view { border: 1px solid #cddfe5; border-radius: 8px; margin-top: 12px; overflow: hidden; }
+.code-comparison summary, .full-code-view summary { padding: 9px 11px; font-size: 12px; color: #075669; cursor: pointer; background: #f4f9fa; }
+.diff-help { padding: 0 10px; }
+.code-diff { max-width: 100%; }
+.full-code-view pre { margin: 0; border-radius: 0; }
+.chat-waiting { color: #547080; display: flex; align-items: center; gap: 6px; font-size: 12px; }
+.waiting-dots { display: inline-flex; gap: 3px; }
+.waiting-dots i { width: 4px; height: 4px; border-radius: 50%; background: var(--teal); animation: dot-pulse 1.2s ease-in-out infinite; }
+.waiting-dots i:nth-child(2) { animation-delay: .15s; }
+.waiting-dots i:nth-child(3) { animation-delay: .3s; }
+@keyframes dot-pulse { 50% { opacity: .2; transform: translateY(-3px); } }
+.assessment-card { border: 1px solid #b8d9de; padding: 12px; border-radius: 9px; }
+.assessment-card h3 { font-size: 15px; }
+.assessment-note, .assessment-source { font-size: 11px; color: #547080; }
+.assessment-prompt, .assessment-standard { white-space: pre-wrap; }
+.assessment-form { display: grid; gap: 8px; }
+.assessment-options { border: 1px solid var(--line); border-radius: 8px; }
+.assessment-choice { display: flex; gap: 7px; padding: 6px; }
+.assessment-answer { width: 100%; padding: 8px; min-height: 80px; max-height: 150px; border: 1px solid #b6cfd8; border-radius: 8px; }
+.assessment-actions { display: flex; flex-wrap: wrap; gap: 6px; }
+.assessment-actions button { font-size: 11px; }
+.assessment-feedback { font-size: 12px; color: #b4313e; }
+.assessment-result { border-top: 1px solid var(--line); padding-top: 10px; margin-top: 10px; }
+.assessment-result h4 { font-size: 13px; }
+.assessment-badge { display: inline-block; padding: 5px 8px; border-radius: 6px; font-weight: 650; }
+.assessment-badge.correct { background: #dcfce7; color: #166534; }
+.assessment-badge.partial { background: #fef3c7; color: #854d0e; }
+.assessment-badge.incorrect { background: #fee2e2; color: #991b1b; }
+#workspace-tabs { display: none; }
+.is-diving .intro-card { animation: dive-card .8s ease both; }
+.is-diving .ocean-scene { transform: scale(1.13) translateY(-2%); opacity: .25; }
+@keyframes dive-card { to { transform: translateY(-35px) scale(.94); opacity: 0; } }
+body.motion-paused .ocean-scene *, body.motion-paused .ocean-scene::before, body.motion-paused .ecosystem *, body.motion-paused .waiting-dots i { animation-play-state: paused !important; }
+body.motion-quiet .ocean-scene i, body.motion-quiet .ocean-scene::before { animation-play-state: paused; opacity: .15; }
+@media (max-width: 1180px) { .brand h1 { max-width: 220px; } #student-year { display: none; } .student-badge { max-width: 150px; } }
+@media (max-width: 900px) { .brand h1 { max-width: 150px; } #student-class { display: none; } header { gap: 7px; padding: 6px 9px; } .student-badge { max-width: 125px; } }
+@media (max-width: 760px) {
+  header { height: 56px; gap: 6px; }
+  .brand { flex: 0 0 34px; }
+  .brand-logo { width: 32px; height: 32px; }
+  .brand h1 { display: none; }
+  .header-session { flex: 1; justify-content: flex-end; gap: 5px; }
+  .student-badge { padding: 0 5px; max-width: 105px; border: 0; }
+  .student-badge small { display: none; }
+  .student-badge strong { font-size: 10px; }
+  header button, header select { font-size: 10px; padding: 5px 6px; }
+  #workspace-tabs { display: flex; align-items: center; justify-content: center; height: 42px; gap: 6px; background: #073b4c; border-bottom: 1px solid #39808d; }
+  #workspace-tabs button { width: 44%; padding: 5px; font-size: 12px; border: 0; background: transparent; color: #a9d0d8; }
+  #workspace-tabs button[aria-selected=true] { color: #fff; background: #1d6470; }
+  .workspace { height: calc(100% - 98px); display: block; padding: 7px; }
+  .editor-panel, .chat-panel { height: 100%; }
+  #ide-screen[data-active-panel=editor] .chat-panel, #ide-screen[data-active-panel=chat] .editor-panel { display: none; }
+  #chat-log { padding: 10px; gap: 10px; }
+  .chat-compose { padding: 8px; }
+  #question { height: 70px; }
+  .intro-card { padding: 22px 18px; }
+  .intro-card .entry-logo { width: 74px; height: 74px; }
+  .intro-card h1 { font-size: 21px; }
+  .language-beacons { gap: 10px; margin-top: 18px; }
+  .language-beacon { font-size: 17px; }
+  .intro-actions button { min-width: 0; flex: 1; font-size: 13px; }
+}
+@media (max-width: 600px) { .student-badges { display: none; } .header-session { gap: 4px; } }
+@media (max-height: 700px) { .entry-screen { padding: 12px; } .login-card { padding: 20px 26px; } .login-card .entry-logo { width: 64px; height: 64px; margin-bottom: 10px; } .login-card h1 { font-size: 16px; margin-bottom: 14px; } .intro-card { padding: 18px 28px; } .intro-card .entry-logo { width: 70px; height: 70px; } .language-beacons { max-width: 400px; margin: 14px auto; } .intro-card h1 { font-size: 23px; } }
+@media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation: none !important; transition: none !important; scroll-behavior: auto !important; } .ocean-scene i, .intro-bubble, .fish-lane { display: none; } }
+
+</style>
+<link rel="stylesheet" href="/rag.css">
+</head>
+<body data-stage="login">
+<div class="ocean-scene" aria-hidden="true"><i style="--x:3%;--size:22px;--duration:22s;--delay:-0s"></i><i style="--x:12%;--size:48px;--duration:28s;--delay:-3s"></i><i style="--x:23%;--size:16px;--duration:19s;--delay:-6s"></i><i style="--x:34%;--size:62px;--duration:32s;--delay:-9s"></i><i style="--x:44%;--size:25px;--duration:24s;--delay:-12s"></i><i style="--x:55%;--size:40px;--duration:29s;--delay:-15s"></i><i style="--x:64%;--size:18px;--duration:20s;--delay:-18s"></i><i style="--x:75%;--size:55px;--duration:33s;--delay:-21s"></i><i style="--x:86%;--size:30px;--duration:26s;--delay:-24s"></i><i style="--x:95%;--size:68px;--duration:35s;--delay:-27s"></i></div>
+
+<section id="login-screen" class="entry-screen" aria-labelledby="login-heading">
+<form id="login-form" class="login-card">
+<div class="entry-kicker">Khoa CNTT · Trường Đại học Hải Phòng</div>
+<img class="entry-logo" src="/LogoFITHPUni.png" alt="Logo Khoa CNTT FIT-HPUni">
+<h1 id="login-heading">Hệ thống Web hỗ trợ lập trình cho sinh viên Khoa Công nghệ Thông tin - Trường Đại học Hải Phòng</h1>
+<label for="student-account">Tài khoản (Email)</label>
+<input id="student-account" type="email" autocomplete="username" autocapitalize="none" spellcheck="false" maxlength="254" placeholder="Nhập email đã được cấp" required>
+<label for="student-password">Mật khẩu</label>
+<input id="student-password" type="password" autocomplete="current-password" minlength="4" maxlength="128" required>
+<div id="new-password-fields" hidden>
+<label for="login-new-password">Mật khẩu mới (tối thiểu 4 ký tự)</label>
+<input id="login-new-password" type="password" autocomplete="new-password" minlength="4" maxlength="128">
+<label for="login-confirm-password">Nhập lại mật khẩu mới</label>
+<input id="login-confirm-password" type="password" autocomplete="new-password" minlength="4" maxlength="128">
+</div>
+<p id="login-error" class="login-error" role="alert"></p>
+<button type="submit">Đăng nhập</button>
+<button id="change-on-login" type="button" class="auth-link" aria-expanded="false" aria-controls="new-password-fields">Đổi mật khẩu</button>
+<button id="resume-session" type="button" class="auth-link" hidden>Tiếp tục phiên đăng nhập</button>
+</form></section>
+<dialog id="password-dialog" class="login-card">
+<form id="password-form">
+<h2>Đổi mật khẩu</h2>
+<label for="old-password">Mật khẩu hiện tại</label><input id="old-password" type="password" autocomplete="current-password" minlength="4" maxlength="128" required>
+<label for="new-password">Mật khẩu mới</label><input id="new-password" type="password" autocomplete="new-password" minlength="4" maxlength="128" required>
+<label for="confirm-password">Nhập lại mật khẩu mới</label><input id="confirm-password" type="password" autocomplete="new-password" minlength="4" maxlength="128" required>
+<p id="password-status" role="status"></p><button type="submit">Lưu mật khẩu</button><button id="close-password" type="button" class="auth-link">Đóng</button>
+</form></dialog>
+<section id="intro-screen" class="entry-screen intro-screen" aria-labelledby="intro-heading" hidden>
+  <div class="ecosystem" aria-hidden="true">
+    <div id="fish-school"></div><div id="intro-bubbles"></div>
+    <svg class="sea-floor" viewBox="0 0 1440 220" preserveAspectRatio="none" aria-hidden="true">
+      <path d="M0 180Q180 135 380 182T760 180T1100 170T1440 160V220H0Z" fill="#052e3b"/>
+      <g fill="none" stroke-linecap="round">
+        <g class="seaweed" stroke="#188c77" stroke-width="12"><path d="M65 210Q25 165 65 125T55 40M90 210Q125 160 90 110T110 65"/></g>
+        <g class="seaweed" stroke="#29b49b" stroke-width="9"><path d="M180 215Q130 170 165 130T155 70M195 215Q220 170 195 140T208 100"/></g>
+        <g class="seaweed" stroke="#147a70" stroke-width="14"><path d="M480 215Q450 180 475 140T460 80M505 220Q540 175 505 130"/></g>
+        <g class="seaweed" stroke="#229c83" stroke-width="10"><path d="M980 218Q940 170 980 125T960 60M1000 220Q1040 180 1000 130"/></g>
+        <g class="seaweed" stroke="#36b79d" stroke-width="12"><path d="M1290 220Q1250 175 1290 120T1270 30M1320 215Q1360 165 1320 100T1345 45"/></g>
+        <g class="coral" stroke="#e98f89" stroke-width="9"><path d="M330 210V145M330 180 305 160V135M330 165 355 145V120M305 153 285 140M355 140 375 130"/></g>
+        <g class="coral" stroke="#dba773" stroke-width="8"><path d="M1160 215V155M1160 185 1130 165V140M1160 170 1185 150V125M1185 145 1205 135"/></g>
+      </g>
+      <ellipse cx="710" cy="210" rx="110" ry="24" fill="#0b4150"/><ellipse cx="820" cy="215" rx="60" ry="20" fill="#10495a"/>
+    </svg>
+  </div>
+  <div class="intro-card">
+    <img class="entry-logo" src="/LogoFITHPUni.png" alt="Logo FIT-HPUni" width="108" height="108">
+    <div class="entry-kicker">ĐẠI DƯƠNG TRI THỨC ĐANG CHỜ BẠN</div>
+    <h1 id="intro-heading" tabindex="-1">Chào mừng bạn đến với hệ thống Web hỗ trợ lập trình cho sinh viên Khoa Công nghệ Thông tin</h1>
+    <p><strong id="intro-student"></strong> · Sẵn sàng khám phá cùng nhau!</p>
+    <div class="language-beacons" aria-label="Chọn ngôn ngữ học">
+<button type="button" class="language-beacon" data-intro-language="c" aria-pressed="false">C</button>
+<button type="button" class="language-beacon" data-intro-language="cpp" aria-pressed="false">C++</button>
+<button type="button" class="language-beacon" data-intro-language="java" aria-pressed="false">Java</button>
+<button type="button" class="language-beacon" data-intro-language="python" aria-pressed="true">Python</button>
+</div>
+<div class="language-info" aria-live="polite"><strong id="intro-language-title">Python</strong><p id="intro-language-description">Cú pháp dễ đọc, linh hoạt trong giải quyết bài toán.</p></div>
+<div class="intro-actions"><button id="enter-workspace" class="primary-button" type="button">Bắt đầu học ↓</button><button id="skip-intro" type="button">Bỏ qua</button></div>
+<p class="intro-footnote">Khám phá Đại dương Tri thức theo nhịp của bạn.</p>
+  </div>
+</section>
+<div id="ide-screen" data-active-panel="editor" hidden>
+<header>
+<div class="brand"><img class="brand-logo" src="/LogoFITHPUni.png" alt="Logo Khoa CNTT"><h1 title="Web hỗ trợ lập trình cho sinh viên Khoa Công nghệ Thông tin">Web hỗ trợ lập trình · Khoa CNTT</h1></div>
+<div class="header-session"><div id="current-student" class="student-badges" aria-label="Thông tin sinh viên"><span class="student-badge identity"><strong id="student-name"></strong><small id="student-id"></small></span><span id="student-class" class="student-badge"></span><span id="student-year" class="student-badge"></span></div><label class="sr-only" for="language">Ngôn ngữ</label><select id="language"><option value="c">C</option><option value="cpp">C++</option><option value="java">Java</option><option value="python" selected>Python</option></select><button id="focus-mode" type="button" aria-pressed="false" title="Tạm dừng hoạt ảnh để tập trung">Tập trung</button><button id="change-password" type="button">Đổi mật khẩu</button><button id="logout" type="button">Đăng xuất</button></div>
+</header>
+<nav id="workspace-tabs" role="tablist" aria-label="Không gian học">
+<button id="tab-editor" type="button" role="tab" aria-selected="true" aria-controls="editor-panel">Viết mã</button>
+<button id="tab-chat" type="button" role="tab" aria-selected="false" aria-controls="chat-panel" tabindex="-1">Chat AI</button>
+</nav>
+<main class="workspace">
+<section id="editor-panel" class="editor-panel" aria-label="Trình soạn thảo mã nguồn">
+<div class="toolbar"><strong>Mã nguồn</strong><span class="spacer"></span><label class="toggle"><input id="completion-enabled" type="checkbox" checked> Gợi ý AI</label><button id="code-run" type="button" disabled title="Chạy bản mã hiện tại với dữ liệu đã nhập bên dưới">▶ Chạy thử</button><button id="download" type="button">Tải mã</button></div>
+<div class="workspace-note"><span id="save-status">Bản nháp lưu riêng trên trình duyệt</span></div>
+<div id="editor"><div class="fallback">Đang tải Monaco Editor…</div></div>
+<details id="run-panel" class="run-panel">
+<summary>Đầu vào &amp; Kết quả chạy</summary>
+<div class="run-content">
+<label for="run-input">Dữ liệu đầu vào (stdin)</label>
+<textarea id="run-input" maxlength="16384" spellcheck="false" placeholder="Nếu chương trình dùng input, scanf hoặc Scanner, nhập dữ liệu ở đây trước khi bấm Chạy thử. Ví dụ: 3 5"></textarea>
+<p id="runner-readiness" class="run-note">Chương trình console · nhập dữ liệu trước khi chạy · giới hạn chạy 3 giây.</p>
+<div class="run-controls"><p id="run-status" role="status">Sẵn sàng chạy bản mã hiện tại.</p><button id="code-stop" type="button" hidden>Dừng</button></div>
+<p id="run-meta"></p><p id="run-stale" hidden>Kết quả này gắn với bản mã và dữ liệu nhập tại lúc bấm Chạy thử; nội dung hiện tại đã thay đổi.</p>
+<p class="run-output-label">Đầu ra (stdout)</p><pre id="run-output" class="run-output">Kết quả sẽ xuất hiện ở đây.</pre>
+<div id="run-errors-section" hidden><p class="run-output-label">Thông báo lỗi / cảnh báo (stderr)</p><pre id="run-errors" class="run-output"></pre></div>
+</div></details>
+<div class="hint"><span><kbd>Tab</kbd> Nhận gợi ý · <kbd>Esc</kbd> Bỏ qua</span><span id="syntax-status" title="Kiểm tra cú pháp cục bộ; không chạy chương trình và không xác minh logic.">Kiểm tra cú pháp</span><span id="cursor-status">Dòng 1, cột 1</span></div>
+</section>
+<section id="chat-panel" class="chat-panel" aria-label="Chat AI hợp nhất">
+<div class="toolbar assistant-toolbar"><strong>Trợ lý AI</strong><div class="assistant-modes" aria-label="Chế độ trợ lý"><button id="mode-code" type="button" aria-pressed="true">Chat code</button><button id="mode-documents" type="button" aria-pressed="false">Hỏi tài liệu</button></div><span class="spacer"></span><a id="admin-link" href="/admin.html" hidden>Quản trị</a><button id="clear-chat" type="button">Hội thoại mới</button></div>
+<div class="workspace-note" id="provider-status" role="status">Ollama cục bộ</div>
+<div class="workspace-note" id="context-status">Toàn bộ mã hiện tại được gửi cùng câu hỏi.</div>
+<div id="chat-log" role="log" aria-live="polite"><div id="welcome" class="welcome"><img src="/LogoFITHPUni.png" alt="Logo FIT-HPUni" width="72" height="72"><h2>Cùng hiểu từng dòng code</h2><p>Hỏi đáp, tìm lỗi và nhận bản sửa ngay trong một cuộc trò chuyện.</p></div></div>
+<form class="chat-compose" id="chat-form">
+<div class="quick-prompts"><button type="button" data-mode="review" data-prompt="Tìm lỗi sai và sửa code giúp tôi.">🔍 Tìm lỗi & sửa code</button><button type="button" data-mode="explain" data-prompt="Giải thích chi tiết từng dòng code này.">📖 Giải thích từng dòng</button><button type="button" data-mode="optimize" data-prompt="Tối ưu thuật toán gọn hơn, giải thích độ phức tạp.">⚡ Tối ưu thuật toán</button></div>
+<div class="compose-tools"><label class="sr-only" for="task-mode">Mục đích hỏi</label><select id="task-mode"><option value="ask">Hỏi đáp</option><option value="review">Tìm lỗi & sửa</option><option value="explain">Giải thích</option><option value="optimize">Tối ưu</option></select><label class="toggle"><input type="checkbox" id="attach-code"> Kèm mã</label><button type="button" id="prompt-template" title="Chèn câu lệnh mẫu vào ô trống">💡 Câu lệnh mẫu</button><button type="button" id="check-now">Kiểm tra ngay</button><label class="sr-only" for="assessment-kind">Loại câu hỏi kiểm tra</label><select id="assessment-kind"><option value="mcq">Trắc nghiệm</option><option value="theory">Tự luận ngắn</option><option value="code">Viết code</option></select><button type="button" id="assessment-create" disabled>Câu hỏi kiểm tra</button></div>
+<label for="question" class="sr-only">Câu hỏi cho AI</label><textarea id="question" maxlength="5000" placeholder="Nhấn vào đây để điền câu lệnh mẫu hoặc nhập yêu cầu của bạn…"></textarea>
+<div class="actions"><span id="status" role="status">Sẵn sàng</span><div><button id="stop" type="button" hidden>Dừng</button> <button id="send" type="submit" disabled>Gửi ↗</button></div></div>
+</form>
+<section id="rag-panel" hidden aria-label="Hỏi đáp theo tài liệu đã nạp">
+<div class="rag-history-tools"><label for="rag-conversation" class="sr-only">Hội thoại tài liệu</label><select id="rag-conversation"><option value="">Hội thoại mới</option></select><button id="rag-new" type="button">Mới</button><button id="rag-delete" type="button" disabled>Xóa</button></div>
+<p id="rag-library-note" class="rag-note">Chỉ trả lời từ tài liệu đã công bố, có trích dẫn nguồn.</p>
+<div id="rag-log" role="log" aria-live="polite"><p class="rag-empty">Hỏi nội dung có trong kho tài liệu. Câu hỏi tiếp nối được lưu riêng trong hội thoại của bạn.</p></div>
+<form id="rag-form"><label for="rag-question" class="sr-only">Câu hỏi theo tài liệu</label><textarea id="rag-question" maxlength="5000" placeholder="Nhập câu hỏi về tài liệu đã được nạp…" required></textarea><div class="rag-actions"><span id="rag-status" role="status">Sẵn sàng</span><button id="rag-stop" type="button" hidden>Dừng</button><button id="rag-send" type="submit">Gửi ↗</button></div></form>
+</section>
+</section></main></div>
+<dialog id="rag-source-dialog"><div class="rag-dialog-header"><strong id="rag-source-title">Nguồn tài liệu</strong><button id="rag-source-close" type="button">Đóng</button></div><p id="rag-source-locator"></p><pre id="rag-source-content"></pre></dialog>
+<script>
+(() => {
+  'use strict';
+  const INTRO_AUTO_ADVANCE_MS = 0;
+  const $ = id => document.getElementById(id);
+  const screens = {login: $('login-screen'), intro: $('intro-screen'), ide: $('ide-screen')};
+  let timer;
+  let session = null;
+  let activeStage = 'login';
+  let authChanged = false;
+  const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)');
+  let focusMode = false;
+  let aiBusy = false;
+  let interactionTimer;
+  let interacting = false;
+  let diving = false;
+  let diveTimer;
+  try { focusMode = localStorage.getItem('tutor-focus-mode') === 'true'; } catch (_) {}
+
+  function syncMotion() {
+    const paused = document.hidden || focusMode || reducedMotion.matches;
+    document.body.classList.toggle('motion-paused', paused);
+    document.body.classList.toggle('motion-quiet', activeStage === 'ide' && (aiBusy || interacting));
+    $('focus-mode').setAttribute('aria-pressed', String(focusMode));
+    $('focus-mode').title = focusMode ? 'Tiếp tục hoạt ảnh' : 'Tạm dừng hoạt ảnh để tập trung';
+  }
+  function noteInteraction() {
+    if (activeStage !== 'ide') return;
+    interacting = true;
+    syncMotion();
+    clearTimeout(interactionTimer);
+    interactionTimer = setTimeout(() => { interacting = false; syncMotion(); }, 1200);
+  }
+  function showPanel(panel) {
+    screens.ide.dataset.activePanel = panel;
+    for (const name of ['editor', 'chat']) {
+      const selected = name === panel;
+      $('tab-' + name).setAttribute('aria-selected', String(selected));
+      $('tab-' + name).tabIndex = selected ? 0 : -1;
+    }
+    requestAnimationFrame(() => window.dispatchEvent(new Event('tutor-panel-change')));
+  }
+  $('tab-editor').onclick = () => showPanel('editor');
+  $('tab-chat').onclick = () => showPanel('chat');
+  $('workspace-tabs').addEventListener('keydown', event => {
+    if (!['ArrowLeft', 'ArrowRight', 'Home', 'End'].includes(event.key)) return;
+    event.preventDefault();
+    const panel = event.key === 'Home' ? 'editor' : event.key === 'End' ? 'chat' :
+      screens.ide.dataset.activePanel === 'editor' ? 'chat' : 'editor';
+    showPanel(panel);
+    $('tab-' + panel).focus();
+  });
+  $('focus-mode').onclick = () => {
+    focusMode = !focusMode;
+    try { localStorage.setItem('tutor-focus-mode', String(focusMode)); } catch (_) {}
+    syncMotion();
+    if (focusMode && diving) finishEntry();
+  };
+  document.addEventListener('visibilitychange', syncMotion);
+  document.addEventListener('input', noteInteraction, {passive:true});
+  document.addEventListener('wheel', noteInteraction, {passive:true});
+  reducedMotion.addEventListener('change', () => {
+    syncMotion();
+    if (reducedMotion.matches && diving) finishEntry();
+  });
+  window.tutorUI = {showPanel, noteInteraction, setBusy(value) { aiBusy = value; syncMotion(); }};
+
+  const languageInfo = {
+    c: ['C', 'Hiểu con trỏ, bộ nhớ và nền tảng của một chương trình.'],
+    cpp: ['C++', 'Khám phá hướng đối tượng, STL và quản lý tài nguyên.'],
+    java: ['Java', 'Luyện tư duy hướng đối tượng và làm việc với Collections.'],
+    python: ['Python', 'Cú pháp dễ đọc, linh hoạt trong giải quyết bài toán.']
+  };
+  function updateLanguageBeacons() {
+    const language = $('language').value;
+    $('intro-language-title').textContent = languageInfo[language][0];
+    $('intro-language-description').textContent = languageInfo[language][1];
+    document.querySelectorAll('[data-intro-language]').forEach(button => {
+      button.setAttribute('aria-pressed', String(button.dataset.introLanguage === language));
+    });
+  }
+  document.querySelectorAll('[data-intro-language]').forEach(button => {
+    button.onclick = () => {
+      $('language').value = button.dataset.introLanguage;
+      $('language').dispatchEvent(new Event('change', {bubbles:true}));
+    };
+  });
+  $('language').addEventListener('change', updateLanguageBeacons);
+  updateLanguageBeacons();
+  async function authRequest(path, body) {
+    const response = await fetch('/api/auth/' + path, {
+      method: body === undefined ? 'GET' : 'POST',
+      headers: {'Content-Type':'application/json'},
+      credentials:'same-origin', signal:AbortSignal.timeout(15000),
+      ...(body === undefined ? {} : {body:JSON.stringify(body)})
+    });
+    const data = await response.json();
+    if (!response.ok) throw new Error(data.error || 'Không thể xử lý yêu cầu.');
+    return data;
+  }
+  function message(error) {
+    return error.name === 'TimeoutError' ? 'Kết nối quá chậm. Vui lòng thử lại.' : error.message;
+  }
+  function show(stage) {
+    activeStage = stage;
+    document.body.dataset.stage = stage;
+    syncMotion();
+    clearTimeout(timer);
+    for (const [name, screen] of Object.entries(screens)) screen.hidden = name !== stage;
+    if (session) {
+      const fullName = session.name.replace(/^Sinh viên\s+/u, '');
+      const isAdmin = session.role === 'admin';
+      const className = session.class_name || (isAdmin ? 'Khoa CNTT' : 'CNTT3.K25');
+      $('intro-heading').textContent = isAdmin ? `Chào mừng ${fullName} đến với hệ thống Web hỗ trợ lập trình cho sinh viên Khoa Công nghệ Thông tin` : `Chào mừng ${fullName} (Lớp ${className}) đến với hệ thống Web hỗ trợ lập trình cho sinh viên Khoa Công nghệ Thông tin`;
+      $('intro-student').textContent = fullName;
+      $('student-name').textContent = fullName;
+      $('student-id').textContent = isAdmin ? 'Quản trị hệ thống' : 'MSSV: ' + session.student_id;
+      $('student-class').textContent = isAdmin ? 'Quản trị tài liệu' : 'Lớp ' + className;
+      $('student-year').textContent = isAdmin ? 'Quyền quản trị · Khoa CNTT' : `Sinh viên năm ${session.study_year} · Khoa CNTT`;
+      $('current-student').title = isAdmin ? session.username : session.username + ' · MSSV: ' + session.student_id;
+      window.tutorStudent = session;
+      window.dispatchEvent(new CustomEvent('tutor-session', {detail:session}));
+    }
+    window.scrollTo(0, 0);
+    if (stage === 'ide') {
+      screens.ide.classList.add('screen-enter');
+      window.dispatchEvent(new Event('resize'));
+      $('logout').focus({preventScroll:true});
+    } else if (stage === 'intro') {
+      $('intro-heading').focus({preventScroll:true});
+      if (INTRO_AUTO_ADVANCE_MS > 0) timer = setTimeout(enterWorkspace, INTRO_AUTO_ADVANCE_MS);
+    } else $('student-account').focus({preventScroll:true});
+  }
+  function finishEntry() {
+    clearTimeout(diveTimer);
+    diving = false;
+    document.body.classList.remove('is-diving');
+    $('enter-workspace').disabled = false;
+    if (!session) return;
+    session.stage = 'ide';
+    show('ide');
+    showPanel('editor');
+  }
+  function enterWorkspace(animate = true) {
+    if (!session || activeStage !== 'intro') return;
+    if (!animate || reducedMotion.matches || focusMode) { finishEntry(); return; }
+    if (diving) return;
+    diving = true;
+    $('enter-workspace').disabled = true;
+    document.body.classList.add('is-diving');
+    diveTimer = setTimeout(finishEntry, 800);
+  }
+  const changeOnLogin = $('change-on-login');
+  const newPasswordFields = $('new-password-fields');
+  changeOnLogin.onclick = () => {
+    const expanded = newPasswordFields.hidden;
+    newPasswordFields.hidden = !expanded;
+    changeOnLogin.setAttribute('aria-expanded', String(expanded));
+    changeOnLogin.textContent = expanded ? 'Hủy đổi mật khẩu' : 'Đổi mật khẩu';
+    $('login-new-password').required = expanded;
+    $('login-confirm-password').required = expanded;
+    if (expanded) $('login-new-password').focus();
+  };
+  $('login-form').addEventListener('submit', async event => {
+    event.preventDefault(); authChanged = true;
+    const button = event.target.querySelector('[type=submit]');
+    if (button.disabled) return;
+    const username = $('student-account').value.trim();
+    const password = $('student-password').value;
+    const newPassword = newPasswordFields.hidden ? null : $('login-new-password').value;
+    button.disabled = true;
+    changeOnLogin.disabled = true;
+    $('login-error').textContent = 'Đang xác thực…';
+    try {
+      if (newPassword !== null && newPassword !== $('login-confirm-password').value) throw new Error('Mật khẩu mới nhập lại không khớp.');
+      const user = await authRequest('login', {username, password});
+      if (newPassword !== null) {
+        try { await authRequest('change-password', {current_password:password, new_password:newPassword}); }
+        catch(error) { await authRequest('logout', {}); throw error; }
+      }
+      session = {...user,stage:'intro'}; window.tutorStudent = user;
+      $('student-password').value = ''; $('login-new-password').value = ''; $('login-confirm-password').value = '';
+      $('login-error').textContent = ''; show('intro');
+    } catch(error) { $('login-error').textContent = message(error); }
+    finally {
+      button.disabled = false;
+      changeOnLogin.disabled = false;
+    }
+  });
+  $('change-password').onclick = () => { $('password-form').reset(); $('password-status').textContent = ''; $('password-dialog').showModal(); };
+  $('close-password').onclick = () => $('password-dialog').close();
+  $('password-form').onsubmit = async event => {
+    event.preventDefault(); const button = event.target.querySelector('[type=submit]'); button.disabled = true;
+    try {
+      if ($('new-password').value !== $('confirm-password').value) throw new Error('Mật khẩu nhập lại không khớp.');
+      const result = await authRequest('change-password', {current_password:$('old-password').value,new_password:$('new-password').value});
+      event.target.reset(); $('password-status').textContent = result.message;
+    } catch(error) { $('password-status').textContent = message(error); }
+    finally { button.disabled = false; }
+  };
+  $('enter-workspace').addEventListener('click', () => enterWorkspace(true));
+  $('skip-intro').addEventListener('click', () => enterWorkspace(false));
+  $('logout').addEventListener('click', async () => {
+    $('logout').disabled = true;
+    try { await authRequest('logout', {}); session = null; location.reload(); }
+    catch (error) { $('status').textContent = message(error); $('logout').disabled = false; }
+  });
+  window.addEventListener('pagehide', () => {
+    clearTimeout(timer); clearTimeout(diveTimer); clearTimeout(interactionTimer);
+  });
+
+  const fish = [
+    [12,86,29,-9,'#ffcc70',false],[24,60,36,-20,'#61e2cf',true],
+    [72,100,34,-17,'#ff9d89',false],[60,52,27,-4,'#b5eaff',true],
+    [38,42,32,-25,'#f6d991',false],[82,65,40,-30,'#5ec9e8',true]
+  ];
+  $('fish-school').innerHTML = fish.map(([depth,width,speed,offset,color,reverse]) =>
+    `<div class="fish-lane ${reverse ? 'reverse' : ''}" style="--depth:${depth}%;--width:${width}px;--speed:${speed}s;--offset:${offset}s"><svg viewBox="0 0 120 65" aria-hidden="true"><path class="fish-tail" d="M37 32 4 8 8 54Z" fill="${color}"/><ellipse cx="70" cy="32" rx="37" ry="23" fill="${color}"/><path d="M55 11 68 1 83 12M58 51 73 62 83 50" fill="${color}" opacity=".7"/><path d="M65 22 53 32 68 43" fill="#fff" opacity=".3"/><circle cx="91" cy="26" r="4" fill="#062b41"/></svg></div>`
+  ).join('');
+  $('intro-bubbles').innerHTML = Array.from({length:14}, (_, i) =>
+    `<i class="intro-bubble" style="--left:${4+i*7}%;--diameter:${8+(i%4)*7}px;--speed:${12+i%5*3}s;--offset:-${i*2}s"></i>`
+  ).join('');
+  show('login');
+  // Restore the account without skipping the login and ocean welcome screens.
+  authRequest('me').then(user => {
+    if (authChanged || activeStage !== 'login') return;
+    session = {...user,stage:'login'};
+    $('resume-session').hidden = false;
+  }).catch(() => {});
+  $('resume-session').addEventListener('click', async () => {
+    const button = $('resume-session');
+    button.disabled = true; authChanged = true;
+    try {
+      const user = await authRequest('me');
+      session = {...user,stage:'intro'}; show('intro');
+    } catch (error) {
+      session = null; button.hidden = true;
+      $('login-error').textContent = 'Phiên trước đã hết hạn. Vui lòng đăng nhập lại.';
+    } finally { button.disabled = false; }
+  });
+})();
+
+</script>
+  <script src="https://cdn.jsdelivr.net/npm/marked@15.0.12/marked.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/dompurify@3.2.6/dist/purify.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.11.1/build/highlight.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/monaco-editor@0.50.0/min/vs/loader.js"></script>
+<script>
+(() => {
+    'use strict';
+    const $ = id => document.getElementById(id);
+    const status = $('status'), chatLog = $('chat-log');
+    const history = [];
+    let editor;
+    let activeChat = null;
+    let activeAssessment = null;
+    let syntaxWorker, syntaxTimer, syntaxWatchdog, syntaxSequence = 0, syntaxRequest;
+    let errorBadges;
+    let lineFocus;
+    let lineFocusTimer;
+
+    function renderErrorBadges() {
+      if (!editor || !errorBadges) return;
+      const model = editor.getModel(), byLine = new Map();
+      for (const marker of monaco.editor.getModelMarkers({resource:model.uri})) {
+        if (!['live-syntax','ai-tutor'].includes(marker.owner) || marker.severity < monaco.MarkerSeverity.Warning) continue;
+        const line = marker.startLineNumber;
+        if (line < 1 || line > model.getLineCount()) continue;
+        if (!byLine.has(line)) byLine.set(line, []);
+        byLine.get(line).push(marker.message);
+      }
+      errorBadges.set([...byLine].slice(0,40).map(([line,messages]) => ({
+        range: new monaco.Range(line, model.getLineMaxColumn(line), line, model.getLineMaxColumn(line)),
+        options: {showIfCollapsed:true, hoverMessage:{value:messages.join('\n\n'),isTrusted:false},
+          after:{content:' ⚠\uFE0E',inlineClassName:'line-error-badge',cursorStops:monaco.editor.InjectedTextCursorStops.None}}
+      })));
+    }
+    function scheduleSyntaxCheck() {
+      clearTimeout(syntaxTimer); clearTimeout(syntaxWatchdog);
+      syntaxSequence++; syntaxRequest = null;
+      const model = editor.getModel();
+      monaco.editor.setModelMarkers(model,'live-syntax',[]);
+      renderErrorBadges();
+      $('syntax-status').classList.remove('has-errors');
+      $('syntax-status').textContent = 'Đang kiểm tra cú pháp…';
+      syntaxTimer = setTimeout(() => {
+        if (!syntaxWorker) {
+          try {
+            syntaxWorker = new Worker('/syntax/worker.js');
+            syntaxWorker.onmessage = ({data}) => {
+              const saved = syntaxRequest;
+              if (!saved || data.id !== saved.id || !matches(saved) || saved.language !== $('language').value) return;
+              clearTimeout(syntaxWatchdog); syntaxRequest = null;
+              const issues = Array.isArray(data.issues) ? data.issues : [];
+              monaco.editor.setModelMarkers(saved.model,'live-syntax',issues.map(issue => ({
+                startLineNumber:issue.line,endLineNumber:issue.line,startColumn:issue.column,endColumn:issue.endColumn,
+                message:issue.message,source:'Kiểm tra cú pháp',severity:monaco.MarkerSeverity.Error
+              })));
+              $('syntax-status').textContent = data.error || (issues.length ? `${issues.length} dòng cần kiểm tra · rê chuột vào ⚠` : 'Chưa thấy lỗi cú pháp');
+              $('syntax-status').classList.toggle('has-errors',issues.length > 0);
+              renderErrorBadges();
+            };
+            syntaxWorker.onerror = () => {
+              clearTimeout(syntaxWatchdog); syntaxRequest = null;
+              syntaxWorker?.terminate(); syntaxWorker = null;
+              $('syntax-status').textContent = 'Kiểm tra cú pháp chưa sẵn sàng';
+            };
+          } catch (_) {
+            $('syntax-status').textContent = 'Trình duyệt chưa hỗ trợ kiểm tra cú pháp';
+            return;
+          }
+        }
+        syntaxRequest = {...snapshot(),id:syntaxSequence,language:$('language').value};
+        syntaxWorker.postMessage({id:syntaxRequest.id,language:syntaxRequest.language,code:syntaxRequest.code});
+        syntaxWatchdog = setTimeout(() => {
+          syntaxWorker?.terminate(); syntaxWorker = null; syntaxRequest = null;
+          $('syntax-status').textContent = 'Kiểm tra cú pháp quá thời gian; thử lại khi sửa mã';
+        }, 10000);
+      }, 550);
+    }
+
+    const node = (tag, text, className) => {
+      const el = document.createElement(tag); if (text !== undefined) el.textContent = text;
+      if (className) el.className = className; return el;
+    };
+    function snapshot() { const model=editor.getModel(); return {model,version:model.getVersionId(),code:model.getValue()}; }
+    function matches(saved) { return saved && editor.getModel()===saved.model && saved.model.getVersionId()===saved.version; }
+    let activeRun = null;
+    let runSnapshot = null;
+    let runnerProbe = null;
+    const runLabels = {
+      completed: 'Đã chạy xong với dữ liệu đã nhập.',
+      compile_error: 'Có lỗi cú pháp hoặc biên dịch.',
+      runtime_error: 'Chương trình gặp lỗi khi chạy.',
+      timeout: 'Chương trình vượt giới hạn thời gian.',
+      output_limit: 'Chương trình xuất quá nhiều dữ liệu.',
+      cancelled: 'Đã dừng yêu cầu chạy.',
+      unavailable: 'Môi trường chạy chưa sẵn sàng.'
+    };
+
+    function updateRunSnapshotState() {
+      if (!runSnapshot || !editor) return;
+      $('run-stale').hidden = matches(runSnapshot) && $('language').value === runSnapshot.language &&
+        $('run-input').value === runSnapshot.stdin;
+    }
+
+    async function probeRunner() {
+      runnerProbe?.abort();
+      const controller = new AbortController();
+      runnerProbe = controller;
+      const timeout = setTimeout(() => controller.abort(), 12000);
+      try {
+        const response = await fetch('/api/tutor/runner', {credentials:'same-origin', signal:controller.signal});
+        const data = await response.json();
+        if (controller.signal.aborted) return;
+        $('runner-readiness').textContent = response.ok
+          ? (data.available ? 'Môi trường chạy sẵn sàng · giới hạn chạy 3 giây.' : (data.reason || runLabels.unavailable))
+          : (data.error || 'Đăng nhập để kiểm tra môi trường chạy.');
+      } catch (_) {
+        if (!controller.signal.aborted) $('runner-readiness').textContent = 'Chưa kiểm tra được môi trường chạy. Bạn có thể thử lại bằng nút Chạy thử.';
+      } finally {
+        clearTimeout(timeout);
+        if (runnerProbe === controller) runnerProbe = null;
+      }
+    }
+
+    $('run-panel').addEventListener('toggle', () => {
+      if ($('run-panel').open && !activeRun) probeRunner();
+      requestAnimationFrame(() => editor?.layout());
+    });
+    $('run-input').addEventListener('input', updateRunSnapshotState);
+    $('code-stop').onclick = () => activeRun?.controller.abort();
+    $('code-run').onclick = async () => {
+      if (!editor || activeRun) return;
+      $('run-panel').open = true;
+      const saved = {...snapshot(), language:$('language').value, stdin:$('run-input').value};
+      if (!saved.code.trim()) {
+        $('run-status').textContent = 'Hãy nhập mã nguồn trước khi chạy.';
+        $('run-status').dataset.kind = 'unavailable';
+        return;
+      }
+      if (saved.code.length > 60000) {
+        $('run-status').textContent = 'Mã nguồn vượt giới hạn 60.000 ký tự.';
+        $('run-status').dataset.kind = 'unavailable';
+        return;
+      }
+      const controller = new AbortController();
+      activeRun = {controller};
+      runSnapshot = saved;
+      runnerProbe?.abort();
+      $('code-run').disabled = true;
+      $('code-stop').hidden = false;
+      $('run-status').textContent = 'Đang biên dịch và chạy bản mã đã chụp…';
+      $('run-status').dataset.kind = 'running';
+      $('run-output').textContent = '';
+      $('run-errors').textContent = '';
+      $('run-errors-section').hidden = true;
+      $('run-stale').hidden = true;
+      const name = {c:'C', cpp:'C++', java:'Java', python:'Python'}[saved.language];
+      const stamp = new Date().toLocaleTimeString('vi-VN');
+      $('run-meta').textContent = name + ' · ' + stamp;
+      let timedOut = false;
+      const timeout = setTimeout(() => {timedOut = true; controller.abort();}, 60000);
+      try {
+        const response = await fetch('/api/tutor/run', {
+          method:'POST', credentials:'same-origin', signal:controller.signal,
+          headers:{'Content-Type':'application/json'},
+          body:JSON.stringify({language:saved.language, current_code:saved.code, stdin:saved.stdin})
+        });
+        const data = await response.json();
+        if (!response.ok) throw new Error(data.error || 'Yêu cầu chạy chưa thực hiện được.');
+        if (!Object.hasOwn(runLabels, data.status) || typeof data.stdout !== 'string' ||
+            typeof data.stderr !== 'string' || !Number.isFinite(data.duration_ms) ||
+            (data.exit_code !== null && !Number.isInteger(data.exit_code)) ||
+            data.language !== saved.language) throw new Error('Kết quả chạy không hợp lệ. Hãy thử lại.');
+        $('run-status').textContent = typeof data.message === 'string' && data.message.trim() ? data.message : runLabels[data.status];
+        $('run-status').dataset.kind = data.status;
+        $('run-output').textContent = data.stdout || '(Chương trình không in ra stdout.)';
+        $('run-errors').textContent = data.stderr;
+        $('run-errors-section').hidden = !data.stderr;
+        $('run-meta').textContent = name + ' · ' + stamp + ' · Mã thoát ' +
+          (data.exit_code === null ? '—' : data.exit_code) + ' · ' + Math.round(data.duration_ms) + ' ms';
+        if (data.status !== 'unavailable') $('runner-readiness').textContent = 'Kết quả của lần chạy với dữ liệu đã nhập; kiểm tra thêm các đầu vào khác khi cần.';
+      } catch (error) {
+        $('run-status').textContent = controller.signal.aborted
+          ? (timedOut ? 'Yêu cầu chạy quá thời gian chờ. Hãy kiểm tra môi trường chạy rồi thử lại.' : runLabels.cancelled)
+          : (error.message || 'Không kết nối được máy chủ chạy mã.');
+        $('run-status').dataset.kind = controller.signal.aborted ? 'cancelled' : 'unavailable';
+      } finally {
+        clearTimeout(timeout);
+        if (activeRun?.controller === controller) activeRun = null;
+        $('code-run').disabled = !editor;
+        $('code-stop').hidden = true;
+        updateRunSnapshotState();
+      }
+    };
+    window.addEventListener('pagehide', () => {activeRun?.controller.abort(); runnerProbe?.abort();});
+    function replaceCode(text) {
+      editor.pushUndoStop(); editor.executeEdits('ai-action',[{range:editor.getModel().getFullModelRange(),text,forceMoveMarkers:true}]);editor.pushUndoStop();editor.focus();
+    }
+    function invalidateAnalysis() {
+      monaco.editor.setModelMarkers(editor.getModel(),'ai-tutor',[]);
+      clearTimeout(lineFocusTimer);
+      lineFocus?.clear();
+      document.querySelectorAll('[data-apply-fix]').forEach(button=>{button.disabled=true;button.title='Mã đã thay đổi. Hãy phân tích lại.';});
+    }
+    let cooldownUntil = 0;
+    window.addEventListener('pagehide', () => {
+      activeChat?.abort(); activeAssessment?.abort(); cancelCompletion(); clearTimeout(syntaxTimer); clearTimeout(syntaxWatchdog); syntaxWorker?.terminate();
+    });
+    const drafts = {};
+    try { Object.assign(drafts, JSON.parse(localStorage.getItem('coding-tutor-drafts') || '{}')); } catch (_) {}
+    const samples = {
+      java: 'public class Main {\n    public static void main(String[] args) {\n        System.out.println("Hello, World!");\n    }\n}\n',
+      python: 'def main():\n    print("Hello, World!")\n\n\nif __name__ == "__main__":\n    main()\n',
+      cpp: '#include <iostream>\n\nint main() {\n    std::cout << "Hello, World!" << std::endl;\n    return 0;\n}\n',
+      c: '#include <stdio.h>\n\nint main(void) {\n    printf("Hello, World!\\n");\n    return 0;\n}\n'
+    };
+    const models = new Map();
+    fetch('/api/health').then(async response => {
+      const data = await response.json();
+      $('provider-status').textContent = data.ollama_connected ? 'ollama · ' + data.model : (data.message || 'Ollama chưa sẵn sàng');
+      $('provider-status').title = data.message || 'Đã kiểm tra kết nối Ollama.';
+    }).catch(() => { $('provider-status').textContent = 'Không kết nối được máy chủ'; });
+    let draftTimer;
+    function scheduleDraft() { clearTimeout(draftTimer); draftTimer = setTimeout(saveDraft, 450); }
+    window.addEventListener("pagehide", () => { if (editor) saveDraft(); });
+    function saveDraft() {
+      drafts[$('language').value] = editor.getValue();
+      try { localStorage.setItem('coding-tutor-drafts', JSON.stringify(drafts)); $('save-status').textContent = '· Đã lưu trên trình duyệt'; }
+      catch (_) { $('save-status').textContent = '· Không thể lưu, hãy tải mã nguồn'; }
+    }
+    $('stop').onclick = () => { activeChat?.abort(); activeAssessment?.abort(); };
+    $('completion-enabled').onchange = updateCompletionState;
+    window.addEventListener('tutor-rag-busy', updateCompletionState);
+    $('clear-chat').onclick = () => {
+      if (activeChat || activeAssessment) return;
+      disposeDiffs();
+      history.length = 0;
+      chatLog.replaceChildren();
+      addBubble('assistant', 'Bắt đầu một bài học mới! Bạn muốn tìm hiểu điều gì?');
+    };
+    function updateContextStatus() {
+      $('context-status').textContent = $('attach-code').checked ? 'Gửi toàn bộ file hiện tại; vùng chọn được ưu tiên. File quá dài sẽ được báo trước khi gọi AI.' : 'Chỉ gửi câu hỏi và hội thoại. Bật Kèm mã khi cần hỏi về Editor.';
+    }
+    $('task-mode').onchange = () => { $('attach-code').checked=$('task-mode').value!=='ask'; updateContextStatus(); };
+    $('attach-code').onchange = updateContextStatus;
+    updateContextStatus();
+    const PROMPT_GOAL = '[Nhập yêu cầu của bạn]';
+    function standardPrompt(goal = PROMPT_GOAL) {
+      const language = {c:'C',cpp:'C++',java:'Java',python:'Python'}[$('language').value];
+      const guidance = {
+        ask: 'trả lời trực tiếp bằng tiếng Việt dễ hiểu, có ví dụ khi cần và hỏi lại nếu thiếu dữ kiện',
+        review: 'chỉ rõ lỗi có căn cứ, đề xuất bản sửa khi cần và cách kiểm chứng bằng tiếng Việt; hỏi lại nếu chưa rõ mục tiêu',
+        explain: 'giải thích từng dòng hoặc khối và luồng xử lý bằng tiếng Việt, giữ nguyên mã nguồn',
+        optimize: 'đề xuất tối ưu giữ nguyên hành vi, giải thích bằng tiếng Việt và nêu độ phức tạp khi phù hợp'
+      }[$('task-mode').value];
+      return `Hãy hỗ trợ tôi về lập trình ${language}: ${goal.replace(/[.!?;]+\s*$/u, '')}; ${guidance}.`;
+    }
+    function selectGoalPlaceholder() { const start=$('question').value.indexOf(PROMPT_GOAL); if(start>=0) $('question').setSelectionRange(start,start+PROMPT_GOAL.length); }
+    $('question').addEventListener('focus', () => { if (!$('question').value.trim()) { $('question').value = standardPrompt(); selectGoalPlaceholder(); } });
+    $('prompt-template').onclick = () => { if (!$('question').value.trim()) $('question').value = standardPrompt(); $('question').focus(); selectGoalPlaceholder(); };
+    document.querySelectorAll('[data-prompt]').forEach(button => button.onclick = () => {
+      $('task-mode').value=button.dataset.mode; $('attach-code').checked=true; updateContextStatus();
+      $('question').value = standardPrompt(button.dataset.prompt); $('question').focus();
+    });
+    $('check-now').onclick = () => { if(activeChat || activeAssessment)return; $('task-mode').value='review'; $('attach-code').checked=true; updateContextStatus(); $('question').value=standardPrompt('Kiểm tra mã nguồn đính kèm và sửa lỗi theo mục tiêu đã biết'); $('chat-form').requestSubmit(); };
+    $('question').onkeydown = event => { if ((event.ctrlKey || event.metaKey) && event.key === 'Enter') { event.preventDefault(); $('chat-form').requestSubmit(); } };
+    $('download').onclick = () => {
+      if (!editor) return;
+      const names = {java:'Main.java',python:'main.py',cpp:'main.cpp',c:'main.c'};
+      const url = URL.createObjectURL(new Blob([editor.getValue()], {type:'text/plain;charset=utf-8'}));
+      const link = document.createElement('a'); link.href = url; link.download = names[$('language').value]; link.click(); setTimeout(() => URL.revokeObjectURL(url), 1000);
+    };
+    let activeCompletion = null;
+    let pendingDebounceTimer = null;
+    let pendingDebounceResolve = null;
+    const monacoBase = 'https://cdn.jsdelivr.net/npm/monaco-editor@0.50.0/min/vs';
+    if (typeof require === 'undefined' || typeof marked === 'undefined' || typeof DOMPurify === 'undefined') { $('editor').textContent = 'Không tải được thư viện giao diện. Kiểm tra kết nối Internet rồi tải lại trang.'; return; }
+    require.config({paths: {vs: monacoBase}});
+    window.MonacoEnvironment = {
+      getWorkerUrl: () => 'data:text/javascript;charset=utf-8,' + encodeURIComponent(
+        "self.MonacoEnvironment={baseUrl:'" + monacoBase.slice(0,-3) + "/'};importScripts('" + monacoBase + "/base/worker/workerMain.js');")
+    };
+
+    function updateCompletionState() {
+      const busy = Boolean(activeChat || activeAssessment || window.tutorRagBusy);
+      window.tutorCodeBusy = Boolean(activeChat || activeAssessment);
+      window.dispatchEvent(new CustomEvent('tutor-code-busy', {detail:window.tutorCodeBusy}));
+      window.tutorUI?.setBusy(busy);
+      cancelCompletion();
+      editor?.updateOptions({inlineSuggest:{enabled:!busy && $('completion-enabled').checked}});
+      $('completion-enabled').title = busy ? 'Tạm dừng gợi ý trong lúc AI xử lý tác vụ chính' : '';
+      $('send').disabled = busy || !editor;
+      $('assessment-create').disabled = busy || !editor;
+      $('assessment-kind').disabled = busy;
+      $('clear-chat').disabled = busy;
+      $('language').disabled = Boolean(activeAssessment);
+      document.querySelectorAll('[data-assessment-submit]').forEach(button => {
+        button.disabled = busy || button.dataset.completed === 'true';
+      });
+      if (busy) editor?.trigger('ai-tutor', 'editor.action.inlineSuggest.hide', {});
+    }
+
+    function cancelCompletion() {
+      if (pendingDebounceTimer !== null) {
+        clearTimeout(pendingDebounceTimer);
+        pendingDebounceTimer = null;
+      }
+      if (pendingDebounceResolve) {
+        pendingDebounceResolve({items: []});
+        pendingDebounceResolve = null;
+      }
+      if (activeCompletion) {
+        activeCompletion.abort();
+        activeCompletion = null;
+      }
+    }
+
+    function addBubble(kind, text) {
+      $('welcome')?.remove();
+      const bubble = document.createElement('article');
+      bubble.className = 'bubble ' + kind;
+      const who = document.createElement('div');
+      who.className = 'sender';
+      if (kind !== 'user') {
+        const avatar = document.createElement('img');
+        avatar.src = '/LogoFITHPUni.png';
+        avatar.alt = '';
+        avatar.className = 'ai-avatar';
+        who.appendChild(avatar);
+      }
+      who.appendChild(document.createTextNode(kind === 'user' ? 'Học viên' : 'Trợ lý lập trình · Khoa CNTT'));
+      bubble.appendChild(who);
+      const content = document.createElement('div');
+      content.className = 'markdown';
+      bubble.appendChild(content);
+      chatLog.appendChild(bubble);
+      if (kind === 'user') content.textContent = text;
+      else renderMarkdown(content, text);
+      chatLog.scrollTop = chatLog.scrollHeight;
+      return content;
+    }
+
+    function assessmentContextMatches(student, language) {
+      return window.tutorStudent?.username === student && $('language').value === language;
+    }
+
+    async function assessmentRequest(path, body, controller, timeout = 185000) {
+      const timer = setTimeout(() => controller.abort(), timeout);
+      try {
+        const response = await fetch('/api/tutor/' + path, {
+          method:'POST',headers:{'Content-Type':'application/json'},credentials:'same-origin',
+          body:JSON.stringify(body),signal:controller.signal
+        });
+        let result;
+        try { result = await response.json(); }
+        catch (_) { throw new Error('Máy chủ chưa trả kết quả hợp lệ. Chưa kết luận đúng/sai.'); }
+        if (!response.ok) throw new Error(result.error || 'Chưa thể kiểm chứng câu trả lời.');
+        return result;
+      } finally { clearTimeout(timer); }
+    }
+
+    function assessmentList(target, title, values) {
+      target.append(node('h4',title));
+      if (!values.length) { target.append(node('p','Không có mục nào.')); return; }
+      const list=node('ul');
+      for (const value of values) list.append(node('li',value));
+      target.append(list);
+    }
+
+    function renderAssessmentResult(target, result, question, submittedCode) {
+      const verdicts = {
+        'CHÍNH XÁC':['✅','correct'],
+        'ĐÚNG MỘT PHẦN':['⚠️','partial'],
+        'CHƯA CHÍNH XÁC':['❌','incorrect']
+      };
+      const verdict=verdicts[result.trang_thai];
+      if (!verdict || typeof result.diem_so !== 'number' || !Number.isFinite(result.diem_so) ||
+          result.diem_so<0 || result.diem_so>10 || !Array.isArray(result.diem_dung) ||
+          !Array.isArray(result.diem_sai) || !result.diem_dung.every(item=>typeof item==='string') ||
+          !result.diem_sai.every(item=>typeof item==='string') || typeof result.dap_an_chuan!=='string') {
+        throw new Error('Kết quả đánh giá sai cấu trúc. Chưa hiển thị kết luận đúng/sai.');
+      }
+      const output=node('section',undefined,'assessment-result');
+      output.setAttribute('aria-label','Kết quả kiểm tra');
+      const score=new Intl.NumberFormat('vi-VN',{maximumFractionDigits:2}).format(result.diem_so);
+      output.append(node('div',`${verdict[0]} ${result.trang_thai} · ${score}/10`,'assessment-badge '+verdict[1]));
+      assessmentList(output,'Phần đúng',result.diem_dung);
+      assessmentList(output,'Phần sai hoặc còn thiếu',result.diem_sai);
+      output.append(node('h4','Đáp án chuẩn để đối chiếu'));
+      if (question.kind==='code') {
+        const pre=node('pre'),code=node('code',result.dap_an_chuan);
+        code.className='language-'+question.language;pre.append(code);output.append(pre);
+        try { hljs.highlightElement(code); } catch (_) {}
+        const receipt=node('details'),summary=node('summary','Xem đúng bản mã đã nộp'),submitted=node('pre',submittedCode.code);
+        receipt.append(summary,submitted);output.append(receipt);
+        if (!matches(submittedCode)) output.append(node('p','Editor đã thay đổi; kết quả chỉ áp dụng cho bản mã đã nộp.','assessment-note'));
+        output.append(node('p','Điểm dựa trên các ca kiểm thử đã thực hiện, chưa chứng minh mã đúng với mọi đầu vào.','assessment-note'));
+      } else output.append(node('p',result.dap_an_chuan,'assessment-standard'));
+      if (result.kiem_chung && typeof result.kiem_chung==='object' && typeof result.kiem_chung.message==='string') {
+        output.append(node('p',result.kiem_chung.message,'assessment-note'));
+      }
+      target.append(output);chatLog.scrollTop=chatLog.scrollHeight;
+    }
+
+    function renderAssessmentQuestion(question, student) {
+      if (!question || typeof question.question_id!=='string' || !['mcq','theory','code'].includes(question.kind) ||
+          !['c','cpp','java','python'].includes(question.language) || typeof question.prompt!=='string') {
+        throw new Error('Máy chủ trả câu hỏi sai cấu trúc.');
+      }
+      if (question.kind==='mcq' && (!question.options || !['A','B','C','D'].every(key=>typeof question.options[key]==='string'))) {
+        throw new Error('Câu trắc nghiệm thiếu lựa chọn hợp lệ.');
+      }
+      const content=addBubble('assistant',''),card=node('section',undefined,'assessment-card');
+      const language={c:'C',cpp:'C++',java:'Java',python:'Python'}[question.language];
+      card.append(node('h3',question.title || 'Câu hỏi kiểm tra'),node('p',language+' · '+{mcq:'Trắc nghiệm',theory:'Tự luận ngắn',code:'Viết code'}[question.kind],'assessment-note'));
+      card.append(node('p',question.prompt,'assessment-prompt'));
+      card.append(node('p','Đáp án và tiêu chí được giữ ở máy chủ; chỉ hiển thị kết quả sau khi bạn nộp.','assessment-note'));
+      const form=node('form',undefined,'assessment-form'),feedback=node('p','','assessment-feedback');
+      feedback.setAttribute('role','status');
+      let answerInput;
+      if (question.kind==='mcq') {
+        const choices=node('fieldset',undefined,'assessment-options');choices.append(node('legend','Chọn một đáp án'));
+        for (const key of ['A','B','C','D']) {
+          const label=node('label',undefined,'assessment-choice'),input=node('input');
+          input.type='radio';input.name='answer-'+question.question_id;input.value=key;input.required=true;
+          label.append(input,node('span',key+'. '+question.options[key]));choices.append(label);
+        }
+        form.append(choices);
+      } else if (question.kind==='theory') {
+        const label=node('label','Câu trả lời của bạn');answerInput=node('textarea',undefined,'assessment-answer');
+        answerInput.required=true;answerInput.maxLength=5000;answerInput.rows=4;
+        answerInput.setAttribute('aria-label','Câu trả lời tự luận');label.append(answerInput);form.append(label);
+      } else {
+        form.append(node('p','Khi bấm Nộp mã, hệ thống chụp toàn bộ mã hiện tại trong Editor để kiểm chứng.','assessment-note'));
+        if (typeof question.starter_code==='string' && question.starter_code) {
+          const starter=node('button','Đưa mã khởi đầu vào Editor · có thể Undo');starter.type='button';
+          starter.onclick=()=>{
+            if (activeChat || activeAssessment) return;
+            if (!assessmentContextMatches(student,question.language)) { feedback.textContent='Hãy chọn lại '+language+' trước khi đưa mã vào Editor.';return; }
+            replaceCode(question.starter_code);feedback.textContent='Đã đưa mã khởi đầu vào Editor; Ctrl+Z để hoàn tác.';
+          };
+          form.append(starter);
+        }
+      }
+      const actions=node('div',undefined,'assessment-actions'),submit=node('button',question.kind==='code'?'Nộp mã trong Editor':'Gửi câu trả lời');
+      submit.type='submit';submit.dataset.assessmentSubmit='true';actions.append(submit);form.append(actions,feedback);card.append(form);content.append(card);
+      let completed=false;
+      form.onsubmit=async event=>{
+        event.preventDefault();if(completed || activeChat || activeAssessment)return;
+        if (!assessmentContextMatches(student,question.language)) { feedback.textContent='Hãy chọn lại '+language+' để nộp câu hỏi này.';return; }
+        const saved=question.kind==='code'?snapshot():null;
+        const answer=question.kind==='mcq'?form.querySelector('input[type=radio]:checked')?.value : question.kind==='code'?saved.code:answerInput.value.trim();
+        if (!answer?.trim()) { feedback.textContent='Hãy nhập câu trả lời hoặc mã nguồn trước khi nộp.';return; }
+        if (answer.length>(question.kind==='code'?60000:5000)) { feedback.textContent='Câu trả lời vượt giới hạn ký tự.';return; }
+        const controller=new AbortController();activeAssessment=controller;updateCompletionState();
+        $('stop').hidden=false;feedback.textContent='Đang đối chiếu bằng chứng và tiêu chí đã lưu…';
+        for (const element of form.elements) element.disabled=true;
+        try {
+          const result=await assessmentRequest('answers',{question_id:question.question_id,answer},controller);
+          if (!card.isConnected || !assessmentContextMatches(student,question.language)) return;
+          renderAssessmentResult(card,result,question,saved);
+          completed=true;submit.dataset.completed='true';feedback.textContent='Đã ghi nhận kết quả cho câu trả lời đã nộp.';
+          status.textContent='Đã hoàn thành kiểm tra';
+        } catch(error) {
+          if (card.isConnected) feedback.textContent=controller.signal.aborted?'Đã dừng chờ kết quả; chưa hiển thị kết luận. Bạn có thể gửi lại để lấy kết quả đã lưu.':(error.message || 'Chưa kiểm chứng được. Hãy thử lại.');
+        } finally {
+          if (!completed) for (const element of form.elements) element.disabled=false;
+          if (activeAssessment===controller) activeAssessment=null;
+          $('stop').hidden=true;updateCompletionState();
+        }
+      };
+      chatLog.scrollTop=chatLog.scrollHeight;
+    }
+
+    $('assessment-create').onclick=async()=>{
+      if (!editor || activeChat || activeAssessment)return;
+      const language=$('language').value,student=window.tutorStudent?.username;
+      if (!student) { status.textContent='Vui lòng đăng nhập trước khi nhận câu hỏi.';return; }
+      const controller=new AbortController();activeAssessment=controller;updateCompletionState();$('stop').hidden=false;
+      status.textContent='Đang lấy câu hỏi và lưu tiêu chí ở máy chủ…';
+      try {
+        const question=await assessmentRequest('questions',{language,kind:$('assessment-kind').value},controller,15000);
+        if (!assessmentContextMatches(student,language))return;
+        renderAssessmentQuestion(question,student);status.textContent='Câu hỏi đã sẵn sàng; đáp án được giữ ở máy chủ';
+      } catch(error) { status.textContent=controller.signal.aborted?'Đã dừng lấy câu hỏi.':(error.message || 'Không lấy được câu hỏi.'); }
+      finally { if(activeAssessment===controller)activeAssessment=null;$('stop').hidden=true;updateCompletionState(); }
+    };
+
+    function renderMarkdown(target, markdown) {
+      // DOMPurify loai bo HTML/script khong an toan do AI sinh ra.
+      target.innerHTML = DOMPurify.sanitize(marked.parse(markdown, {gfm: true, breaks: true}));
+      target.querySelectorAll('pre').forEach(pre => {
+        const code = pre.querySelector('code');
+        if (!code) return;
+        try { hljs.highlightElement(code); } catch (_) {}
+        const insertButton = document.createElement('button');
+        insertButton.type = 'button';
+        insertButton.className = 'insert-btn';
+        insertButton.textContent = 'Chèn vào Editor';
+        insertButton.addEventListener('click', () => {
+          const selection = editor.getSelection();
+          editor.pushUndoStop();
+          editor.executeEdits('ai-tutor', [{range: selection, text: code.textContent,
+            forceMoveMarkers: true}]);
+          editor.pushUndoStop();
+          editor.focus();
+        });
+        pre.parentNode.insertBefore(insertButton, pre.nextSibling);
+      });
+      chatLog.scrollTop = chatLog.scrollHeight;
+    }
+
+    const openedDiffs = new Set();
+    let diffGeneration = 0;
+    function disposeDiffs() {
+      diffGeneration += 1;
+      for (const preview of Array.from(openedDiffs)) preview.dispose();
+    }
+    window.addEventListener('pagehide', disposeDiffs);
+
+    function appendCodeDiff(target, saved, fixedCode) {
+      const details = node('details', undefined, 'code-comparison');
+      const summary = node('summary', 'Xem thay đổi từng dòng');
+      const hint = node('p', 'Xanh là dòng thêm, đỏ là dòng được thay hoặc xóa.', 'diff-help');
+      const host = node('div', undefined, 'code-diff');
+      const lines = Math.max(saved.code.split('\n').length, fixedCode.split('\n').length);
+      host.style.height = Math.min(320, Math.max(110, (lines + 2) * 20)) + 'px';
+      host.style.width = '100%';
+      host.style.minWidth = '0';
+      host.setAttribute('aria-label', 'So sánh mã gốc và mã đã sửa');
+      details.append(summary, hint, host);
+      target.append(details);
+      let activePreview = null;
+      let frame = null;
+      let revision = 0;
+      details.addEventListener('toggle', () => {
+        revision += 1;
+        if (frame !== null) cancelAnimationFrame(frame);
+        frame = null;
+        activePreview?.dispose();
+        if (!details.open) return;
+        host.replaceChildren();
+        host.textContent = 'Đang chuẩn bị bản so sánh…';
+        const currentRevision = revision;
+        const generation = diffGeneration;
+        frame = requestAnimationFrame(() => {
+          frame = null;
+          if (!details.isConnected || !details.open || revision !== currentRevision || generation !== diffGeneration) return;
+          let original, modified, diff;
+          try {
+            if (!editor || typeof monaco === 'undefined' || !monaco.editor.createDiffEditor) throw new Error('Diff unavailable');
+            const language = saved.model.isDisposed() ? 'plaintext' : saved.model.getLanguageId();
+            original = monaco.editor.createModel(saved.code, language);
+            modified = monaco.editor.createModel(fixedCode, language);
+            host.replaceChildren();
+            diff = monaco.editor.createDiffEditor(host, {
+              renderSideBySide: false, readOnly: true, originalEditable: false,
+              automaticLayout: true, theme: 'vs', fontSize: 13,
+              minimap: {enabled: false}, scrollBeyondLastLine: false,
+              ignoreTrimWhitespace: false, wordWrap: 'on'
+            });
+            diff.setModel({original, modified});
+            const preview = {
+              dispose() {
+                if (!openedDiffs.delete(preview)) return;
+                diff.dispose(); original.dispose(); modified.dispose();
+                if (activePreview === preview) activePreview = null;
+                host.replaceChildren();
+              }
+            };
+            activePreview = preview;
+            openedDiffs.add(preview);
+          } catch (_) {
+            diff?.dispose(); original?.dispose(); modified?.dispose();
+            host.textContent = 'Không thể mở bản so sánh. Bạn có thể xem toàn bộ mã đã sửa bên dưới.';
+          }
+        });
+      });
+    }
+
+    function showAnalysis(target, result, saved) {
+      const valid = matches(saved);
+      if (result.verification && typeof result.verification==='object') {
+        const evidence=result.verification,box=node('section',undefined,'assessment-card');
+        box.append(node('h4','Bằng chứng kiểm tra thực tế'));
+        let message;
+        if (evidence.available===false) message=typeof evidence.reason==='string'?evidence.reason:'Công cụ kiểm chứng chưa sẵn sàng.';
+        else if (evidence.syntax_ok===false || evidence.compile_ok===false) message='Kiểm tra thực tế phát hiện lỗi cú pháp hoặc biên dịch.';
+        else if (evidence.syntax_ok===true || evidence.compile_ok===true) message='Biên dịch/kiểm tra cú pháp thành công; chưa xác nhận logic hoặc đầu ra.';
+        else message=typeof evidence.reason==='string'?evidence.reason:'Chưa có đủ bằng chứng để kết luận mã đúng hoặc sai.';
+        box.append(node('p',message,'assessment-note'));
+        if (Array.isArray(evidence.errors) && evidence.errors.length) {
+          const list=node('ul');
+          for (const error of evidence.errors.slice(0,10)) {
+            const text=typeof error==='string'?error:typeof error?.message==='string'?`${Number.isInteger(error.line)?'Dòng '+error.line+': ':''}${error.message}`:'';
+            if (text)list.append(node('li',text.slice(0,2000)));
+          }
+          box.append(list);
+        }
+        target.append(box);
+      }
+      if (saved.analyzed) { const count=result.issues.filter(item=>item.severity==='error').length; target.append(node('p',count ? 'Phân tích tĩnh: '+count+' lỗi được AI đề xuất; cần kiểm chứng.' : result.issues.length ? 'Có lưu ý/đề xuất tối ưu; chưa kết luận chương trình sai.' : 'Chưa phát hiện lỗi qua phân tích tĩnh; chưa kiểm chứng đầy đủ tính đúng.','analysis-verdict')); }
+      if (valid) monaco.editor.setModelMarkers(saved.model,'ai-tutor',result.issues.map(issue=>({startLineNumber:issue.line,endLineNumber:issue.line,startColumn:1,endColumn:saved.model.getLineMaxColumn(issue.line),message:issue.message+' — '+issue.suggestion,severity:issue.severity==='error'?monaco.MarkerSeverity.Error:issue.severity==='warning'?monaco.MarkerSeverity.Warning:monaco.MarkerSeverity.Info})));
+      if (!valid) target.append(node('p','Mã đã thay đổi trong khi AI xử lý. Hãy phân tích lại trước khi áp dụng.'));
+      for(const issue of result.issues){
+        const card=node('div',undefined,'issue-card');
+        const button=node('button','Dòng '+issue.line+' · '+issue.message);button.type='button';
+        button.onclick = () => {
+          if (!matches(saved)) return;
+          window.tutorUI?.showPanel('editor');
+          requestAnimationFrame(() => {
+            if (!matches(saved)) return;
+            editor.layout();
+            editor.revealLineInCenter(issue.line);
+            editor.setPosition({lineNumber:issue.line, column:1});
+            editor.focus();
+            lineFocus.set([{range:new monaco.Range(issue.line,1,issue.line,1),
+              options:{isWholeLine:true,className:'line-focus-highlight'}}]);
+            clearTimeout(lineFocusTimer);
+            lineFocusTimer = setTimeout(() => lineFocus.clear(), 1500);
+          });
+        };
+        card.append(button,node('p',issue.suggestion));target.append(card);
+      }
+      if(result.fixed_code){
+        appendCodeDiff(target, saved, result.fixed_code);
+        const details=node('details',undefined,'full-code-view'),summary=node('summary','Xem toàn bộ mã đã sửa'),pre=node('pre'),code=node('code',result.fixed_code);
+        code.className='language-'+(saved.model.isDisposed()?'plaintext':saved.model.getLanguageId());pre.append(code);details.append(summary,pre);target.append(details);
+        try{hljs.highlightElement(code);}catch(_){}
+        const apply=node('button','✨ Áp dụng code đã sửa vào Editor','insert-btn');apply.type='button';apply.dataset.applyFix='true';apply.disabled=!valid;
+        apply.onclick=()=>{if(!matches(saved)){apply.disabled=true;status.textContent='Mã đã đổi. Hãy phân tích lại.';return;}replaceCode(result.fixed_code);apply.disabled=true;status.textContent='Đã áp dụng bản sửa · Ctrl+Z để hoàn tác';};
+        target.append(apply);
+      }
+      if(result.sources?.length){
+        const details=node('details'),summary=node('summary','Tài liệu chính thức được cung cấp cho AI'),list=node('ul');
+        for(const source of result.sources){
+          try{ const url=new URL(source.url);if(url.protocol!=='https:')continue;
+            const item=node('li'),link=node('a',source.title);link.href=url.href;link.target='_blank';link.rel='noopener noreferrer';item.append(link);list.append(item);
+          }catch(_){}
+        }
+        details.append(summary,list);target.append(details);
+      }
+      chatLog.scrollTop=chatLog.scrollHeight;
+    }
+
+    async function readReply(response, appendText) {
+      if (!response.ok) {
+        const body = await response.json();
+        throw new Error(body.error || 'Yêu cầu thất bại.');
+      }
+      if (!response.body) throw new Error('Trình duyệt không hỗ trợ phản hồi trực tiếp.');
+      const reader = response.body.getReader(), decoder = new TextDecoder();
+      let buffer = '', completed = false, result = null;
+      const consume = line => {
+        if (!line.trim()) return;
+        const event = JSON.parse(line);
+        if (event.error) throw new Error(event.error);
+        if (event.delta) appendText(event.delta);
+        if (event.done) {
+          completed = true; result = event.result;
+          $('provider-status').textContent = event.model + (event.fallback_used ? ' · Model cục bộ tự chọn' : '');
+        }
+      };
+      try {
+        while (true) {
+          const {value, done} = await reader.read();
+          buffer += decoder.decode(value, {stream:!done});
+          let end;
+          while ((end = buffer.indexOf('\n')) >= 0) {
+            consume(buffer.slice(0, end)); buffer = buffer.slice(end + 1);
+          }
+          if (done) break;
+        }
+        consume(buffer);
+        if (!completed || !result) throw new Error('Kết nối bị ngắt hoặc chưa có kết quả hợp lệ.');
+        return result;
+      } finally { await reader.cancel().catch(() => {}); reader.releaseLock(); }
+    }
+
+    $('chat-form').addEventListener('submit', async e => {
+      e.preventDefault();
+      if (!editor || activeChat || activeAssessment || window.tutorRagBusy) return;
+      const question = $('question').value.trim();
+      if (!question) return;
+      if (question.includes(PROMPT_GOAL)) { status.textContent='Hãy thay phần [Nhập yêu cầu của bạn] bằng câu hỏi cụ thể trước khi gửi.'; $('question').focus(); selectGoalPlaceholder(); return; }
+      if (editor.getValue().length > 60000) { status.textContent = 'Mã nguồn vượt giới hạn 60.000 ký tự.'; return; }
+      if (editor.getModel().getValueInRange(editor.getSelection()).length > 20000) { status.textContent = 'Chỉ chọn tối đa 20.000 ký tự.'; return; }
+      activeChat = new AbortController();
+      updateCompletionState();
+      $('stop').hidden = false; $('clear-chat').disabled = true;
+      const send = $('send');
+      send.disabled = true;
+      $('question').value = '';
+      status.textContent = 'Đang tạo phản hồi · kết quả còn được kiểm tra trước khi áp dụng';
+      const snapshotHistory = history.slice(-4).map(item => ({...item, content:item.content.slice(0,1500)}));
+      const selection = editor.getSelection();
+      const attach = $('attach-code').checked;
+      const selectedCode = !attach || selection.isEmpty() ? '' : editor.getModel().getValueInRange(selection);
+      const saved = {...snapshot(),analyzed:attach};
+      const request = {question,mode:$('task-mode').value,current_code:attach?saved.code:'',selected_code:selectedCode,language:$('language').value,history:snapshotHistory};
+      addBubble('user', question);
+      const answerContainer = addBubble('assistant', '');
+      const waiting = node('span', 'AI đang xử lý yêu cầu', 'chat-waiting');
+      const dots = node('span', undefined, 'waiting-dots');
+      dots.setAttribute('aria-hidden', 'true');
+      for (let i = 0; i < 3; i++) dots.appendChild(node('i'));
+      waiting.appendChild(dots);
+      answerContainer.appendChild(waiting);
+      const chatTimer = setTimeout(() => activeChat?.abort(), 185000);
+      let answer = '';
+      let scheduledRender = null;
+      try {
+        const response = await fetch('/api/tutor/chat', {
+          method: 'POST', headers: {'Content-Type': 'application/json', 'Accept':'application/x-ndjson'},
+          body: JSON.stringify(request), signal: activeChat.signal
+        });
+        const result = await readReply(response, part => {
+          answer += part;
+          if (scheduledRender === null) {
+            scheduledRender = requestAnimationFrame(() => {
+              scheduledRender = null;
+              answerContainer.textContent = answer;
+              answerContainer.style.whiteSpace = 'pre-wrap';
+              chatLog.scrollTop = chatLog.scrollHeight;
+            });
+          }
+        });
+        if (scheduledRender !== null) cancelAnimationFrame(scheduledRender);
+        answerContainer.style.whiteSpace = '';
+        answer = result.reply;
+        renderMarkdown(answerContainer, answer);
+        showAnalysis(answerContainer, result, saved);
+        history.push({role:'user', content:question}, {role:'assistant', content:answer});
+        while (history.length > 20) history.shift();
+        status.textContent = 'Hoàn thành';
+      } catch (error) {
+        if (scheduledRender !== null) cancelAnimationFrame(scheduledRender);
+        answerContainer.style.whiteSpace = '';
+        answerContainer.textContent = answer || 'Chưa có nội dung trả lời.';
+        answerContainer.style.whiteSpace = 'pre-wrap';
+        const notice = document.createElement('p');
+        notice.textContent = error.name === 'AbortError' ? 'Đã dừng trả lời.' : 'Lỗi: ' + error.message;
+        answerContainer.appendChild(notice);
+        if (!$('question').value) $('question').value = question;
+        status.textContent = error.name === 'AbortError' ? 'Đã dừng' : 'Gửi lại câu hỏi để thử lại';
+      } finally {
+        clearTimeout(chatTimer); activeChat = null; updateCompletionState(); $('stop').hidden = true; $('clear-chat').disabled = false;
+        send.disabled = false;
+        // Keep an intentionally cleared composer empty until the next user focus.
+      }
+    });
+
+    require(['vs/editor/editor.main'], () => {
+      $('editor').replaceChildren();
+      const initialLanguage = $('language').value;
+      editor = monaco.editor.create($('editor'), {
+        model: monaco.editor.createModel(typeof drafts[initialLanguage] === 'string' ? drafts[initialLanguage] : samples[initialLanguage], initialLanguage),
+        language: initialLanguage, theme: 'vs', automaticLayout: true,
+        fontSize: 15, minimap: {enabled:false}, scrollBeyondLastLine:false,
+        quickSuggestions: false, suggestOnTriggerCharacters: false,
+        inlineSuggest: {enabled:true}, tabCompletion: 'on'
+      });
+      $('send').disabled = false;
+      $('code-run').disabled = false;
+      $('assessment-create').disabled = false;
+      models.set(initialLanguage, editor.getModel());
+      errorBadges = editor.createDecorationsCollection();
+      lineFocus = editor.createDecorationsCollection();
+      window.addEventListener('tutor-panel-change', () => {
+        if ($('ide-screen').dataset.activePanel === 'editor') editor.layout();
+      });
+      monaco.editor.onDidChangeMarkers(resources => {
+        if (resources.some(uri => uri.toString() === editor.getModel().uri.toString())) renderErrorBadges();
+      });
+      scheduleSyntaxCheck();
+
+      $('language').addEventListener('change', e => {
+        cancelCompletion();
+        clearTimeout(draftTimer);
+        if (editor.getModel()) {
+          const previous = [...models.entries()].find(([, model]) => model === editor.getModel());
+          if (previous) drafts[previous[0]] = editor.getValue();
+        }
+        const language = e.target.value;
+        if (!models.has(language)) models.set(language, monaco.editor.createModel(typeof drafts[language] === 'string' ? drafts[language] : samples[language], language));
+        editor.setModel(models.get(language)); invalidateAnalysis(); scheduleSyntaxCheck();
+      });
+      editor.onDidChangeModelContent(() => { cancelCompletion(); scheduleDraft(); invalidateAnalysis(); scheduleSyntaxCheck(); });
+      editor.onDidChangeCursorPosition(e => { $('cursor-status').textContent = 'Dòng ' + e.position.lineNumber + ', cột ' + e.position.column; });
+      editor.onDidChangeCursorSelection(updateContextStatus);
+      editor.onDidChangeModelContent(updateRunSnapshotState);
+      $('language').addEventListener('change', updateRunSnapshotState);
+
+      monaco.languages.registerInlineCompletionsProvider(
+        [{language:'java'}, {language:'python'}, {language:'cpp'}, {language:'c'}], {
+          provideInlineCompletions(model, position, _context, token) {
+            cancelCompletion();
+            const version = model.getVersionId();
+            const prefix = model.getValueInRange(new monaco.Range(Math.max(1, position.lineNumber - 19),1,
+              position.lineNumber, position.column)).slice(-6000);
+            const suffix = model.getValueInRange(new monaco.Range(position.lineNumber,
+              position.column, Math.min(model.getLineCount(), position.lineNumber + 19),
+              model.getLineMaxColumn(Math.min(model.getLineCount(), position.lineNumber + 19)))).slice(0, 6000);
+            if (activeChat || activeAssessment || window.tutorRagBusy || Date.now() < cooldownUntil || !$('completion-enabled').checked || prefix.length > 60000 || suffix.length > 60000 || !prefix.trim() || token.isCancellationRequested) return {items: []};
+            return new Promise(resolve => {
+              pendingDebounceResolve = resolve;
+              pendingDebounceTimer = setTimeout(async () => {
+                pendingDebounceTimer = null;
+                pendingDebounceResolve = null;
+                if (activeChat || activeAssessment || window.tutorRagBusy || token.isCancellationRequested) { resolve({items:[]}); return; }
+                const controller = new AbortController();
+                activeCompletion = controller;
+                const disposal = token.onCancellationRequested(() => controller.abort());
+                const completionTimer = setTimeout(() => controller.abort(), 15000);
+                try {
+                  const response = await fetch('/api/tutor/complete', {
+                    method:'POST', headers:{'Content-Type':'application/json'},
+                    signal:controller.signal,
+                    body:JSON.stringify({prefix,suffix,language:$('language').value})
+                  });
+                  if (!response.ok) {
+                    if (response.status === 429) cooldownUntil = Date.now() + 60000;
+                    if (response.status === 503) cooldownUntil = Date.now() + 1500;
+                    let error = {}; try { error = await response.json(); } catch (_) {}
+                    $('save-status').textContent = '· Gợi ý AI: ' + (error.error || 'Không khả dụng');
+                    resolve({items:[]}); return;
+                  }
+                  const data = await response.json();
+                  if (activeChat || activeAssessment || window.tutorRagBusy || controller.signal.aborted || token.isCancellationRequested ||
+                      version !== model.getVersionId() || !data.completion) {
+                    resolve({items: []}); return;
+                  }
+                  resolve({items:[{insertText:data.completion, range:new monaco.Range(
+                    position.lineNumber, position.column, position.lineNumber, position.column)}]});
+                } catch (_) { resolve({items: []}); }
+                finally {
+                  clearTimeout(completionTimer); disposal.dispose();
+                  if (activeCompletion === controller) activeCompletion = null;
+                }
+              }, 450);
+            });
+          },
+          freeInlineCompletions() {},
+          disposeInlineCompletions() {}
+        }
+      );
+      // Monaco xu ly Tab (accept) va Esc (hide) tren inline suggest mac dinh.
+      // Keep the branded welcome visible until the first chat message.
+    }, () => { $('editor').textContent = 'Không tải được Monaco Editor. Kiểm tra kết nối Internet rồi tải lại trang.'; });
+  })();
+
+</script>
+<script src="/rag.js" defer></script>
+</body>
+</html>
