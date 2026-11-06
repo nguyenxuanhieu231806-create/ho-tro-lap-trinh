@@ -37,7 +37,7 @@ FR-008/009/010: kết quả nằm dưới Editor, giữ bố cục 55/45 và tab
 | Dockerfile.grader | Nhãn phiên bản giao thức của image compiler |
 | Dockerfile | Đóng gói code_verifier.py để API nhập mô-đun được |
 | .dockerignore | Cho hai file bộ chạy vào build context được chọn lọc |
-| README.md | Hướng dẫn dựng image, chạy console, giới hạn, kiểm tra và ranh giới triển khai Docker Web |
+| README.md | Hướng dẫn dựng image, chạy console, giới hạn, kiểm tra và ranh giới triển khai Docker của hệ thống |
 | .specify/feature.json | Chọn feature 005 đang thực hiện |
 | specs/005-run-four-languages/spec.md | Đặc tả tính năng và tiêu chí nghiệm thu |
 | specs/005-run-four-languages/plan.md | Kế hoạch kỹ thuật trước khi triển khai |
@@ -79,8 +79,8 @@ Không đổi requirements.txt, ai_core.py, dữ liệu tài khoản hay hàm se
 
 ## Cách sử dụng sau nghiệm thu
 
-1. Giữ Docker Desktop chạy. Image compiler đã được dựng trên máy, không cần dựng lại mỗi lần mở Web.
-2. Tại thư mục dự án, khởi động Web bằng run.ps1; đăng nhập rồi chọn ngôn ngữ, nhập nguồn/stdin và bấm Chạy thử. Sau khi áp dụng bản sửa AI, chạy lại bằng cùng nút.
+1. Giữ Docker Desktop chạy. Image compiler đã được dựng trên máy, không cần dựng lại mỗi lần mở hệ thống.
+2. Tại thư mục dự án, khởi động hệ thống bằng run.ps1; đăng nhập rồi chọn ngôn ngữ, nhập nguồn/stdin và bấm Chạy thử. Sau khi áp dụng bản sửa AI, chạy lại bằng cùng nút.
 3. Khi thay bộ chạy/image, dựng lại bằng docker build -f Dockerfile.grader -t fit-tutor-grader:1 . rồi chạy verify-live.py để nghiệm thu lại.
 
 Toàn bộ T001–T011 hoàn thành. Chạy thành công với một bộ dữ liệu không chứng minh thuật toán đúng cho mọi trường hợp. Chương trình console nhận stdin trước khi chạy; không có terminal tương tác hay giao diện đồ họa. Các máy chủ/SQLite của kiểm thử là tạm và đã dọn; không để lại máy chủ nền chiếm cổng 8000 của người dùng.

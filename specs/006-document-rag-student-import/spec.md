@@ -6,7 +6,7 @@ Triển khai theo phạm vi đã khảo sát, giữ các lựa chọn đã xác 
 
 ## Phạm vi và các quyết định đã được người dùng xác nhận
 
-1. Thêm chế độ Hỏi đáp tài liệu riêng, giữ Chat/Sửa code và toàn bộ Web IDE hiện tại.
+1. Thêm chế độ Hỏi đáp tài liệu riêng, giữ Chat/Sửa code và toàn bộ không gian lập trình hiện tại.
 2. Kho tài liệu dùng chung cho mọi sinh viên đã đăng nhập trong phiên bản đầu.
 3. Word không có phân trang xác thực thì dẫn tên tài liệu + mục/đoạn/vị trí. Chỉ hiện trang khi có metadata hợp lệ; không tự suy ra trang từ số đoạn hoặc page break cũ.
 4. Excel chuẩn dùng Email, MSSV, Họ và tên, Lớp, Năm học; giữ email đăng nhập, MSSV duy nhất và mặc định chỉ thêm mới. Người dùng mô tả Excel có cả mật khẩu, đồng thời chọn tạo mật khẩu riêng. Dự thảo kết hợp để duyệt: thêm cột Mật khẩu tùy chọn; có giá trị thì dùng để cấp tài khoản mới sau băm, trống thì tạo riêng lúc commit. Không tự thay mật khẩu tài khoản cũ. Chưa chốt tài khoản quản trị và cách bàn giao thông tin đăng nhập cho từng sinh viên.
@@ -100,7 +100,7 @@ Document, DocumentRevision, ContentBlock, ImageAsset, Chunk, EmbeddingProfile, I
 | AC-19 | Sinh viên mới sau restart | Đăng nhập được, không bị seed xóa; bốn sinh viên cũ/mật khẩu đã đổi còn nguyên |
 | AC-20 | Phân quyền admin và dữ liệu bí mật | Sinh viên bị chặn import/upload; không có credentials trong Chroma/chat/log |
 | AC-21 | Dịch vụ lỗi/hủy/quá tải | Lỗi tiếng Việt, không fallback ngoài kho, không treo API; message dở dang không được coi hoàn tất |
-| AC-22 | Hồi quy Web IDE | Login, Chat code, completion, giải thích/sửa lỗi, Apply/Undo và Run C/C++/Java/Python qua lại các ca liên quan |
+| AC-22 | Hồi quy không gian lập trình | Login, Chat code, completion, giải thích/sửa lỗi, Apply/Undo và Run C/C++/Java/Python qua lại các ca liên quan |
 
 **Thước đo đề xuất:** trên bộ câu hỏi gán nhãn được hai bên chốt, mọi citation phải trỏ đúng và mọi ca ngoài kho trong bộ kiểm thử phải từ chối; không có câu trả lời phát trước gate. Báo riêng retrieval recall, đúng đáp án, hỗ trợ từng ý, độ chính xác trích dẫn, tỷ lệ từ chối sai và latency/RAM. Quy mô corpus, số câu hỏi và ngưỡng hiệu năng chưa chốt. Không tuyên bố 100% chính xác trên mọi câu hỏi thực tế chỉ nhờ prompt hoặc RAG.
 

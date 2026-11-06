@@ -87,7 +87,7 @@ asyncio.run(check())
                 ForEach-Object { Write-Host "LAN:    http://$($_.IPAddress):$Port" }
         } catch { Write-Host 'Use ipconfig to find the Wi-Fi/Ethernet IPv4 address.' }
         Write-Host "Health: $localUrl/api/health"
-        Write-Host 'Ctrl+C stops the web. Ollama stays available.'
+        Write-Host 'Ctrl+C stops the system. Ollama stays available.'
         if (!$NoBrowser) {
             $browserJob = Start-Job -ArgumentList $localUrl -ScriptBlock {
                 param($url)

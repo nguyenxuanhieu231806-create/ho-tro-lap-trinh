@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Web hỗ trợ lập trình cho sinh viên Khoa Công nghệ Thông tin | FIT-HPUni</title>
+  <title>Hệ thống hỗ trợ lập trình cho sinh viên Khoa Công nghệ Thông tin – Trường Đại học Hải Phòng</title>
   
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@11.11.1/styles/github.min.css" />
 <link rel="icon" href="/LogoFITHPUni.png"><link rel="preload" as="image" href="/ocean-station-bg.png">
@@ -243,7 +243,7 @@ body.motion-quiet .ocean-scene i, body.motion-quiet .ocean-scene::before { anima
 <form id="login-form" class="login-card">
 <div class="entry-kicker">Khoa CNTT · Trường Đại học Hải Phòng</div>
 <img class="entry-logo" src="/LogoFITHPUni.png" alt="Logo Khoa CNTT FIT-HPUni">
-<h1 id="login-heading">Hệ thống Web hỗ trợ lập trình cho sinh viên Khoa Công nghệ Thông tin - Trường Đại học Hải Phòng</h1>
+<h1 id="login-heading">Hệ thống hỗ trợ lập trình cho sinh viên Khoa Công nghệ Thông tin – Trường Đại học Hải Phòng</h1>
 <label for="student-account">Tài khoản (Email)</label>
 <input id="student-account" type="email" autocomplete="username" autocapitalize="none" spellcheck="false" maxlength="254" placeholder="Nhập email đã được cấp" required>
 <label for="student-password">Mật khẩu</label>
@@ -287,7 +287,7 @@ body.motion-quiet .ocean-scene i, body.motion-quiet .ocean-scene::before { anima
   <div class="intro-card">
     <img class="entry-logo" src="/LogoFITHPUni.png" alt="Logo FIT-HPUni" width="108" height="108">
     <div class="entry-kicker">ĐẠI DƯƠNG TRI THỨC ĐANG CHỜ BẠN</div>
-    <h1 id="intro-heading" tabindex="-1">Chào mừng bạn đến với hệ thống Web hỗ trợ lập trình cho sinh viên Khoa Công nghệ Thông tin</h1>
+    <h1 id="intro-heading" tabindex="-1">Chào mừng bạn đến với hệ thống hỗ trợ lập trình cho sinh viên Khoa Công nghệ Thông tin – Trường Đại học Hải Phòng</h1>
     <p><strong id="intro-student"></strong> · Sẵn sàng khám phá cùng nhau!</p>
     <div class="language-beacons" aria-label="Chọn ngôn ngữ học">
 <button type="button" class="language-beacon" data-intro-language="c" aria-pressed="false">C</button>
@@ -302,7 +302,7 @@ body.motion-quiet .ocean-scene i, body.motion-quiet .ocean-scene::before { anima
 </section>
 <div id="ide-screen" data-active-panel="editor" hidden>
 <header>
-<div class="brand"><img class="brand-logo" src="/LogoFITHPUni.png" alt="Logo Khoa CNTT"><h1 title="Web hỗ trợ lập trình cho sinh viên Khoa Công nghệ Thông tin">Web hỗ trợ lập trình · Khoa CNTT</h1></div>
+<div class="brand"><img class="brand-logo" src="/LogoFITHPUni.png" alt="Logo Khoa CNTT"><h1 title="Hệ thống hỗ trợ lập trình cho sinh viên Khoa Công nghệ Thông tin – Trường Đại học Hải Phòng">Hệ thống hỗ trợ lập trình · Khoa CNTT</h1></div>
 <div class="header-session"><div id="current-student" class="student-badges" aria-label="Thông tin sinh viên"><span class="student-badge identity"><strong id="student-name"></strong><small id="student-id"></small></span><span id="student-class" class="student-badge"></span><span id="student-year" class="student-badge"></span></div><label class="sr-only" for="language">Ngôn ngữ</label><select id="language"><option value="c">C</option><option value="cpp">C++</option><option value="java">Java</option><option value="python" selected>Python</option></select><button id="focus-mode" type="button" aria-pressed="false" title="Tạm dừng hoạt ảnh để tập trung">Tập trung</button><button id="change-password" type="button">Đổi mật khẩu</button><button id="logout" type="button">Đăng xuất</button></div>
 </header>
 <nav id="workspace-tabs" role="tablist" aria-label="Không gian học">
@@ -459,7 +459,7 @@ body.motion-quiet .ocean-scene i, body.motion-quiet .ocean-scene::before { anima
       const fullName = session.name.replace(/^Sinh viên\s+/u, '');
       const isAdmin = session.role === 'admin';
       const className = session.class_name || (isAdmin ? 'Khoa CNTT' : 'CNTT3.K25');
-      $('intro-heading').textContent = isAdmin ? `Chào mừng ${fullName} đến với hệ thống Web hỗ trợ lập trình cho sinh viên Khoa Công nghệ Thông tin` : `Chào mừng ${fullName} (Lớp ${className}) đến với hệ thống Web hỗ trợ lập trình cho sinh viên Khoa Công nghệ Thông tin`;
+      $('intro-heading').textContent = isAdmin ? `Chào mừng ${fullName} đến với hệ thống hỗ trợ lập trình cho sinh viên Khoa Công nghệ Thông tin – Trường Đại học Hải Phòng` : `Chào mừng ${fullName} (Lớp ${className}) đến với hệ thống hỗ trợ lập trình cho sinh viên Khoa Công nghệ Thông tin – Trường Đại học Hải Phòng`;
       $('intro-student').textContent = fullName;
       $('student-name').textContent = fullName;
       $('student-id').textContent = isAdmin ? 'Quản trị hệ thống' : 'MSSV: ' + session.student_id;

@@ -14,7 +14,7 @@ Thêm RunRequest/RunResult và hai route trong api.py. Giao diện có Chạy th
 
 ## Tệp triển khai
 
-code_verifier.py, api.py, static/index.html, Dockerfile.grader, .dockerignore, Dockerfile và README.md. Dockerfile Web đóng gói mô-đun chạy để nhập API được; máy chủ local gọi Docker CLI. Dùng Docker Linux cục bộ cho lần triển khai này.
+code_verifier.py, api.py, static/index.html, Dockerfile.grader, .dockerignore, Dockerfile và README.md. Dockerfile của hệ thống đóng gói mô-đun chạy để nhập API được; máy chủ local gọi Docker CLI. Dùng Docker Linux cục bộ cho lần triển khai này.
 
 ## Xác minh
 

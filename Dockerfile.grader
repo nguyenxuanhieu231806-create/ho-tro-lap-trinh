@@ -1,7 +1,7 @@
 FROM python:3.11-slim-bookworm
 LABEL fit-tutor.runner-protocol="1"
 
-# Optional compiler image, separate from the lightweight FastAPI web image.
+# Optional compiler image, separate from the lightweight FastAPI app image.
 RUN apt-get update \
     && apt-get install --no-install-recommends -y gcc g++ default-jdk-headless \
     && rm -rf /var/lib/apt/lists/*

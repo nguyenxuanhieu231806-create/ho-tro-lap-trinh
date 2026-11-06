@@ -1,6 +1,6 @@
 # Nghiệm thu giao diện 004
 
-- Mở Web và kiểm tra logo thật, form giữa màn hình, trường email/mật khẩu và nút đổi mật khẩu.
+- Mở hệ thống và kiểm tra logo thật, form giữa màn hình, trường email/mật khẩu và nút đổi mật khẩu.
 - Đăng nhập tài khoản thử và kiểm tra intro có bốn đèn, mỗi đèn mở nội dung tương ứng và chọn đúng ngôn ngữ IDE.
 - Thử Bắt đầu học, Bỏ qua, nhấn lặp và chế độ giảm chuyển động.
 - Ở 1366×768 và 1920×1080, kiểm tra tỷ lệ 55/45, nút gửi trong cửa sổ và cuộn riêng hai khung.

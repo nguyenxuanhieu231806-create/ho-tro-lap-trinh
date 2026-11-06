@@ -1,8 +1,8 @@
 # Nghiệm thu prompt gia sư Ollama
 
-## Kiểm tra đường đi trong Web
+## Kiểm tra đường đi trong hệ thống
 
-1. Ở thư mục dự án, chạy `.\run.ps1 -CheckOnly` để kiểm tra model. Khởi động Web bằng `.\run.ps1`, rồi mở [trang Web cục bộ](http://127.0.0.1:8000/).
+1. Ở thư mục dự án, chạy `.\run.ps1 -CheckOnly` để kiểm tra model. Khởi động hệ thống bằng `.\run.ps1`, rồi mở [giao diện cục bộ](http://127.0.0.1:8000/).
 2. Đăng nhập bằng tài khoản thử đã cấp. Bấm ô hỏi trống hoặc nút Câu lệnh mẫu. Kiểm tra ô có câu ngắn và con trỏ chọn đúng phần cần nhập. Thử gửi khi phần đó còn nguyên, rồi thay bằng câu hỏi thật. Kiểm tra gợi ý nhanh, nút Kiểm tra ngay, đổi ngôn ngữ và Kèm mã.
 3. Quan sát câu trả lời xuất hiện dần. Với mã Python đúng, chờ kết quả rỗng về lỗi. Với `double(x)` trả `x+1` khi đề bài cần `2*x`, kiểm tra dòng lỗi và bản mã đầy đủ. Với yêu cầu thiếu dữ kiện và mã sai cú pháp, kiểm tra câu hỏi làm rõ và trường sửa có thể rỗng. Thử gợi ý khi gõ và áp dụng bản sửa vào đúng phiên bản mã.
 4. Kiểm tra đăng nhập và đổi mật khẩu trên cơ sở dữ liệu tạm. Đối chiếu tải giao diện và logo, soạn thảo, hợp đồng chat JSON/NDJSON và cơ chế gợi ý.

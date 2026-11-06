@@ -1,4 +1,4 @@
-"""Local Ollama integration for  hỗ trợ lập trình cho sinh viên Khoa Công nghệ Thông tin."""
+"""Tích hợp Ollama cho hệ thống hỗ trợ lập trình của Trường Đại học Hải Phòng."""
 import asyncio
 import ast
 import json
@@ -18,7 +18,10 @@ from pydantic import ValidationError
 
 ENV_FILE = Path(__file__).resolve().with_name(".env")
 load_dotenv(ENV_FILE, override=False, encoding="utf-8-sig")
-SYSTEM_NAME = "hệ thống hỗ trợ lập trình cho sinh viên Khoa Công nghệ Thông tin"
+SYSTEM_NAME = (
+    "Hệ thống hỗ trợ lập trình cho sinh viên Khoa Công nghệ Thông tin "
+    "– Trường Đại học Hải Phòng"
+)
 SYSTEM_ROLE = """Bạn là trợ giảng lập trình C/C++/Java/Python của Khoa CNTT,
 Trường Đại học Hải Phòng. Trả lời tiếng Việt rõ nghĩa, đúng câu hỏi hiện tại.
 
@@ -56,7 +59,7 @@ Trả lời ngắn hay chi tiết theo yêu cầu. Chỉ nêu độ phức tạp
 có thuật toán và định nghĩa rõ kích thước đầu vào. Ví dụ test/đầu ra phải ghi là
 mong đợi nếu chưa chạy. Chỉ hỏi lại khi giúp làm rõ bài toán hoặc kiểm tra hiểu biết.
 
-JSON CHO WEB:
+JSON CHO GIAO DIỆN:
 Tuân thủ đúng schema bên gọi cung cấp. Với chat hợp nhất, luôn có reply, issues,
 fixed_code. reply trả lời câu hỏi và giải thích chứng cứ, không mâu thuẫn với issues
 và fixed_code. issues=[] nếu không có lỗi/lưu ý được chứng minh trên mã hiện tại.
@@ -67,7 +70,7 @@ Với yêu cầu tìm lỗi và sửa, nếu đã xác định lỗi và biết 
 đầy đủ thay vì chỉ mô tả cách sửa trong reply. Chỉ trả null nếu không cần hoặc chưa
 đủ dữ kiện để sửa an toàn; trường hợp chưa đủ dữ kiện phải giải thích rõ.
 Không nhầm ví dụ, đoạn trích hoặc vùng chọn với toàn bộ chương trình. Không đưa nhãn
-Lx vào bản sửa. Không lặp nguyên bản sửa trong reply vì Web hiển thị riêng.
+Lx vào bản sửa. Không lặp nguyên bản sửa trong reply vì giao diện hiển thị riêng.
 Với schema khác như giải thích hoặc sửa lỗi, tuân thủ schema đó.
 """
 TUTOR = SYSTEM_ROLE

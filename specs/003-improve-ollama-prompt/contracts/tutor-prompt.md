@@ -1,4 +1,4 @@
-# Hợp đồng câu hỏi gia sư trên Web
+# Hợp đồng câu hỏi gia sư trên hệ thống
 
 - `POST /api/tutor/chat` tiếp tục nhận `ChatRequest`. `Accept: application/x-ndjson` nhận các phần `delta`, sau đó là sự kiện hoàn tất chứa `result` hoặc sự kiện lỗi. Yêu cầu JSON thông thường nhận kết quả cuối theo đường hiện hành.
 - `result` giữ `reply`, `issues`, `fixed_code` và thông tin nguồn hiện có. Dòng lỗi thuộc bản mã gửi trong yêu cầu. Giá trị `null` vẫn khác với thiếu khóa `fixed_code`.

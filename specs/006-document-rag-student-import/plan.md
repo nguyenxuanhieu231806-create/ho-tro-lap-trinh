@@ -8,11 +8,11 @@ Giữ ứng dụng Python/FastAPI/Monaco hiện tại. Bổ sung chế độ H�
 
 ## Technical Context
 
-- Runtime đã kiểm chứng: Python 3.12.14; Docker Web hiện dùng Python 3.11. Cần kiểm thử cả hai khi pin phụ thuộc mới.
-- Cơ sở hiện tại: FastAPI/Uvicorn/Pydantic/python-dotenv, urllib cho Ollama; SQLite auth; Web IDE với Run Docker độc lập.
+- Runtime đã kiểm chứng: Python 3.12.14; Docker của hệ thống hiện dùng Python 3.11. Cần kiểm thử cả hai khi pin phụ thuộc mới.
+- Cơ sở hiện tại: FastAPI/Uvicorn/Pydantic/python-dotenv, urllib cho Ollama; SQLite auth; không gian lập trình với Run Docker độc lập.
 - Phụ thuộc đề xuất: chromadb, python-docx, openpyxl; python-multipart khi chọn upload chuẩn; Pillow/Tesseract và dữ liệu vie+eng chỉ nếu mẫu chứng minh cần OCR. Pin phiên bản tương thích sau duyệt, không thêm LangChain/cloud SDK mặc định.
 - Storage đề xuất: accounts.sqlite3 giữ users/sessions/attempts và batch import; rag.sqlite3 mới cho registry/job/history; data/chroma và data/documents riêng, ngoài static.
-- Triển khai ưu tiên local một process Web và Chroma persistent cùng máy. Phương án Chroma service Docker riêng còn là lựa chọn thay thế phải duyệt. Không công khai cổng Chroma/Ollama.
+- Triển khai ưu tiên local một tiến trình ứng dụng và Chroma persistent cùng máy. Phương án Chroma service Docker riêng còn là lựa chọn thay thế phải duyệt. Không công khai cổng Chroma/Ollama.
 - Máy khoảng 15,7 GiB RAM, 8 logical CPU; chưa xác định GPU. Không đặt cam kết thời gian trả lời/khối lượng nạp trước benchmark corpus thực tế.
 
 ## Cổng phê duyệt

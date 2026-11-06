@@ -1,7 +1,7 @@
 """Bounded code checks; submitted programs run only in a local Docker sandbox.
 
 Build the optional image: docker build -f Dockerfile.grader -t fit-tutor-grader:1 .
-No compiler, interpreter, shell, or submitted program is invoked on the web host.
+No compiler, interpreter, shell, or submitted program is invoked on the app host.
 Python AST/compile() checks produce code objects only; they never execute them.
 """
 from __future__ import annotations
@@ -336,7 +336,7 @@ def verify_code(language, source, test_cases=()):
         evidence["reason"] = status["reason"]
         return evidence
     try:
-        # The sandbox receives inputs only; expected answers stay on the web host.
+        # The sandbox receives inputs only; expected answers stay on the app host.
         run = _run_sandbox(language, source, [given for given, _ in values], status)
         if run["timeout"] or run["overflow"] or run["returncode"] != 0:
             evidence["reason"] = "Môi trường kiểm chứng bị ngắt hoặc vượt giới hạn; chưa thể kết luận Đúng/Sai."
@@ -547,4 +547,4 @@ if __name__ == "__main__":
     if sys.argv[1:] == ["--sandbox"]:
         _sandbox_main()
     else:
-        raise SystemExit("Import verify_code() from the web server; do not run submitted code on the host.")
+        raise SystemExit("Import verify_code() from the app server; do not run submitted code on the host.")

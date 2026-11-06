@@ -8,7 +8,7 @@ from api import DB, create_admin, migrate_auth_database
 
 
 def main():
-    parser = argparse.ArgumentParser(description="Quản lý tài khoản cục bộ của Web hỗ trợ lập trình.")
+    parser = argparse.ArgumentParser(description="Quản lý tài khoản cục bộ của hệ thống hỗ trợ lập trình.")
     parser.add_argument("command", choices=("create-admin", "migrate"))
     parser.add_argument("--db", type=Path, default=DB, help="Đường dẫn CSDL tài khoản")
     parser.add_argument("--email", help="Email quản trị mới; không tự nâng quyền tài khoản có sẵn")

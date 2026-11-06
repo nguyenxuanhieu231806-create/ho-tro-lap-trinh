@@ -94,6 +94,6 @@ Sinh viên nhấn vào ô hỏi hoặc một gợi ý nhanh. Hệ thống điề
 
 ## Assumptions
 
-- Phạm vi thay đổi là câu lệnh hệ thống được Web gửi mỗi lần hỏi, câu lệnh mẫu trên giao diện và ràng buộc kết quả đang mâu thuẫn với quy tắc “chưa đủ dữ kiện”.
-- Model cục bộ, cấu hình trọng số và cơ sở dữ liệu được giữ nguyên. Việc tạo lại model từ Modelfile để dùng ngoài Web là công việc riêng.
+- Phạm vi thay đổi là câu lệnh hệ thống được hệ thống gửi mỗi lần hỏi, câu lệnh mẫu trên giao diện và ràng buộc kết quả đang mâu thuẫn với quy tắc “chưa đủ dữ kiện”.
+- Model cục bộ, cấu hình trọng số và cơ sở dữ liệu được giữ nguyên. Việc tạo lại model từ Modelfile để dùng ngoài hệ thống là công việc riêng.
 - Prompt tốt hơn có thể giảm lỗi nhưng không chứng minh tính đúng của thuật toán; kiểm chứng bằng biên dịch và ca kiểm thử thuộc đặc tả cải thiện AI rộng hơn đang chờ duyệt.

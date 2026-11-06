@@ -424,7 +424,7 @@ class RagStore:
         """Delete only failed/nonactive chunks, never an active revision or another profile."""
         removed = 0
         # mark_interrupted is an explicit OFFLINE repair option. The caller must
-        # stop every web worker before using it; constructors never mark live jobs.
+        # stop every server worker before using it; constructors never mark live jobs.
         with self._publish_lock, self._lock, self._db() as db:
             if mark_interrupted:
                 db.execute("UPDATE revisions SET status='failed' WHERE status='publishing'")

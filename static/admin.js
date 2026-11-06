@@ -152,6 +152,6 @@
       const me=await api('/api/auth/me');
       if(me.role!=='admin')throw new Error('Tài khoản này chưa có quyền quản trị. Chủ dự án cần tạo quản trị cục bộ bằng lệnh: python manage_accounts.py create-admin');
       $('admin-work').hidden=false;status('admin-auth-status','Đã xác thực quản trị: '+(me.name||me.username));await documents();
-    }catch(error){status('admin-auth-status',error.message+' · Đăng nhập đúng tài khoản tại Web IDE trước khi mở trang này.',true);}
+    }catch(error){status('admin-auth-status',error.message+' · Đăng nhập đúng tài khoản tại hệ thống trước khi mở trang này.',true);}
   })();
 })();

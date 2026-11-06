@@ -8,7 +8,7 @@ Embedding cần profile riêng. Đề xuất thử EmbeddingGemma nhỏ, có ph�
 
 ## 2. Chroma và ranh giới dữ liệu
 
-Đề xuất ban đầu: chromadb PersistentClient cục bộ, dữ liệu riêng data/chroma, không cổng công khai; lý do máy cá nhân và chưa biết tải lớn. Phương án thay thế là Chroma service trong Docker với volume riêng và client HTTP, chỉ mạng nội bộ; không dùng cổng 8000 của Web làm cổng mặc định thứ hai. Việc chọn mode phải được duyệt; chưa cài client/server.
+Đề xuất ban đầu: chromadb PersistentClient cục bộ, dữ liệu riêng data/chroma, không cổng công khai; lý do máy cá nhân và chưa biết tải lớn. Phương án thay thế là Chroma service trong Docker với volume riêng và client HTTP, chỉ mạng nội bộ; không dùng cổng 8000 của hệ thống làm cổng mặc định thứ hai. Việc chọn mode phải được duyệt; chưa cài client/server.
 
 Chroma nhận vector tính sẵn cùng documents và metadata, query theo query_embeddings và lọc allowed/active IDs từ backend. Không để default embedding function âm thầm tải hoặc thay model. Registry/ACL/quyền không giao cho LLM hoặc chỉ client filter. Cấu hình embedding collection gắn model/digest/dimension/parser/chunking profile; thay profile tạo chỉ mục mới. [Adding data](https://docs.trychroma.com/docs/collections/add-data), [Metadata filtering](https://docs.trychroma.com/docs/querying-collections/metadata-filtering), [Client/server](https://docs.trychroma.com/docs/run-chroma/client-server).
 

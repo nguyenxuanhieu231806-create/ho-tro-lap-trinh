@@ -1,4 +1,4 @@
-name: Kiem thu Web IDE
+name: Kiểm thử hệ thống hỗ trợ lập trình
 
 on:
   push:
@@ -86,9 +86,9 @@ jobs:
         run: docker build -f Dockerfile.grader -t fit-tutor-grader:1 .
       - name: Kiem thu 25 chuong trinh Docker
         run: python scripts/ci_checks.py compiler
-      - name: Kiem tra dong goi Web
+      - name: Kiem tra dong goi he thong
         run: docker build -t fit-tutor-web:ci .
-      - name: Kiem tra khoi tao Web Linux va tai nguyen
+      - name: Kiem tra khoi tao ung dung Linux va tai nguyen
         run: >-
           docker run --rm --network none --read-only
           --tmpfs /app/data:rw,nosuid,nodev,noexec,size=128m,uid=10001,gid=10001
@@ -96,7 +96,7 @@ jobs:
           --env OLLAMA_BASE_URL=http://127.0.0.1:1
           --env ANONYMIZED_TELEMETRY=False
           fit-tutor-web:ci python -B -c
-          "import api; from pathlib import Path; assert all(Path(p).is_file() for p in ['/app/static/index.html', '/app/static/LogoFITHPUni.png', '/app/language_reference.json']); api.app.state.rag_store.close(); print('Linux Web import and assets: PASS')"
+          "import api; from pathlib import Path; assert all(Path(p).is_file() for p in ['/app/static/index.html', '/app/static/LogoFITHPUni.png', '/app/language_reference.json']); api.app.state.rag_store.close(); print('Linux application import and assets: PASS')"
       - name: Tai ket qua compiler
         if: always()
         uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2

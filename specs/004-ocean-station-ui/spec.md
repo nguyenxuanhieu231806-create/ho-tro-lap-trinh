@@ -55,7 +55,7 @@ Trạng thái màn hình, ngôn ngữ được chọn, tab di động hiện t�
 
 ## Success Criteria
 
-- SC-001 — Hoàn thành luồng đăng nhập → chào mừng → IDE và luồng bỏ qua trên bản Web.
+- SC-001 — Hoàn thành luồng đăng nhập → chào mừng → IDE và luồng bỏ qua trên phiên bản ứng dụng.
 - SC-002 — Tại các kích thước đã định, hai khung và nút gửi truy cập được, trang máy tính không tràn ngang.
 - SC-003 — Bốn lựa chọn ở intro mở đúng ngôn ngữ và bản nháp.
 - SC-004 — Chuyển tab di động giữ nội dung mã và chat. Nút dòng lỗi đưa về đúng vị trí.

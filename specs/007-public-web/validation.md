@@ -4,7 +4,7 @@ URL: https://slight-fitting-corps-tennis.trycloudflare.com
 
 cloudflared 2026.10.7 tải từ release chính thức cloudflare/cloudflared; SHA-256
 2493dbc168923bb3e59e5e7716f71deced92992eea9acd6e9d74f84ac7751343 khớp digest asset chính thức.
-Tunnel dùng HTTP/2 tới đúng Web http://127.0.0.1:8000 đã chạy; không khởi động lại/dừng máy chủ người dùng.
+Tunnel dùng HTTP/2 tới đúng hệ thống http://127.0.0.1:8000 đã chạy; không khởi động lại/dừng máy chủ người dùng.
 
 | Kiểm tra HTTP từ URL HTTPS ngoài | Kết quả |
 | --- | --- |
@@ -16,7 +16,7 @@ Tunnel dùng HTTP/2 tới đúng Web http://127.0.0.1:8000 đã chạy; không k
 | POST /api/auth/login với Origin của tunnel và body rỗng | 400 validation, không bị lỗi Origin 403; không gửi credentials |
 
 Không kiểm tra mật khẩu người dùng và không thay dữ liệu tài khoản. Không công khai cổng 11434.
-Link này cần máy/Web/tunnel còn chạy; không phải uptime được bảo đảm hoặc hosting cố định.
+Link này cần máy/hệ thống/tunnel còn chạy; không phải uptime được bảo đảm hoặc hosting cố định.
 
 Git local origin: https://github.com/nguyenxuanhieu231806-create/web-ho-tro-lap-trinh-cntt.git.
 Commit ban đầu df2b9a2 đã có trong local. GitHub API công khai trả 404; không có GitHub credential
@@ -88,6 +88,31 @@ quyền truy cập repo hoặc viết lại lịch sử.
 Tệp cập nhật ở lượt sửa kết nối: `.git/config` sửa origin; `spec.md`, `plan.md`,
 `tasks.md`, `validation.md` trong thư mục 007 ghi nguyên nhân, đối chiếu và cách
 tích hợp. Mã ứng dụng và dữ liệu local giữ nguyên.
+
+## Kết quả đổi tên và GitHub Actions
+
+Người dùng yêu cầu tên “ho tro lap trinh”. Ngày 06/11/2026 đã đổi tên chính kho
+GitHub qua trang Repository name thành `ho-tro-lap-trinh`; không đổi chủ sở hữu,
+quyền truy cập hoặc mã sản phẩm. URL đã kiểm chứng bằng API chính thức:
+https://github.com/nguyenxuanhieu231806-create/ho-tro-lap-trinh .
+URL tên cũ chuyển hướng về đúng tên mới. Origin local đã đổi sang URL mới có đuôi
+`.git`; fetch thành công. HEAD và origin/main cùng là
+`d3d4969b72423c94e90bd506de010e167d40f79d` tại thời điểm xác minh (trước cập nhật
+tài liệu xác minh này). Điều đó cũng xác nhận người dùng đã push thành công từ
+Terminal riêng sau bước sửa địa chỉ. Không thay đổi thư mục dự án local.
+
+Workflow kiểm thử, run 42152205984, completed/success:
+https://github.com/nguyenxuanhieu231806-create/ho-tro-lap-trinh/actions/runs/42152205984 .
+Cả 3 job backend/browser/compiler đều success, bao gồm bước 25 chương trình Docker,
+dựng image hệ thống và kiểm tra khởi tạo/tài nguyên Linux. Ba artifact backend-results,
+browser-results, compiler-results tồn tại và chưa hết hạn. API công khai tải ZIP
+yêu cầu đăng nhập (401), nên chưa trực tiếp đọc JSON trong artifact; không suy ra
+số lượng kiểm tra chi tiết từ tên job. Phân biệt với số kiểm tra local đã ghi ở trên.
+
+Tệp thay đổi cho yêu cầu đổi tên: `.git/config` cập nhật origin;
+`specs/007-public-web/spec.md` bổ sung phạm vi đổi tên; `plan.md` bổ sung bước thực hiện;
+`tasks.md` ghi các việc đã xác minh; `validation.md` ghi URL, commit và kết quả CI.
+Không cần chạy lại kiểm thử chức năng vì lần đổi tên không sửa mã chạy.
 
 Tệp bổ sung/thay đổi cho Actions:
 

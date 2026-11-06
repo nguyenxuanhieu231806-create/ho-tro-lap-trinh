@@ -1,29 +1,29 @@
-# Web hỗ trợ lập trình cho sinh viên Khoa Công nghệ Thông tin
+# Hệ thống hỗ trợ lập trình cho sinh viên Khoa Công nghệ Thông tin – Trường Đại học Hải Phòng
 
 Python/FastAPI + Ollama cục bộ, hỗ trợ C, C++, Java và Python.
 
 ## Mở bản demo trên trình duyệt
 
-[Mở Web IDE đang chạy thử](https://slight-fitting-corps-tennis.trycloudflare.com)
+[Mở không gian lập trình đang chạy thử](https://slight-fitting-corps-tennis.trycloudflare.com)
 
 Link demo HTTPS được kiểm tra ngày 06/11/2026. Đây là Cloudflare Quick Tunnel tới
-máy đang chạy Web, không phải GitHub Pages hoặc máy chủ 24/7. Máy chủ Web, Ollama
+máy đang chạy hệ thống, không phải GitHub Pages hoặc máy chủ 24/7. Máy chủ hệ thống, Ollama
 và tunnel cần tiếp tục chạy; dừng tunnel hoặc tắt máy sẽ làm link hết hoạt động.
-Đăng nhập bằng tài khoản đã được cấp. Mã nguồn trên GitHub và link chạy Web là hai địa chỉ riêng.
+Đăng nhập bằng tài khoản đã được cấp. Mã nguồn trên GitHub và link chạy hệ thống là hai địa chỉ riêng.
 
 ## Kiểm thử trên GitHub Actions
 
-Workflow `Kiem thu Web IDE` tự chạy khi đẩy nhánh `main`, mở pull request vào
-`main`, hoặc chọn **Actions → Kiem thu Web IDE → Run workflow** trên GitHub.
+Workflow `Kiểm thử hệ thống hỗ trợ lập trình` tự chạy khi đẩy nhánh `main`, mở pull request vào
+`main`, hoặc chọn **Actions → Kiểm thử hệ thống hỗ trợ lập trình → Run workflow** trên GitHub.
 Workflow kiểm tra API/xác thực/nhập Excel/Chroma bằng dữ liệu tạm, kiểm tra giao
 diện desktop/mobile, chạy 25 ca biên dịch và thực thi C/C++/Java/Python trong Docker,
-và dựng image Web Linux. Kết quả, nhật ký tổng hợp và ảnh giao diện nằm trong
+và dựng image hệ thống trên Linux. Kết quả, nhật ký tổng hợp và ảnh giao diện nằm trong
 Artifacts của từng lần chạy; giữ trong 7 ngày.
 
 Các kiểm thử giao diện và API dùng phản hồi AI được kiểm soát, không gọi Ollama
 thật và không đánh giá độ chính xác của mô hình. Workflow không cần mật khẩu
 sinh viên hay API key. GitHub Actions là nơi chạy kiểm thử có thời hạn, không
-cung cấp website trực tuyến liên tục sau khi kiểm thử kết thúc.
+cung cấp hệ thống trực tuyến liên tục sau khi kiểm thử kết thúc.
 
 Chạy lại tại máy với các thư viện đã cài và Docker/Playwright sẵn sàng:
 
@@ -88,7 +88,7 @@ ollama run cntt-coder
 
 `Modelfile` và `SYSTEM_ROLE` trong `ai_core.py` dùng cùng bộ chỉ thị cho C99/C11,
 C++17/20, Java 17+ và Python 3.10+. Đây là đóng gói chỉ thị và tham số suy luận,
-không cập nhật trọng số. Web chọn tối đa hai bản tóm lược phù hợp từ `data/language_reference.json`;
+không cập nhật trọng số. Hệ thống chọn tối đa hai bản tóm lược phù hợp từ `data/language_reference.json`;
 không chèn ví dụ có bug vào mọi câu hỏi. Kho hiện có 41 bản tóm lược có nguồn:
 11 mục Python, 10 Java, 10 C và 10 C++; đây không phải toàn văn giáo trình/tiêu chuẩn.
 Tài liệu được chọn theo ngôn ngữ và câu hỏi trước, rồi mới dùng mã đính kèm khi câu hỏi
@@ -108,11 +108,11 @@ Nguồn nền tảng (đã đối chiếu ngày 02/11/2026):
 N1570/N4659 là bản thảo, không phải bản ISO thương mại đã xuất bản. Core Guidelines/PEP 8
 là hướng dẫn; vi phạm phong cách không tự chứng minh chương trình sai. Chi tiết Microsoft
 được giới hạn rõ trong từng mục. Chỉ các quy tắc đã tóm lược mới được đưa vào câu hỏi;
-Web không tự đọc toàn bộ URL và không tìm Internet trong lúc sinh câu trả lời.
+Hệ thống không tự đọc toàn bộ URL và không tìm Internet trong lúc sinh câu trả lời.
 Thay đổi này bổ sung tài liệu truy xuất, không huấn luyện trọng số mô hình. Mô hình vẫn có thể
 diễn giải sai; cần đối chiếu đề bài, chạy/biên dịch và kiểm thử khi đánh giá bản sửa.
 Khi sửa bộ chỉ thị, cần đồng bộ cả hai rồi tạo lại model.
-Khởi động lại Web sau khi đổi `.env`; biến OLLAMA_MODEL của tiến trình nếu có sẽ ưu tiên hơn file.
+Khởi động lại hệ thống sau khi đổi `.env`; biến OLLAMA_MODEL của tiến trình nếu có sẽ ưu tiên hơn file.
 Chat/phân tích và completion dùng temperature 0.1; num_ctx 8192 và repeat_penalty 1.1.
 Tham số không bảo đảm mọi câu trả lời đúng, và ngữ cảnh lớn có thể tăng độ trễ trên CPU.
 Không cần API key, không tự tải model hoặc chọn model cloud.
@@ -138,10 +138,10 @@ Cả bốn thuộc lớp CNTT3.K25, năm 3. Mật khẩu khởi tạo: `cntt3k25
 Lần nâng cấp này đổi mật khẩu khởi tạo cũ `1234` sang mật khẩu mới; giữ mật khẩu cá nhân đã đổi.
 Không tự điền mật khẩu lên giao diện và không trả mật khẩu/giá trị băm qua danh sách tài khoản.
 Không mở đăng ký tự do. Có thể đổi mật khẩu sau khi xác thực mật khẩu hiện tại.
-Mật khẩu đã đổi không bị đặt lại khi khởi động Web. Gmail là định danh nội bộ, chưa xác minh bằng Google OAuth.
+Mật khẩu đã đổi không bị đặt lại khi khởi động hệ thống. Gmail là định danh nội bộ, chưa xác minh bằng Google OAuth.
 Mật khẩu được băm PBKDF2; cookie phiên HttpOnly/SameSite Strict.
 
-Giữ màn hình đăng nhập trắng tối đa 440px, giới thiệu đáy đại dương và Web IDE nền trắng.
+Giữ màn hình đăng nhập trắng tối đa 440px, giới thiệu đáy đại dương và không gian lập trình nền trắng.
 Hoạt ảnh dùng transform/opacity; tạm dừng khi rời màn hình giới thiệu hoặc ẩn tab.
 Chế độ giảm chuyển động của hệ điều hành được tôn trọng.
 Monaco, Markdown và highlight vẫn dùng CDN: trình duyệt cần Internet khi chưa có cache.
@@ -217,7 +217,7 @@ không gắn thư mục dự án hoặc cơ sở dữ liệu tài khoản vào c
 Hai API yêu cầu đăng nhập: `GET /api/tutor/runner` kiểm tra môi trường và `POST /api/tutor/run`
 nhận `language`, `current_code`, `stdin`. Khi Docker chưa chạy hoặc chưa có image, API trả thông báo
 tiếng Việt; hệ thống không chuyển sang chạy mã sinh viên trực tiếp trên Windows.
-Phương án này dành cho Web chạy bằng `.\run.ps1` trên máy có Docker CLI. Image Web trong Docker Compose
+Phương án này dành cho hệ thống chạy bằng `.\run.ps1` trên máy có Docker CLI. Image hệ thống trong Docker Compose
 vẫn phục vụ Chat/Editor; chưa được cấu hình kết nối bộ chạy Docker và không gắn Docker socket tự động.
 
 Kiểm tra thật sau khi dựng image:
@@ -234,7 +234,7 @@ Kiểm tra thật sau khi dựng image:
 Bấm đúp `deploy.bat`. File này chạy PowerShell với ExecutionPolicy Bypass chỉ trong tiến trình đó,
 không đổi chính sách hệ thống. Nếu chính sách do tổ chức quản lý vẫn chặn script, cần quản trị viên hỗ trợ.
 Yêu cầu máy có Python 3.11+ và Ollama; script tạo .venv/cài 4 thư viện nếu thiếu,
-khởi động Ollama nền nếu cần, kiểm tra và nạp model đã tải, rồi chạy web một worker trên 0.0.0.0:8000.
+khởi động Ollama nền nếu cần, kiểm tra và nạp model đã tải, rồi chạy hệ thống một worker trên 0.0.0.0:8000.
 Không tự tải model nhiều GB. Lần đầu chạy `ollama pull qwen2.5-coder:7b` nếu chưa có model.
 
 ```powershell
@@ -243,7 +243,7 @@ Không tự tải model nhiều GB. Lần đầu chạy `ollama pull qwen2.5-cod
 .\deploy.bat -CheckOnly -NoBrowser
 ```
 
-Giữ cửa sổ chạy web mở; Ctrl+C dừng web. Ollama vẫn hoạt động để ứng dụng khác sử dụng.
+Giữ cửa sổ chạy hệ thống mở; Ctrl+C dừng hệ thống. Ollama vẫn hoạt động để ứng dụng khác sử dụng.
 Chỉ mở trình duyệt sau khi `/api/health` báo ready. Cổng bận được báo rõ, không tự tắt chương trình khác.
 Script in localhost và các IP LAN; chọn IP Wi-Fi/Ethernet trong `ipconfig`, tránh IP adapter ảo Docker/VPN.
 Các thiết bị phải cùng mạng, không bật client isolation. Nếu Windows Firewall hỏi, cho phép Python trên
@@ -265,7 +265,7 @@ Biến môi trường của hệ điều hành/container được ưu tiên hơn
 ### Link public bằng Cloudflare Tunnel
 
 Cài cloudflared theo https://developers.cloudflare.com/cloudflare-one/connections/connect-networks/downloads/.
-Sau khi web chạy và health ready, mở Terminal thứ hai:
+Sau khi hệ thống chạy và health ready, mở Terminal thứ hai:
 
 ```powershell
 cloudflared tunnel --url http://127.0.0.1:8000
@@ -284,7 +284,7 @@ ngrok http http://127.0.0.1:8000
 ```
 
 Thay placeholder bằng token của bạn tại Terminal, không đưa vào repository hay gửi qua chat.
-Với web chạy trực tiếp bằng run.ps1, proxy localhost được tin cậy để nhận đúng HTTPS
+Với hệ thống chạy trực tiếp bằng run.ps1, proxy localhost được tin cậy để nhận đúng HTTPS
 và cookie Secure. Không dùng --forwarded-allow-ips '*' trên cổng LAN công khai.
 
 ### Docker Desktop
@@ -327,7 +327,7 @@ trong tunnel. Nếu thay link public, cập nhật PUBLIC_ORIGIN tương ứng.
 Khi PUBLIC_ORIGIN là HTTPS, đăng nhập qua URL HTTPS đó; bỏ cấu hình này và khởi động lại
 nếu quay về demo chỉ qua localhost/LAN HTTP (cookie Secure không gửi qua LAN HTTP).
 
-Mọi người dùng chung model trên laptop: web phục vụ nhiều phiên, nhưng chỉ một lượt sinh AI đồng thời;
+Mọi người dùng chung model trên laptop: hệ thống phục vụ nhiều phiên, nhưng chỉ một lượt sinh AI đồng thời;
 lượt khác nhận thông báo bận. Không tăng worker để nhân bản tải model. Demo cần laptop bật,
 Ollama chạy và mạng ổn định; 60 FPS là thuộc tính render của trình duyệt, không được bảo đảm bởi uvicorn.
 
@@ -349,7 +349,7 @@ Khi chat, hệ thống tra theo ngôn ngữ và chủ đề, đưa tối đa hai
 Không tải Internet trong mỗi câu hỏi. Khung chat hiển thị tài liệu đã cung cấp cho AI;
 điều đó không đồng nghĩa mọi câu trả lời đã được chứng minh đúng bằng tài liệu.
 Để cập nhật kho, cần kiểm tra nguồn gốc, phiên bản, điều kiện áp dụng của từng bản ghi
-rồi khởi động lại Web. Đây là truy xuất tài liệu, không phải fine-tuning trọng số.
+rồi khởi động lại hệ thống. Đây là truy xuất tài liệu, không phải fine-tuning trọng số.
 
 Chế độ Hỏi đáp mặc định không đính kèm code; bật Kèm mã khi cần.
 Các nút Giải thích/Tìm lỗi/Tối ưu chọn đúng mục đích, dùng chung một khung chat.
@@ -361,6 +361,6 @@ không tự cắt file rồi đưa ra một bản sửa được coi là toàn b
 
 Bản sửa Python được kiểm tra bằng ast.parse (không chạy mã). Kiểm tra này phát hiện
 lỗi cú pháp, không xác nhận thuật toán hay đầu ra. C/C++/Java hiện chưa được compiler
-kiểm chứng tự động trong Web. Nếu dòng bị xóa vẫn để lại chương trình hợp lệ,
+kiểm chứng tự động trong hệ thống. Nếu dòng bị xóa vẫn để lại chương trình hợp lệ,
 cần đề bài/đầu ra mong đợi để phát hiện thiếu logic. Không dùng thông báo
 chưa phát hiện lỗi như bảo đảm chương trình đúng.

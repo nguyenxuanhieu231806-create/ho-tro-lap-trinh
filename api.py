@@ -402,7 +402,7 @@ def create_app():
             try:
                 await app.state.tutor.warmup()
             except Exception:
-                pass  # /api/health reports a friendly diagnosis; the web stays usable.
+                pass  # /api/health reports a friendly diagnosis; the app stays usable.
         warmup = asyncio.create_task(preload())
         try:
             yield

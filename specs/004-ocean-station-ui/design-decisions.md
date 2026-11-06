@@ -23,4 +23,4 @@
 | 19 | Ưu tiên gõ/cuộn mượt |
 | 20 | Bản mẫu cả ba màn hình |
 
-Bản mô phỏng đã được hiển thị trong cuộc trò chuyện để chốt hướng hình ảnh. Thanh công cụ Web dùng các chức năng hiện có. Dòng ví dụ mã trong ảnh mô phỏng chỉ minh họa bố cục.
+Bản mô phỏng đã được hiển thị trong cuộc trò chuyện để chốt hướng hình ảnh. Thanh công cụ hệ thống dùng các chức năng hiện có. Dòng ví dụ mã trong ảnh mô phỏng chỉ minh họa bố cục.

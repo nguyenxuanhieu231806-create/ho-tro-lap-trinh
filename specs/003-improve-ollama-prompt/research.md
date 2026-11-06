@@ -2,9 +2,9 @@
 
 ## Chỉ dẫn hệ thống và câu hỏi
 
-`checked_messages()` tạo thông điệp hệ thống trong mỗi yêu cầu Web. `chat_messages()` đưa mục đích, câu hỏi, bản mã, vùng chọn và nguồn tham khảo vào thông điệp cuối. Ô hỏi hiện gắn thêm tên ngôn ngữ và quy tắc trả lời. Khi ngôn ngữ thay đổi sau lúc điền mẫu, văn bản trong ô hỏi có thể mang tên ngôn ngữ cũ.
+`checked_messages()` tạo thông điệp hệ thống trong mỗi yêu cầu hệ thống. `chat_messages()` đưa mục đích, câu hỏi, bản mã, vùng chọn và nguồn tham khảo vào thông điệp cuối. Ô hỏi hiện gắn thêm tên ngôn ngữ và quy tắc trả lời. Khi ngôn ngữ thay đổi sau lúc điền mẫu, văn bản trong ô hỏi có thể mang tên ngôn ngữ cũ.
 
-Chọn chỉnh chỉ dẫn Web ngay tại nơi dựng thông điệp. Mẫu giao diện giữ phần mục tiêu do sinh viên nhập. `Modelfile` vẫn cung cấp chỉ dẫn mặc định cho cách chạy model trực tiếp. [API chat của Ollama](https://docs.ollama.com/api/chat) · [Tham chiếu Modelfile](https://docs.ollama.com/modelfile)
+Chọn chỉnh chỉ dẫn hệ thống ngay tại nơi dựng thông điệp. Mẫu giao diện giữ phần mục tiêu do sinh viên nhập. `Modelfile` vẫn cung cấp chỉ dẫn mặc định cho cách chạy model trực tiếp. [API chat của Ollama](https://docs.ollama.com/api/chat) · [Tham chiếu Modelfile](https://docs.ollama.com/modelfile)
 
 ## Bản prompt làm điểm xuất phát
 
@@ -26,7 +26,7 @@ Bản thử trong bộ nhớ trên `cntt-coder:latest` tìm đúng lỗi `double
 
 `UnifiedResult` yêu cầu có khóa `fixed_code` và cho giá trị `null`. Nhánh đặc biệt của `chat_stream()` ép giá trị này thành chuỗi với mã Python sai cú pháp ở chế độ rà soát. Bỏ đúng nhánh đó để giá trị được kiểm tra theo kiểu đã công bố. Giữ các ràng buộc cho giải thích và yêu cầu không kèm mã, cùng kiểm tra cú pháp bản sửa Python và yêu cầu báo lỗi khi trình phân tích cú pháp báo sai.
 
-Thử một phản hồi diễn đạt “mã hiện tại đúng cú pháp nhưng sai logic” trong bước đo. Bộ lọc mâu thuẫn cũ có thể từ chối cách diễn đạt này. Ghi lại lỗi xác thực nếu gặp để kết quả đo phản ánh đường đi thực tế của Web. Bộ kiểm chứng chương trình và điều chỉnh bộ lọc tổng quát thuộc phạm vi đặc tả 002.
+Thử một phản hồi diễn đạt “mã hiện tại đúng cú pháp nhưng sai logic” trong bước đo. Bộ lọc mâu thuẫn cũ có thể từ chối cách diễn đạt này. Ghi lại lỗi xác thực nếu gặp để kết quả đo phản ánh đường đi thực tế của hệ thống. Bộ kiểm chứng chương trình và điều chỉnh bộ lọc tổng quát thuộc phạm vi đặc tả 002.
 
 ## Quyết định về phép đo
 
