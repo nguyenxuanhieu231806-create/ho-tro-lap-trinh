@@ -11,3 +11,11 @@ Nghiệm thu: link công khai trả trang đăng nhập có logo/tài nguyên; A
 ## Điều chỉnh phạm vi theo người dùng
 
 Người dùng làm rõ: “đăng mã nguồn và chạy thử qua actions”. Bổ sung workflow GitHub Actions cho Python/API/Excel/Chroma, trình duyệt và compiler Docker bốn ngôn ngữ. Có push/pull_request/workflow_dispatch, chỉ contents:read, giới hạn thời gian và artifact kiểm thử. Không dùng Actions như hosting 24/7, không lưu secrets/data thực trong artifact, không coi các output AI kiểm soát là benchmark Ollama thật. Không tự thêm phí hosting hoặc mua dịch vụ.
+
+## Sửa địa chỉ kho mã đã kiểm chứng
+
+Trình duyệt GitHub của người dùng ngày 06/11/2026 đang mở kho thực tế
+`nguyenxuanhieu231806-create/web-ho-tro-lap-trinh-`, có hai commit/workflow từ trước.
+Origin cũ kết thúc `web-ho-tro-lap-trinh-cntt.git` không khớp kho này. Sửa origin
+sang đúng kho đã có, fetch và đối chiếu trước khi đồng bộ; không force-push,
+không xóa lịch sử hoặc ghi đè thay đổi remote chưa được phân tích.

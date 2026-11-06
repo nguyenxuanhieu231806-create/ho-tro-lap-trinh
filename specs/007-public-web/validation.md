@@ -63,6 +63,32 @@ trong requirements. Chạy image ở user không đặc quyền, filesystem ch�
 không mạng, hai vùng tmpfs riêng: import api thành công và ba tệp giao diện,
 logo, tham chiếu tồn tại. Không truy cập DB, Ollama hay volume thật của máy.
 
+## Sửa lỗi Repository not found
+
+Ảnh người dùng gửi cho thấy push tới kho `web-ho-tro-lap-trinh-cntt` bị 404.
+Kiểm tra trình duyệt đã đăng nhập xác định kho thực tế là
+https://github.com/nguyenxuanhieu231806-create/web-ho-tro-lap-trinh- .
+API GitHub xác nhận kho này công khai; đã sửa origin và fetch main f96998a.
+
+Remote trước đó được upload thủ công, các thư mục bị dàn phẳng: static assets,
+binary/mô-đun .venv, .env và SQLite nằm ở gốc. Không đọc nội dung .env hoặc SQLite.
+Đối chiếu tất cả mã runtime Python, Docker/deploy/requirements/Modelfile và các
+tài nguyên static theo ánh xạ đúng đường dẫn: nội dung giống HEAD local sau khi
+chuẩn hóa CRLF. Khác biệt README/.gitignore là phần chuẩn bị triển khai mới.
+Workflow Python CI cũ chỉ compileall/pytest chung, được thay bằng workflow kiểm
+thử có kiểm chứng của 007. Không có chức năng remote riêng cần nhập vào mã local.
+
+Tích hợp bằng merge strategy ours với hai lịch sử độc lập: giữ cây nguồn local
+đúng cấu trúc và đưa commit remote làm cha của merge. Không force-push, giữ đủ
+lịch sử người dùng. Bản tip mới loại dữ liệu private và vendor khỏi mã xuất bản,
+không xóa các tệp thật trên máy. Các tệp đã upload nhầm vẫn tồn tại trong lịch sử
+công khai cũ; đã thông báo người dùng cân nhắc chuyển Private. Chưa tự thay đổi
+quyền truy cập repo hoặc viết lại lịch sử.
+
+Tệp cập nhật ở lượt sửa kết nối: `.git/config` sửa origin; `spec.md`, `plan.md`,
+`tasks.md`, `validation.md` trong thư mục 007 ghi nguyên nhân, đối chiếu và cách
+tích hợp. Mã ứng dụng và dữ liệu local giữ nguyên.
+
 Tệp bổ sung/thay đổi cho Actions:
 
 - `.github/workflows/verify-web-ide.yml`: ba job, quyền contents:read, action pin SHA,
