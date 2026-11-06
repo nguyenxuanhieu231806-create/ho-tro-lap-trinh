@@ -1,11 +1,11 @@
 const fs=require('fs'),path=require('path'),assert=require('assert/strict');
-const {chromium}=require('C:/Users/USER/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/node_modules/playwright');
+const {chromium}=require(process.env.PLAYWRIGHT_MODULE || 'C:/Users/USER/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/node_modules/playwright');
 const base=process.env.TUTOR_UI_BASE;
 const report={mode:'actual HTTP/auth/SQLite/Chroma/XLSX; embedding and answer outputs controlled by Python harness',checks:[],errors:[]};
 const check=(name,value)=>{assert.ok(value,name);report.checks.push(name);};
 async function login(page,email,password){await page.goto(base,{waitUntil:'domcontentloaded'});await page.locator('#student-account').fill(email);await page.locator('#student-password').fill(password);await page.locator('#login-form button[type=submit]').click();await page.locator('#skip-intro').click();await page.waitForFunction(()=>window.monaco&&monaco.editor.getModels().length);await page.locator('#completion-enabled').uncheck();}
 async function main(){
- const browser=await chromium.launch({channel:'msedge',headless:true});
+ const browser=await chromium.launch({channel:process.env.PLAYWRIGHT_CHANNEL || 'msedge',headless:true});
  const context=await browser.newContext({viewport:{width:1366,height:768},ignoreHTTPSErrors:true});
  const page=await context.newPage();page.on('pageerror',e=>report.errors.push(e.message));
  try{

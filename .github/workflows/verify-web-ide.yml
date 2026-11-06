@@ -1,0 +1,107 @@
+name: Kiem thu Web IDE
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: verify-web-ide-${{ github.ref }}
+  cancel-in-progress: true
+
+env:
+  PYTHONUTF8: '1'
+  PYTHONDONTWRITEBYTECODE: '1'
+  ANONYMIZED_TELEMETRY: 'False'
+
+jobs:
+  backend:
+    name: Python - API - Excel - Chroma
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0 # v7.1.0
+        with:
+          python-version: '3.12'
+          cache: pip
+      - name: Cai thu vien
+        run: python -m pip install -r requirements.txt
+      - name: Kiem tra backend va hop dong API
+        run: python scripts/ci_checks.py backend
+      - name: Tai ket qua kiem thu
+        if: always()
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        with:
+          name: backend-results
+          path: ci-results/backend/
+          if-no-files-found: warn
+          retention-days: 7
+
+  browser:
+    name: Giao dien desktop va mobile
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    env:
+      PLAYWRIGHT_MODULE: playwright
+      PLAYWRIGHT_CHANNEL: chromium
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+        with:
+          node-version: '22'
+      - uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0 # v7.1.0
+        with:
+          python-version: '3.12'
+      - name: Cai trinh duyet kiem thu
+        run: |
+          npm install --no-save --package-lock=false playwright@1.62.1
+          npx playwright install --with-deps chromium
+      - name: Kiem thu UI voi du lieu kiem soat
+        run: python scripts/ci_checks.py browser
+      - name: Tai anh va ket qua giao dien
+        if: always()
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        with:
+          name: browser-results
+          path: ci-results/browser/
+          if-no-files-found: warn
+          retention-days: 7
+
+  compiler:
+    name: Chay that C - C++ - Java - Python
+    runs-on: ubuntu-24.04
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0 # v7.1.0
+        with:
+          python-version: '3.12'
+      - name: Dung moi truong compiler cach ly
+        run: docker build -f Dockerfile.grader -t fit-tutor-grader:1 .
+      - name: Kiem thu 25 chuong trinh Docker
+        run: python scripts/ci_checks.py compiler
+      - name: Kiem tra dong goi Web
+        run: docker build -t fit-tutor-web:ci .
+      - name: Kiem tra khoi tao Web Linux va tai nguyen
+        run: >-
+          docker run --rm --network none --read-only
+          --tmpfs /app/data:rw,nosuid,nodev,noexec,size=128m,uid=10001,gid=10001
+          --tmpfs /tmp:rw,nosuid,nodev,noexec,size=64m
+          --env OLLAMA_BASE_URL=http://127.0.0.1:1
+          --env ANONYMIZED_TELEMETRY=False
+          fit-tutor-web:ci python -B -c
+          "import api; from pathlib import Path; assert all(Path(p).is_file() for p in ['/app/static/index.html', '/app/static/LogoFITHPUni.png', '/app/language_reference.json']); api.app.state.rag_store.close(); print('Linux Web import and assets: PASS')"
+      - name: Tai ket qua compiler
+        if: always()
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        with:
+          name: compiler-results
+          path: ci-results/compiler/
+          if-no-files-found: warn
+          retention-days: 7

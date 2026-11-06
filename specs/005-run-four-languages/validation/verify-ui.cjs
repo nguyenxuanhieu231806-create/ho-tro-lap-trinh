@@ -2,7 +2,7 @@ const fs = require('fs');
 const path = require('path');
 const http = require('http');
 const assert = require('assert/strict');
-const {chromium} = require('C:/Users/USER/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/node_modules/playwright');
+const {chromium} = require(process.env.PLAYWRIGHT_MODULE || 'C:/Users/USER/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/node_modules/playwright');
 
 const project = path.resolve(__dirname, '../../..');
 const staticDir = path.join(project, 'static');
@@ -25,7 +25,7 @@ async function main() {
     fs.createReadStream(filename).pipe(response);
   });
   await new Promise(resolve=>server.listen(0,'127.0.0.1',resolve));
-  const browser = await chromium.launch({channel:'msedge',headless:true});
+  const browser = await chromium.launch({channel:process.env.PLAYWRIGHT_CHANNEL || 'msedge',headless:true});
   const page = await browser.newPage({viewport:{width:1366,height:768},ignoreHTTPSErrors:true});
   page.on('pageerror',error=>report.errors.push(error.message));
   let lastPayload, responseDelay=0, output='Tổng = 8\n';

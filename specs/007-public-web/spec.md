@@ -7,3 +7,7 @@ GitHub Pages không chạy backend Python. Repo Git local có origin nhưng chư
 Website và Ollama tại localhost hiện đang hoạt động. Khi chưa có tài khoản hosting, triển khai link demo HTTPS tới Web hiện có qua Cloudflare Quick Tunnel; không tự mua dịch vụ, không đổi model sang cloud và không sửa mã chạy của ứng dụng. Người dùng được báo link phụ thuộc máy còn bật. Nếu chọn link cố định, cần tài khoản máy chủ/hosting và cấu hình AI phù hợp; không coi demo là hosting 24/7.
 
 Nghiệm thu: link công khai trả trang đăng nhập có logo/tài nguyên; API riêng tư vẫn 401 khi chưa đăng nhập; không mở riêng cổng Ollama/SQLite; ghi rõ lifetime và trạng thái GitHub. Không trả link repo chưa tồn tại như website chạy thật.
+
+## Điều chỉnh phạm vi theo người dùng
+
+Người dùng làm rõ: “đăng mã nguồn và chạy thử qua actions”. Bổ sung workflow GitHub Actions cho Python/API/Excel/Chroma, trình duyệt và compiler Docker bốn ngôn ngữ. Có push/pull_request/workflow_dispatch, chỉ contents:read, giới hạn thời gian và artifact kiểm thử. Không dùng Actions như hosting 24/7, không lưu secrets/data thực trong artifact, không coi các output AI kiểm soát là benchmark Ollama thật. Không tự thêm phí hosting hoặc mua dịch vụ.

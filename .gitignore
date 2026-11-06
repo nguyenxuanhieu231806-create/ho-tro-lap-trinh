@@ -8,3 +8,5 @@ __pycache__/
 data/*
 !data/language_reference.json
 .tools/
+node_modules/
+ci-results/

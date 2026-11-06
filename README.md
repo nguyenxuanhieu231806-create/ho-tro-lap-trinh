@@ -11,6 +11,33 @@ máy đang chạy Web, không phải GitHub Pages hoặc máy chủ 24/7. Máy c
 và tunnel cần tiếp tục chạy; dừng tunnel hoặc tắt máy sẽ làm link hết hoạt động.
 Đăng nhập bằng tài khoản đã được cấp. Mã nguồn trên GitHub và link chạy Web là hai địa chỉ riêng.
 
+## Kiểm thử trên GitHub Actions
+
+Workflow `Kiem thu Web IDE` tự chạy khi đẩy nhánh `main`, mở pull request vào
+`main`, hoặc chọn **Actions → Kiem thu Web IDE → Run workflow** trên GitHub.
+Workflow kiểm tra API/xác thực/nhập Excel/Chroma bằng dữ liệu tạm, kiểm tra giao
+diện desktop/mobile, chạy 25 ca biên dịch và thực thi C/C++/Java/Python trong Docker,
+và dựng image Web Linux. Kết quả, nhật ký tổng hợp và ảnh giao diện nằm trong
+Artifacts của từng lần chạy; giữ trong 7 ngày.
+
+Các kiểm thử giao diện và API dùng phản hồi AI được kiểm soát, không gọi Ollama
+thật và không đánh giá độ chính xác của mô hình. Workflow không cần mật khẩu
+sinh viên hay API key. GitHub Actions là nơi chạy kiểm thử có thời hạn, không
+cung cấp website trực tuyến liên tục sau khi kiểm thử kết thúc.
+
+Chạy lại tại máy với các thư viện đã cài và Docker/Playwright sẵn sàng:
+
+```powershell
+.\.venv\Scripts\python.exe -B -X utf8 scripts\ci_checks.py backend
+.\.venv\Scripts\python.exe -B -X utf8 scripts\ci_checks.py browser
+.\.venv\Scripts\python.exe -B -X utf8 scripts\ci_checks.py compiler
+```
+
+Nhóm browser mặc định dùng Playwright có sẵn trong môi trường phát triển này và
+Microsoft Edge; trên máy khác đặt `PLAYWRIGHT_MODULE=playwright` sau khi cài
+Playwright. CI đã cài Chromium và cấu hình riêng. Các báo cáo mới được xuất vào
+`ci-results/`, không đưa vào Git cùng cơ sở dữ liệu thật.
+
 ## Ba file mã nguồn chính
 
 - `ai_core.py`: urllib, Ollama, FIM và kiểm tra nội dung AI.

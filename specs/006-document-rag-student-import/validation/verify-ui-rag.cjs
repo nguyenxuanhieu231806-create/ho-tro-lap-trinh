@@ -1,5 +1,5 @@
 const fs=require('fs'),path=require('path'),http=require('http'),assert=require('assert/strict');
-const {chromium}=require('C:/Users/USER/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/node_modules/playwright');
+const {chromium}=require(process.env.PLAYWRIGHT_MODULE || 'C:/Users/USER/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/node_modules/playwright');
 const root=path.resolve(__dirname,'../../..'),staticDir=path.join(root,'static');
 const report={mode:'controlled API fixtures; no real account/document import',checks:[],errors:[]};
 const check=(label,value)=>{assert.ok(value,label);report.checks.push(label);};
@@ -9,7 +9,7 @@ let authenticated=false,delay=0,asked=null,importConfirmed=false,selectedDocumen
 async function main(){
  const server=http.createServer((req,res)=>{const parsed=new URL(req.url,'http://local');const filename=path.resolve(staticDir,'.'+(parsed.pathname==='/'?'/index.html':decodeURIComponent(parsed.pathname)));if(!filename.startsWith(staticDir+path.sep)||!fs.existsSync(filename)){res.writeHead(404);res.end();return;}const ext=path.extname(filename);res.writeHead(200,{'Content-Type':({'.html':'text/html; charset=utf-8','.js':'text/javascript; charset=utf-8','.css':'text/css','.png':'image/png','.wasm':'application/wasm'})[ext]||'application/octet-stream'});fs.createReadStream(filename).pipe(res);});
  await new Promise(resolve=>server.listen(0,'127.0.0.1',resolve));
- const browser=await chromium.launch({channel:'msedge',headless:true});
+ const browser=await chromium.launch({channel:process.env.PLAYWRIGHT_CHANNEL || 'msedge',headless:true});
  const context=await browser.newContext({viewport:{width:1366,height:768},ignoreHTTPSErrors:true});
  const fixture=async route=>{
   const req=route.request(),endpoint=new URL(req.url()).pathname;
