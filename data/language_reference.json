@@ -1,0 +1,859 @@
+{
+  "version": 2,
+  "verified_at": "2026-11-02",
+  "note": "Tóm lược tiếng Việt đã đối chiếu nguồn gốc; phân biệt chuẩn dự thảo, đặc tả, API và khuyến nghị. Tra cứu cục bộ khi hỏi đáp, không huấn luyện trọng số.",
+  "records": [
+    {
+      "id": "py-floor",
+      "language": "python",
+      "title": "Python 3.14 – phép chia / và //",
+      "url": "https://docs.python.org/3.14/reference/expressions.html#binary-arithmetic-operations",
+      "terms": [
+        "//",
+        "floor",
+        "chia lấy",
+        "chia nguyên",
+        "chia số âm",
+        "làm tròn",
+        "toán tử chia"
+      ],
+      "text": "Với số nguyên Python, / trả số thực; // làm tròn thương xuống âm vô cùng (floor), không phải cắt về 0. Vì vậy 7 // 2 = 3 còn -7 // 2 = -4. Chia cho 0 gây ZeroDivisionError. Không khái quát kết quả số dương sang số âm bằng cách chỉ bỏ phần thập phân.",
+      "version": "Python 3.14; nội dung thông thường tương thích Python 3.10+.",
+      "source_type": "Tài liệu chính thức Python",
+      "verified_at": "2026-11-02"
+    },
+    {
+      "id": "py-sequence",
+      "language": "python",
+      "title": "Python 3.14 – chỉ số sequence và giá trị trả về khi sửa list",
+      "url": "https://docs.python.org/3.14/builtins/stdtypes.html#common-sequence-operations",
+      "terms": [
+        "list",
+        "danh sách",
+        "chỉ số",
+        "index",
+        "len(",
+        "[-1]",
+        "sort(",
+        "append(",
+        "chuỗi",
+        "mảng"
+      ],
+      "text": "Sequence n phần tử có chỉ số 0..n-1; -1 là phần tử cuối nếu không rỗng. Truy cập đơn ngoài phạm vi gây IndexError, còn slicing xử lý biên khác. Phương thức sửa tại chỗ như list.sort hoặc append trả None.",
+      "version": "Python 3.14; nội dung thông thường tương thích Python 3.10+.",
+      "source_type": "Tài liệu chính thức Python",
+      "verified_at": "2026-11-02"
+    },
+    {
+      "id": "py-default",
+      "language": "python",
+      "title": "Python 3.14 – giá trị mặc định của tham số hàm",
+      "url": "https://docs.python.org/3.14/tutorial/controlflow.html#default-argument-values",
+      "terms": [
+        "default",
+        "mặc định",
+        "=[]",
+        "={}",
+        "mutable",
+        "tham số",
+        "đối số"
+      ],
+      "text": "Giá trị mặc định được tính khi định nghĩa hàm. List/dict mặc định vì vậy có thể được dùng chung qua nhiều lần gọi. Nếu cần đối tượng mới mỗi lần, dùng None rồi tạo bên trong. Đây là quy tắc ngữ nghĩa, không tự nó là lỗi cú pháp.",
+      "version": "Python 3.14; nội dung thông thường tương thích Python 3.10+.",
+      "source_type": "Tài liệu chính thức Python",
+      "verified_at": "2026-11-02"
+    },
+    {
+      "id": "java-reference-equality",
+      "language": "java",
+      "title": "Java 17 JLS §15.21.3 – so sánh tham chiếu",
+      "url": "https://docs.oracle.com/javase/specs/jls/se17/html/jls-15.html#jls-15.21.3",
+      "terms": [
+        "==",
+        "!=",
+        "tham chiếu",
+        "reference",
+        "new String",
+        "so sánh chuỗi",
+        "equals"
+      ],
+      "text": "Khi hai toán hạng là tham chiếu, == kiểm tra cùng đối tượng (hoặc cả hai null); không so sánh nội dung. Hai đối tượng String riêng biệt do new String tạo ra có thể cùng nội dung nhưng == là false. Dùng == không tự nó là lỗi: phải biết mục tiêu là kiểm tra danh tính hay nội dung. Với String, equals dùng để kiểm tra nội dung.",
+      "version": "Java SE 17.",
+      "source_type": "Đặc tả Java",
+      "verified_at": "2026-11-02"
+    },
+    {
+      "id": "java-string-equals",
+      "language": "java",
+      "title": "Java 17 API – String.equals(Object)",
+      "url": "https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html#equals(java.lang.Object)",
+      "terms": [
+        "String",
+        "equals",
+        "chuỗi",
+        "nội dung",
+        "null",
+        "so sánh"
+      ],
+      "text": "String.equals trả true nếu đối số khác null, là String và có cùng dãy ký tự với đối tượng đang gọi. Nó so sánh nội dung, không phải vị trí trong bộ nhớ. Gọi một phương thức instance qua biến null gây lỗi; không được suy ra rằng s.equals(t) an toàn khi chưa biết s có null hay không.",
+      "version": "Java SE 17.",
+      "source_type": "Tài liệu API Java",
+      "verified_at": "2026-11-02"
+    },
+    {
+      "id": "java-arraylist-index",
+      "language": "java",
+      "title": "Java 17 API – ArrayList.get và giới hạn chỉ số",
+      "url": "https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/ArrayList.html#get(int)",
+      "terms": [
+        "ArrayList",
+        "get(",
+        "size()",
+        "chỉ số",
+        "index",
+        "danh sách",
+        "collection"
+      ],
+      "text": "ArrayList.get(index) lấy phần tử tại chỉ số index. Nếu index < 0 hoặc index >= size(), phương thức ném IndexOutOfBoundsException. Với list không rỗng, phần tử cuối có chỉ số size()-1. capacity và size không cùng ý nghĩa; không dùng capacity như số phần tử hiện có.",
+      "version": "Java SE 17.",
+      "source_type": "Tài liệu API Java",
+      "verified_at": "2026-11-02"
+    },
+    {
+      "id": "c-format-io",
+      "language": "c",
+      "title": "WG14 C11 N1570 — printf và scanf",
+      "url": "https://www.open-std.org/jtc1/sc22/wg14/www/docs/n1570.pdf",
+      "text": "printf(\"%d\", n) yêu cầu int; scanf(\"%d\", &n) yêu cầu int*. Sai kiểu định dạng có thể gây hành vi không xác định. Với scanf, kiểm tra số giá trị đọc thành công.",
+      "terms": [
+        "printf",
+        "scanf",
+        "%d",
+        "format",
+        "định dạng",
+        "địa chỉ",
+        "kiểu đối số"
+      ],
+      "version": "Bản thảo ủy ban C11 N1570.",
+      "source_type": "Bản thảo chuẩn",
+      "verified_at": "2026-11-02"
+    },
+    {
+      "id": "c-allocation-lifetime",
+      "language": "c",
+      "title": "Microsoft C Runtime — free và vòng đời bộ nhớ",
+      "url": "https://learn.microsoft.com/en-us/cpp/c-runtime-library/reference/free?view=msvc-170",
+      "text": "free giải phóng khối nhớ được cấp qua malloc, calloc hoặc realloc. free(NULL) không làm gì. Không truyền địa chỉ biến tự động, địa chỉ giữa khối hoặc con trỏ đã giải phóng. free không tự đặt các biến con trỏ khác thành NULL; cần tránh đọc/ghi vùng đã giải phóng và double free.",
+      "terms": [
+        "malloc",
+        "calloc",
+        "realloc",
+        "free",
+        "NULL",
+        "double free",
+        "use after free",
+        "cấp phát",
+        "giải phóng",
+        "bộ nhớ"
+      ],
+      "version": "Microsoft CRT; dùng quy tắc vòng đời phổ biến, không suy rộng chi tiết errno thành ISO C.",
+      "source_type": "Tài liệu thư viện của nhà cung cấp",
+      "verified_at": "2026-11-02"
+    },
+    {
+      "id": "c-array-string-bounds",
+      "language": "c",
+      "title": "WG14 C11 N1570 — biên mảng và chuỗi",
+      "url": "https://www.open-std.org/jtc1/sc22/wg14/www/docs/n1570.pdf",
+      "text": "Mảng n phần tử có chỉ số 0..n-1. Con trỏ sau cuối không được giải tham chiếu. %s không giới hạn cần chuỗi kết thúc NUL; đọc ngoài vùng hợp lệ là hành vi không xác định.",
+      "terms": [
+        "array",
+        "a[n]",
+        "index",
+        "buffer",
+        "string",
+        "NUL",
+        "%s",
+        "mảng",
+        "chuỗi",
+        "ngoài biên",
+        "tràn"
+      ],
+      "version": "Bản thảo C11 N1570.",
+      "source_type": "Bản thảo chuẩn",
+      "verified_at": "2026-11-02"
+    },
+    {
+      "id": "cpp-vector-bounds",
+      "language": "cpp",
+      "title": "Microsoft C++ Standard Library — vector và giới hạn truy cập",
+      "url": "https://learn.microsoft.com/en-us/cpp/standard-library/vector-class?view=msvc-170",
+      "text": "Với vector n phần tử, operator[] chỉ truy cập chỉ số từ 0 đến n-1; v[v.size()] vượt phạm vi. back() lấy phần tử cuối nhưng yêu cầu vector không rỗng: không được gọi back() luôn an toàn. at() kiểm tra phạm vi. size() là số phần tử hiện có; capacity() là dung lượng đã cấp.",
+      "terms": [
+        "vector",
+        "size",
+        "back",
+        "at",
+        "empty",
+        "v[v.size()]",
+        "phần tử cuối",
+        "chỉ số",
+        "ngoài biên"
+      ],
+      "version": "Quy tắc C++17/20; không dùng hardened contracts của chuẩn mới để diễn giải C++17.",
+      "source_type": "Tài liệu thư viện của nhà cung cấp",
+      "verified_at": "2026-11-02"
+    },
+    {
+      "id": "cpp-vector-complexity",
+      "language": "cpp",
+      "title": "C++ working draft — vector và độ phức tạp",
+      "url": "https://www.open-std.org/jtc1/sc22/wg21/docs/papers/2017/n4659.pdf",
+      "text": "vector cho truy cập ngẫu nhiên. push_back có chi phí O(1) khấu hao; cấp phát lại có thể tốn tuyến tính và làm mất hiệu lực iterator. Chèn/xóa giữa vector thường tốn tuyến tính do dịch chuyển.",
+      "terms": [
+        "vector",
+        "push_back",
+        "capacity",
+        "reserve",
+        "reallocation",
+        "iterator",
+        "amortized",
+        "O(1)",
+        "O(n)",
+        "khấu hao",
+        "độ phức tạp"
+      ],
+      "version": "Bản thảo C++17 N4659, [vector.overview], [vector.modifiers].",
+      "source_type": "Bản thảo chuẩn",
+      "verified_at": "2026-11-02"
+    },
+    {
+      "id": "cpp-unique-ownership",
+      "language": "cpp",
+      "title": "Microsoft C++ Standard Library — unique_ptr",
+      "url": "https://learn.microsoft.com/en-us/cpp/standard-library/unique-ptr-class?view=msvc-170",
+      "text": "unique_ptr quản lý quyền sở hữu duy nhất. Khi đối tượng sở hữu bị hủy, deleter giải phóng tài nguyên. Có thể chuyển quyền sở hữu nhưng không sao chép unique_ptr. Mặc định unique_ptr<T> dùng delete, unique_ptr<T[]> dùng delete[]; không đưa vùng malloc vào deleter mặc định này. make_unique có từ C++14.",
+      "terms": [
+        "unique_ptr",
+        "make_unique",
+        "RAII",
+        "destructor",
+        "delete",
+        "delete[]",
+        "deleter",
+        "move",
+        "ownership",
+        "quyền sở hữu",
+        "smart pointer",
+        "con trỏ thông minh"
+      ],
+      "version": "Dùng được trong C++17/20.",
+      "source_type": "Tài liệu thư viện của nhà cung cấp",
+      "verified_at": "2026-11-02"
+    },
+    {
+      "id": "py-return-none",
+      "language": "python",
+      "title": "Python 3.14 — return, None và dòng trả về bị thiếu",
+      "url": "https://docs.python.org/3.14/tutorial/controlflow.html#defining-functions",
+      "terms": [
+        "return",
+        "None",
+        "thiếu return",
+        "trả về",
+        "in ra",
+        "print("
+      ],
+      "text": "return kết thúc lời gọi và trả kết quả. return trống hoặc đi hết thân hàm trả None. print không thay thế return. None là một giá trị, đối tượng duy nhất của kiểu NoneType, không phải tên một kiểu dữ liệu. Cần biết kết quả hàm phải cung cấp trước khi kết luận thiếu return là lỗi.",
+      "version": "Python 3.14; quy tắc return thông thường ổn định trong Python 3.10+.",
+      "source_type": "Tài liệu chính thức Python",
+      "verified_at": "2026-11-02",
+      "related_sources": [
+        "https://docs.python.org/3.14/builtins/constants.html#None"
+      ]
+    },
+    {
+      "id": "py-range-stop",
+      "language": "python",
+      "title": "Python 3.14 — range và điểm dừng vòng lặp",
+      "url": "https://docs.python.org/3.14/tutorial/controlflow.html#the-range-function",
+      "terms": [
+        "range(",
+        "range",
+        "stop",
+        "step",
+        "vòng lặp",
+        "điểm dừng",
+        "lệch một",
+        "off by one"
+      ],
+      "text": "range(5) sinh 0..4, không bao gồm điểm dừng. Bước nhảy có thể âm hoặc dương. range là đối tượng có thể lặp, không tạo sẵn list. Đối chiếu biên và bước với đề bài trước khi sửa.",
+      "version": "Python 3.14; quy tắc range ổn định trong Python 3.10+.",
+      "source_type": "Tài liệu chính thức Python",
+      "verified_at": "2026-11-02"
+    },
+    {
+      "id": "py-local-binding",
+      "language": "python",
+      "title": "Python 3.14 — phạm vi tên và UnboundLocalError",
+      "url": "https://docs.python.org/3.14/reference/executionmodel.html#resolution-of-names",
+      "terms": [
+        "UnboundLocalError",
+        "NameError",
+        "global",
+        "nonlocal",
+        "phạm vi",
+        "biến cục bộ",
+        "chưa gán",
+        "scope"
+      ],
+      "text": "Trong thân hàm, tên có thao tác gán được xem là cục bộ, trừ khi có khai báo global hoặc nonlocal phù hợp. Đọc biến cục bộ trước khi được gán gây UnboundLocalError; không tìm thấy tên trong các phạm vi gây NameError. Cần xét cả nhánh điều kiện và vị trí gán; không tự thêm global nếu chưa biết chủ đích chia sẻ trạng thái.",
+      "version": "Python 3.14; tóm lược phạm vi hàm thông thường, không bao quát annotation scope.",
+      "source_type": "Tài liệu chính thức Python",
+      "verified_at": "2026-11-02"
+    },
+    {
+      "id": "py-truth-short-circuit",
+      "language": "python",
+      "title": "Python 3.14 — giá trị chân lý và toán tử and/or",
+      "url": "https://docs.python.org/3.14/builtins/stdtypes.html#truth-value-testing",
+      "terms": [
+        "truthy",
+        "falsy",
+        "and",
+        "or",
+        "None",
+        "if not",
+        "điều kiện",
+        "đoản mạch",
+        "rỗng"
+      ],
+      "text": "None, False, số 0 và collection rỗng được xem là sai. and/or đánh giá đoản mạch và trả toán hạng, không luôn trả bool. if not x nhận cả 0 hoặc chuỗi rỗng; không tương đương chỉ kiểm tra None.",
+      "version": "Python 3.14; quy tắc các kiểu dựng sẵn ổn định trong Python 3.10+.",
+      "source_type": "Tài liệu chính thức Python",
+      "verified_at": "2026-11-02"
+    },
+    {
+      "id": "py-dict-get",
+      "language": "python",
+      "title": "Python 3.14 — dict.get và khóa không tồn tại",
+      "url": "https://docs.python.org/3.14/builtins/stdtypes.html#dict.get",
+      "terms": [
+        "dict",
+        "dictionary",
+        "get(",
+        "KeyError",
+        "từ điển",
+        "khóa",
+        "get(key"
+      ],
+      "text": "d[key] của dict thông thường gây KeyError khi khóa vắng. d.get(key, default) trả default, mặc định None. Kết quả None chưa phân biệt khóa vắng với giá trị None đã lưu; dùng key in d khi cần phân biệt.",
+      "version": "Python 3.14; dict dựng sẵn, không suy rộng __missing__ của lớp con.",
+      "source_type": "Tài liệu chính thức Python",
+      "verified_at": "2026-11-02"
+    },
+    {
+      "id": "py-exception-handling",
+      "language": "python",
+      "title": "Python 3.14 — lỗi cú pháp, ngoại lệ và except",
+      "url": "https://docs.python.org/3.14/tutorial/errors.html#handling-exceptions",
+      "terms": [
+        "try",
+        "except",
+        "ValueError",
+        "ZeroDivisionError",
+        "SyntaxError",
+        "traceback",
+        "ngoại lệ",
+        "bắt lỗi"
+      ],
+      "text": "Mã đúng cú pháp vẫn có thể phát sinh ngoại lệ khi chạy. Trong try/except, khi có ngoại lệ phù hợp, phần còn lại của try bị bỏ qua và nhánh xử lý tương ứng được thực hiện. Điểm trình phân tích cú pháp báo lỗi có thể nằm sau chỗ cần sửa. Khi chẩn đoán, đọc loại ngoại lệ và ngữ cảnh, không chỉ dựa vào dòng được tô đỏ.",
+      "version": "Python 3.14; mô tả try/except thông thường.",
+      "source_type": "Tài liệu chính thức Python",
+      "verified_at": "2026-11-02"
+    },
+    {
+      "id": "py-recursion-error",
+      "language": "python",
+      "title": "Python 3.14 — RecursionError và độ sâu đệ quy",
+      "url": "https://docs.python.org/3.14/builtins/exceptions.html#RecursionError",
+      "terms": [
+        "RecursionError",
+        "recursion",
+        "đệ quy",
+        "độ sâu",
+        "điều kiện dừng",
+        "gọi lại chính nó"
+      ],
+      "text": "RecursionError được phát sinh khi trình thông dịch phát hiện vượt giới hạn độ sâu đệ quy. Lỗi này không chứng minh duy nhất rằng hàm thiếu điều kiện dừng: dữ liệu lớn cũng có thể tạo chuỗi gọi quá sâu. Cần kiểm tra trường hợp cơ sở, việc tiến tới trường hợp cơ sở và kích thước đầu vào trước khi đề xuất bản sửa.",
+      "version": "Python 3.14; định nghĩa ngoại lệ chuẩn. Các bước chẩn đoán là hướng dẫn áp dụng.",
+      "source_type": "Tài liệu chính thức Python",
+      "verified_at": "2026-11-02"
+    },
+    {
+      "id": "java-definite-assignment",
+      "language": "java",
+      "title": "Java 17 JLS Chương 16 — biến cục bộ phải được gán trước khi đọc",
+      "url": "https://docs.oracle.com/javase/specs/jls/se17/html/jls-16.html",
+      "terms": [
+        "definite assignment",
+        "might not have been initialized",
+        "chưa khởi tạo",
+        "biến cục bộ",
+        "chưa gán",
+        "int x;"
+      ],
+      "text": "Biến cục bộ phải chắc chắn đã được gán giá trị khi giá trị của nó được đọc. Chỉ khai báo int x; trong phương thức không cho phép suy ra x đã có giá trị 0. Nếu một nhánh có thể bỏ qua phép gán rồi vẫn đi tới chỗ đọc x, trình biên dịch có thể báo lỗi. Cần kiểm tra luồng điều khiển trước khi tự chọn giá trị khởi tạo.",
+      "version": "Java SE 17, JLS Chương 16.",
+      "source_type": "Đặc tả Java",
+      "verified_at": "2026-11-02"
+    },
+    {
+      "id": "java-missing-return",
+      "language": "java",
+      "title": "Java 17 JLS §8.4.7 — thân phương thức và return bị thiếu",
+      "url": "https://docs.oracle.com/javase/specs/jls/se17/html/jls-8.html#jls-8.4.7",
+      "terms": [
+        "missing return",
+        "return",
+        "thiếu return",
+        "trả về",
+        "complete normally",
+        "int sum"
+      ],
+      "text": "Phương thức có kiểu kết quả khác void không được kết thúc bằng cách đi hết thân phương thức theo luồng bình thường. Nếu một nhánh bỏ qua return rồi đi tới cuối thân, đó có thể là lỗi biên dịch. Không diễn giải thành mọi đường đi đều phải có return: đường luôn ném ngoại lệ hoặc vòng lặp không thể kết thúc có quy tắc khác.",
+      "version": "Java SE 17, JLS §8.4.7.",
+      "source_type": "Đặc tả Java",
+      "verified_at": "2026-11-02"
+    },
+    {
+      "id": "java-null-unboxing",
+      "language": "java",
+      "title": "Java 17 JLS §5.1.8 — unboxing giá trị null",
+      "url": "https://docs.oracle.com/javase/specs/jls/se17/html/jls-5.html#jls-5.1.8",
+      "terms": [
+        "unboxing",
+        "Integer",
+        "Boolean",
+        "intValue",
+        "NullPointerException",
+        "null",
+        "wrapper"
+      ],
+      "text": "Unboxing chuyển đối tượng wrapper sang kiểu nguyên thủy tương ứng; nếu tham chiếu wrapper là null thì phát sinh NullPointerException. Vì vậy Integer n = null; int x = n; có thể biên dịch nhưng thất bại khi chạy. Cần kiểm tra cả phép chuyển đổi ngầm trong tính toán hoặc gán, không chỉ những chỗ gọi phương thức qua dấu chấm.",
+      "version": "Java SE 17, JLS §5.1.8.",
+      "source_type": "Đặc tả Java",
+      "verified_at": "2026-11-02"
+    },
+    {
+      "id": "java-scanner-line",
+      "language": "java",
+      "title": "Java 17 API — Scanner.nextInt và nextLine",
+      "url": "https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/Scanner.html#nextLine()",
+      "terms": [
+        "Scanner",
+        "nextInt",
+        "nextLine",
+        "hasNextInt",
+        "InputMismatchException",
+        "đọc dòng",
+        "bỏ qua nhập",
+        "dòng rỗng"
+      ],
+      "text": "nextInt đọc token số nguyên, còn nextLine đọc phần còn lại của dòng hiện tại rồi chuyển sang đầu dòng kế tiếp. Sau khi nhập một số rồi xuống dòng, nextLine có thể trả chuỗi rỗng do phần còn lại của dòng trống. Cần xét dữ liệu và cách trộn đọc token/đọc dòng; không chèn nextLine thừa vào mọi chương trình dùng Scanner.",
+      "version": "Java SE 17 API; tình huống số rồi xuống dòng là suy luận trực tiếp từ hai phương thức.",
+      "source_type": "Tài liệu API Java",
+      "verified_at": "2026-11-02"
+    },
+    {
+      "id": "java-map-null",
+      "language": "java",
+      "title": "Java 17 API — Map.get, containsKey và giá trị null",
+      "url": "https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/Map.html#get(java.lang.Object)",
+      "terms": [
+        "Map",
+        "HashMap",
+        "containsKey",
+        "get(",
+        "null",
+        "khóa",
+        "ánh xạ"
+      ],
+      "text": "Map.get trả null khi không có ánh xạ cho khóa. Với cách triển khai cho phép giá trị null, kết quả null cũng có thể là giá trị đã lưu; containsKey phân biệt hai tình huống. Không khẳng định mọi Map cho phép khóa hoặc giá trị null: khả năng này tùy triển khai. Khi dùng kết quả get, cần xét cả trường hợp khóa không tồn tại.",
+      "version": "Java SE 17 API, hợp đồng giao diện Map.",
+      "source_type": "Tài liệu API Java",
+      "verified_at": "2026-11-02"
+    },
+    {
+      "id": "java-finally-completion",
+      "language": "java",
+      "title": "Java 17 JLS §14.20.2 — finally và lý do kết thúc bị thay thế",
+      "url": "https://docs.oracle.com/javase/specs/jls/se17/html/jls-14.html#jls-14.20.2",
+      "terms": [
+        "finally",
+        "try",
+        "catch",
+        "return trong finally",
+        "ngoại lệ bị mất",
+        "kết thúc đột ngột"
+      ],
+      "text": "Khi khối finally tự kết thúc đột ngột, chẳng hạn bằng return hoặc throw, lý do kết thúc trước đó của try/catch có thể bị thay thế. Do đó return trong finally có thể che mất kết quả hoặc ngoại lệ cần giữ. Khi phân tích mã, theo dõi cả try/catch và finally; không nói finally chỉ dọn dẹp mà không ảnh hưởng giá trị trả về.",
+      "version": "Java SE 17, JLS §14.20.2; không khẳng định finally chạy sau việc dừng tiến trình.",
+      "source_type": "Đặc tả Java",
+      "verified_at": "2026-11-02"
+    },
+    {
+      "id": "java-integer-division",
+      "language": "java",
+      "title": "Java 17 JLS §15.17.2 — chia nguyên làm tròn về 0",
+      "url": "https://docs.oracle.com/javase/specs/jls/se17/html/jls-15.html#jls-15.17.2",
+      "terms": [
+        "chia nguyên",
+        "chia số âm",
+        "integer division",
+        "7 / 2",
+        "-7 / 2",
+        "double",
+        "ép kiểu",
+        "toán tử chia"
+      ],
+      "text": "Phép chia khi hai toán hạng là số nguyên sau phép nâng kiểu cho thương làm tròn về 0: -7 / 2 bằng -3. Gán kết quả 7 / 2 vào double không khôi phục phần lẻ đã mất; muốn chia số thực phải có toán hạng số thực trước phép chia, chẳng hạn 7.0 / 2. Không áp dụng quy tắc floor của Python // cho Java.",
+      "version": "Java SE 17, JLS §15.17.2.",
+      "source_type": "Đặc tả Java",
+      "verified_at": "2026-11-02"
+    },
+    {
+      "id": "c-integer-division",
+      "language": "c",
+      "title": "WG14 C11 N1570 §6.5.5 — chia nguyên",
+      "url": "https://www.open-std.org/jtc1/sc22/wg14/www/docs/n1570.pdf",
+      "terms": [
+        "integer division",
+        "chia nguyên",
+        "chia số âm",
+        "5/2",
+        "-7/2",
+        "ép kiểu"
+      ],
+      "text": "Chia nguyên C làm tròn về 0: -7/2=-3. Chuyển sang double sau phép chia không khôi phục phần lẻ. Chia 0 hoặc thương không biểu diễn được gây hành vi không xác định.",
+      "version": "Bản thảo ủy ban C11 N1570, §6.5.5.",
+      "source_type": "Bản thảo chuẩn",
+      "verified_at": "2026-11-02"
+    },
+    {
+      "id": "c-main-return",
+      "language": "c",
+      "title": "WG14 C11 N1570 §5.1.2.2.3 — main không bắt buộc viết return 0",
+      "url": "https://www.open-std.org/jtc1/sc22/wg14/www/docs/n1570.pdf",
+      "terms": [
+        "return",
+        "main",
+        "return 0",
+        "thiếu return",
+        "trả về",
+        "int main"
+      ],
+      "text": "Trong môi trường hosted C11, đi tới dấu } cuối main có kiểu trả về tương thích int tương đương return 0. Riêng việc bỏ dòng return 0 không gây hành vi không xác định. Đây là quy tắc riêng của main, không áp dụng cho mọi hàm.",
+      "version": "Bản thảo ủy ban C11 N1570, §5.1.2.2.3; chỉ main trong môi trường hosted.",
+      "source_type": "Bản thảo chuẩn",
+      "verified_at": "2026-11-02"
+    },
+    {
+      "id": "c-initialization",
+      "language": "c",
+      "title": "WG14 C11 N1570 §6.7.9 — khởi tạo biến",
+      "url": "https://www.open-std.org/jtc1/sc22/wg14/www/docs/n1570.pdf",
+      "terms": [
+        "khởi tạo",
+        "chưa khởi tạo",
+        "uninitialized",
+        "static",
+        "biến cục bộ",
+        "int x;",
+        "giá trị rác"
+      ],
+      "text": "Biến tự động chưa khởi tạo có giá trị bất định; biến cục bộ không mặc nhiên bằng 0. Biến static có quy tắc khởi tạo ngầm riêng. Cần xét thời gian lưu trữ và luồng gán.",
+      "version": "Bản thảo ủy ban C11 N1570, §6.7.9p10.",
+      "source_type": "Bản thảo chuẩn",
+      "verified_at": "2026-11-02"
+    },
+    {
+      "id": "c-fgets-input",
+      "language": "c",
+      "title": "Microsoft CRT — fgets và ký tự xuống dòng",
+      "url": "https://learn.microsoft.com/en-us/cpp/c-runtime-library/reference/fgets-fgetws?view=msvc-170",
+      "terms": [
+        "fgets",
+        "stdin",
+        "nhập chuỗi",
+        "đọc dòng",
+        "newline",
+        "xuống dòng",
+        "buffer"
+      ],
+      "text": "Với bộ đệm hợp lệ và kích thước phù hợp, fgets đọc tối đa numChars-1 ký tự. Nếu đọc được xuống dòng, ký tự này nằm trong kết quả; hàm thêm NUL kết thúc. Kiểm tra giá trị trả về trước khi dùng bộ đệm. Một lần gọi không nhất thiết nhận trọn dòng dài.",
+      "version": "Microsoft CRT; tóm lược fgets phổ biến, không suy rộng xử lý lỗi riêng Windows.",
+      "source_type": "Tài liệu thư viện của nhà cung cấp",
+      "verified_at": "2026-11-02"
+    },
+    {
+      "id": "c-strlen-bytes",
+      "language": "c",
+      "title": "Microsoft CRT — strlen và số byte",
+      "url": "https://learn.microsoft.com/en-us/cpp/c-runtime-library/reference/strlen-wcslen-mbslen-mbslen-l-mbstrlen-mbstrlen-l?view=msvc-170",
+      "terms": [
+        "strlen",
+        "sizeof",
+        "độ dài chuỗi",
+        "UTF-8",
+        "unicode",
+        "NUL",
+        "byte",
+        "tiếng Việt"
+      ],
+      "text": "strlen đếm byte trước NUL, không tính NUL. Với UTF-8, số byte có thể khác số ký tự nhìn thấy. Không nhầm strlen với dung lượng bộ đệm hoặc kích thước mảng; trước khi gọi cần bảo đảm chuỗi NUL hợp lệ trong vùng nhớ được phép đọc.",
+      "version": "Microsoft CRT, chỉ xét strlen; không suy rộng cách đếm của wcslen.",
+      "source_type": "Tài liệu thư viện của nhà cung cấp",
+      "verified_at": "2026-11-02"
+    },
+    {
+      "id": "c-strncpy-termination",
+      "language": "c",
+      "title": "Microsoft CRT — strncpy và NUL kết thúc",
+      "url": "https://learn.microsoft.com/en-us/cpp/c-runtime-library/reference/strncpy-strncpy-l-wcsncpy-wcsncpy-l-mbsncpy-mbsncpy-l?view=msvc-170",
+      "terms": [
+        "strncpy",
+        "strcpy",
+        "sao chép chuỗi",
+        "NUL",
+        "null terminator",
+        "tràn bộ đệm",
+        "count"
+      ],
+      "text": "strncpy không thêm NUL nếu count không lớn hơn độ dài nguồn. Hàm không biết dung lượng thực của đích; count quá lớn vẫn có thể ghi tràn. Cần dành chỗ và bảo đảm NUL khi cần chuỗi C, đồng thời không dùng với vùng chồng lấn. Đổi strcpy thành strncpy chưa tự bảo đảm an toàn.",
+      "version": "Microsoft CRT; không suy rộng invalid-parameter handler thành quy tắc ISO C.",
+      "source_type": "Tài liệu thư viện của nhà cung cấp",
+      "verified_at": "2026-11-02"
+    },
+    {
+      "id": "c-realloc-temporary",
+      "language": "c",
+      "title": "Microsoft CRT — realloc thất bại và con trỏ tạm",
+      "url": "https://learn.microsoft.com/en-us/cpp/c-runtime-library/reference/realloc?view=msvc-170",
+      "terms": [
+        "realloc",
+        "cấp phát lại",
+        "NULL",
+        "mất con trỏ",
+        "con trỏ tạm",
+        "bộ nhớ",
+        "malloc"
+      ],
+      "text": "Với kích thước mới lớn hơn 0, realloc có thể đổi địa chỉ. Nếu không cấp được bộ nhớ, nó trả NULL và giữ khối cũ. Gán trực tiếp vào con trỏ duy nhất có thể làm mất địa chỉ cũ; dùng biến tạm rồi kiểm tra. Phần tăng thêm không tự được khởi tạo bằng 0.",
+      "version": "Microsoft CRT; chỉ kích thước mới >0, không khái quát realloc(p,0).",
+      "source_type": "Tài liệu thư viện của nhà cung cấp",
+      "verified_at": "2026-11-02"
+    },
+    {
+      "id": "cpp-integer-division",
+      "language": "cpp",
+      "title": "WG21 C++17 N4659 [expr.mul] — chia nguyên",
+      "url": "https://www.open-std.org/jtc1/sc22/wg21/docs/papers/2017/n4659.pdf",
+      "terms": [
+        "integer division",
+        "chia nguyên",
+        "chia số âm",
+        "static_cast",
+        "-7/2",
+        "5/2",
+        "ép kiểu"
+      ],
+      "text": "Chia nguyên tích hợp bỏ phần lẻ về 0: -7/2=-3. Chuyển sang double sau phép chia không khôi phục phần lẻ. Chia nguyên cho 0 hoặc có thương không biểu diễn được gây hành vi không xác định.",
+      "version": "Bản thảo C++17 N4659; không xét toán tử nạp chồng.",
+      "source_type": "Bản thảo chuẩn",
+      "verified_at": "2026-11-02"
+    },
+    {
+      "id": "cpp-main-return",
+      "language": "cpp",
+      "title": "WG21 C++17 N4659 — main không bắt buộc viết return 0",
+      "url": "https://www.open-std.org/jtc1/sc22/wg21/docs/papers/2017/n4659.pdf",
+      "terms": [
+        "main",
+        "return",
+        "return 0",
+        "thiếu return",
+        "int main",
+        "trả về"
+      ],
+      "text": "Đi tới dấu } cuối main tương đương return 0. Chỉ vì main thiếu dòng return 0 không làm phát sinh hành vi không xác định. Đây là ngoại lệ riêng của main, không áp dụng quy tắc này cho hàm trả giá trị khác.",
+      "version": "Bản thảo C++17 N4659, [basic.start.main]; chỉ quy tắc main.",
+      "source_type": "Bản thảo chuẩn",
+      "verified_at": "2026-11-02"
+    },
+    {
+      "id": "cpp-sort-comparator",
+      "language": "cpp",
+      "title": "WG21 C++17 N4659 — bộ so sánh của sort",
+      "url": "https://www.open-std.org/jtc1/sc22/wg21/docs/papers/2017/n4659.pdf",
+      "terms": [
+        "sort",
+        "std::sort",
+        "sort(",
+        "comparator",
+        "compare",
+        "bộ so sánh",
+        "strict weak",
+        "<=",
+        "sắp xếp"
+      ],
+      "text": "Bộ so sánh của sort phải tạo thứ tự yếu nghiêm ngặt: comp(x,x) phải false, quan hệ phải bắc cầu. Dùng a<=b thường vi phạm với giá trị bằng nhau. Cần đối chiếu mục tiêu sắp xếp trước khi đổi bộ so sánh.",
+      "version": "Bản thảo C++17 N4659, [alg.sorting].",
+      "source_type": "Bản thảo chuẩn",
+      "verified_at": "2026-11-02"
+    },
+    {
+      "id": "cpp-vector-erase",
+      "language": "cpp",
+      "title": "Microsoft C++ — vector.erase và iterator",
+      "url": "https://learn.microsoft.com/en-us/cpp/standard-library/vector-class?view=msvc-170#erase",
+      "terms": [
+        "vector",
+        "erase",
+        "iterator",
+        "xóa phần tử",
+        "mất hiệu lực",
+        "it++",
+        "end()"
+      ],
+      "text": "vector.erase làm mất hiệu lực iterator và tham chiếu tại hoặc sau vị trí xóa. Khi xóa trong vòng lặp, dùng iterator mới mà erase trả về, thay vì tiếp tục tăng iterator cũ. Xét riêng nhánh có xóa và nhánh giữ phần tử để không bỏ sót phần tử hoặc dùng iterator hết hiệu lực.",
+      "version": "Microsoft C++ Standard Library; quy tắc áp dụng cho C++17/20.",
+      "source_type": "Tài liệu thư viện của nhà cung cấp",
+      "verified_at": "2026-11-02"
+    },
+    {
+      "id": "cpp-delete-pairing",
+      "language": "cpp",
+      "title": "Microsoft C++ — new/delete và new[]/delete[]",
+      "url": "https://learn.microsoft.com/en-us/cpp/cpp/delete-operator-cpp?view=msvc-170",
+      "terms": [
+        "new",
+        "new[]",
+        "delete",
+        "delete[]",
+        "mảng động",
+        "destructor",
+        "giải phóng"
+      ],
+      "text": "Đối tượng đơn cấp bằng new cần delete; mảng cấp bằng new[] cần delete[]. Ghép sai gây hành vi không xác định. delete gọi hàm hủy của đối tượng lớp trước khi giải phóng vùng nhớ. Sau giải phóng, không tiếp tục giải tham chiếu con trỏ; không khẳng định chương trình luôn crash.",
+      "version": "Tài liệu Microsoft C++; không suy rộng tùy chọn /sdl.",
+      "source_type": "Tài liệu ngôn ngữ của nhà cung cấp",
+      "verified_at": "2026-11-02"
+    },
+    {
+      "id": "cpp-map-read",
+      "language": "cpp",
+      "title": "Microsoft C++ — map::operator[] có thể chèn khóa",
+      "url": "https://learn.microsoft.com/en-us/cpp/standard-library/map-class?view=msvc-170#op_at",
+      "terms": [
+        "map",
+        "operator[]",
+        "m[key]",
+        "find",
+        "khóa",
+        "tra cứu",
+        "thêm phần tử"
+      ],
+      "text": "Khi khóa chưa tồn tại, map::operator[] thêm phần tử với giá trị được khởi tạo mặc định rồi trả tham chiếu tới giá trị. m[key] vì vậy không phải lúc nào cũng là phép đọc thuần túy. Nếu chỉ kiểm tra tồn tại, dùng find rồi so với end(). Chèn bằng [] vẫn hợp lệ khi đúng mục tiêu.",
+      "version": "Microsoft C++ Standard Library, C++17/20; contains chỉ có từ C++20.",
+      "source_type": "Tài liệu thư viện của nhà cung cấp",
+      "verified_at": "2026-11-02"
+    },
+    {
+      "id": "cpp-raii-guidance",
+      "language": "cpp",
+      "title": "C++ Core Guidelines R.1 — RAII",
+      "url": "https://isocpp.github.io/CppCoreGuidelines/CppCoreGuidelines#rr-raii",
+      "terms": [
+        "RAII",
+        "resource",
+        "tài nguyên",
+        "rò rỉ",
+        "ngoại lệ",
+        "constructor",
+        "destructor",
+        "khóa"
+      ],
+      "text": "Core Guidelines khuyến nghị gói tài nguyên cần cặp cấp/giải phóng hoặc mở/đóng trong đối tượng quản lý vòng đời. Hàm tạo nhận tài nguyên, hàm hủy giải phóng để giảm bỏ sót ở nhánh return hoặc ngoại lệ. Đây là khuyến nghị thiết kế; không tự kết luận mọi đoạn quản lý thủ công đều sai.",
+      "version": "C++ Core Guidelines R.1, do Bjarne Stroustrup và Herb Sutter biên tập; khuyến nghị, không phải văn bản ISO.",
+      "source_type": "Khuyến nghị thiết kế",
+      "verified_at": "2026-11-02"
+    },
+    {
+      "id": "py-pep8-style",
+      "language": "python",
+      "title": "Python PEP 8 — phong cách và tính đúng",
+      "url": "https://peps.python.org/pep-0008/",
+      "terms": [
+        "PEP 8",
+        "PEP8",
+        "phong cách",
+        "style",
+        "snake_case",
+        "thụt lề",
+        "4 dấu cách"
+      ],
+      "text": "PEP 8 khuyến nghị bốn dấu cách cho mỗi mức thụt lề và quy ước đặt tên, bố trí mã nhất quán. Quy ước riêng của dự án có thể được ưu tiên. Phân biệt vi phạm phong cách với lỗi cú pháp hoặc logic; không kết luận chương trình sai chỉ vì chưa tuân thủ mọi khuyến nghị PEP 8.",
+      "version": "PEP 8, hướng dẫn phong cách của Python; không phải toàn bộ ngữ pháp.",
+      "source_type": "Hướng dẫn phong cách",
+      "verified_at": "2026-11-02"
+    }
+  ],
+  "source_catalog": [
+    {
+      "language": "python",
+      "title": "Python 3.14: Tutorial, Language Reference, Standard Library",
+      "url": "https://docs.python.org/3.14/"
+    },
+    {
+      "language": "python",
+      "title": "PEP 8: hướng dẫn phong cách",
+      "url": "https://peps.python.org/pep-0008/"
+    },
+    {
+      "language": "java",
+      "title": "Oracle Java SE 17 Language Specification",
+      "url": "https://docs.oracle.com/javase/specs/jls/se17/html/index.html"
+    },
+    {
+      "language": "java",
+      "title": "Oracle Java SE 17 API Specification",
+      "url": "https://docs.oracle.com/en/java/javase/17/docs/api/index.html"
+    },
+    {
+      "language": "c",
+      "title": "WG14 C11 N1570: bản thảo ủy ban",
+      "url": "https://www.open-std.org/jtc1/sc22/wg14/www/docs/n1570.pdf"
+    },
+    {
+      "language": "c",
+      "title": "Microsoft CRT: chú ý chi tiết riêng triển khai",
+      "url": "https://learn.microsoft.com/en-us/cpp/c-runtime-library/reference/crt-alphabetical-function-reference?view=msvc-170"
+    },
+    {
+      "language": "cpp",
+      "title": "WG21 C++17 N4659: bản thảo",
+      "url": "https://www.open-std.org/jtc1/sc22/wg21/docs/papers/2017/n4659.pdf"
+    },
+    {
+      "language": "cpp",
+      "title": "Microsoft C++ Standard Library",
+      "url": "https://learn.microsoft.com/en-us/cpp/standard-library/cpp-standard-library-reference?view=msvc-170"
+    },
+    {
+      "language": "cpp",
+      "title": "C++ Core Guidelines: khuyến nghị thiết kế",
+      "url": "https://isocpp.github.io/CppCoreGuidelines/CppCoreGuidelines"
+    }
+  ]
+}

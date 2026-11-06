@@ -2,6 +2,15 @@
 
 Python/FastAPI + Ollama cục bộ, hỗ trợ C, C++, Java và Python.
 
+## Mở bản demo trên trình duyệt
+
+[Mở Web IDE đang chạy thử](https://slight-fitting-corps-tennis.trycloudflare.com)
+
+Link demo HTTPS được kiểm tra ngày 06/11/2026. Đây là Cloudflare Quick Tunnel tới
+máy đang chạy Web, không phải GitHub Pages hoặc máy chủ 24/7. Máy chủ Web, Ollama
+và tunnel cần tiếp tục chạy; dừng tunnel hoặc tắt máy sẽ làm link hết hoạt động.
+Đăng nhập bằng tài khoản đã được cấp. Mã nguồn trên GitHub và link chạy Web là hai địa chỉ riêng.
+
 ## Ba file mã nguồn chính
 
 - `ai_core.py`: urllib, Ollama, FIM và kiểm tra nội dung AI.
